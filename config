@@ -116,7 +116,7 @@ bindsym $mod+u $term -e ranger
 #bindsym $mod+shift+u exec sudo $term -e ranger /
 
 #bindsym $mod+d exec rofi -show run -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -fn 'Monospace-11'  
 bindsym $mod+shift+d gaps inner current set 0; gaps outer current set 0
 
 bindsym $mod+s gaps inner current plus 5
