@@ -7,16 +7,14 @@ let mapleader=" "
 
 " Installs vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " All vim-plug plugins
 call plug#begin()
     Plug 'vimwiki/vimwiki'
-    Plug '/usr/local/opt/fzf'
-    Plug 'junegunn/fzf.vim'
     Plug 'itchyny/lightline.vim'
     Plug 'scrooloose/nerdtree'
     Plug 'PotatoesMaster/i3-vim-syntax'
@@ -24,6 +22,7 @@ call plug#begin()
     Plug 'junegunn/goyo.vim'
     Plug 'Yggdroot/indentline'
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-commentary'
     Plug 'kien/ctrlp.vim'
 call plug#end()
 
@@ -43,7 +42,10 @@ let g:lightline = {
     set shiftwidth=4
     set expandtab
     set softtabstop=4
+"Background     |   colors
+    set t_Co=256
     colorscheme janah
+    set background=dark
 " Needed for lightline
     set laststatus=2
     set noshowmode 
