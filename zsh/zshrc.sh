@@ -53,6 +53,7 @@ autoload -U compinit
 
 plugins=(
 	docker
+    vi-mode
 )
 
 for plugin ($plugins); do
