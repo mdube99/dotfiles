@@ -22,11 +22,14 @@ call plug#begin()
     Plug 'PotatoesMaster/i3-vim-syntax'
     Plug 'suan/vim-instant-markdown'
     Plug 'junegunn/goyo.vim'
+    Plug 'Yggdroot/indentline'
+    Plug 'tpope/vim-surround'
+    Plug 'kien/ctrlp.vim'
 call plug#end()
 
 " lightline color
 let g:lightline = {
-	\ 'colorscheme': 'jellybeans'
+	\ 'colorscheme': 'wombat'
 	\ }
 
 " Basics
@@ -40,7 +43,7 @@ let g:lightline = {
     set shiftwidth=4
     set expandtab
     set softtabstop=4
-    colorscheme hipster
+    colorscheme janah
 " Needed for lightline
     set laststatus=2
     set noshowmode 
@@ -58,6 +61,7 @@ let g:instant_markdown_autostart = 0	" disable autostart
     map <leader>md :InstantMarkdownPreview<CR>
     map <leader><DEL> :exe ':NERDTree'<CR>
     map <leader>g :exe ':Goyo'<CR><CR>
+    map <leader>d :exe ':CtrlP'<CR>
 
 if !has('gui_running')
     set t_Co=256
