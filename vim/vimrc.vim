@@ -62,7 +62,3 @@ let g:instant_markdown_autostart = 0	" disable autostart
     map <leader><DEL> :exe ':NERDTree'<CR>
     map <leader>g :exe ':Goyo'<CR><CR>
     map <leader>d :exe ':CtrlP'<CR>
-
-if !has('gui_running')
-    set t_Co=256
-endif
