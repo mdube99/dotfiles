@@ -6,8 +6,6 @@
 
 	git config --global push.default current
 
-# Aliases
-	alias v="vim -p"
 	mkdir -p /tmp/log
 	
 	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
@@ -15,6 +13,7 @@
 
 # Settings
 	export VISUAL=vim
+    ZSH_THEME="agnoster"
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
@@ -35,9 +34,11 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
  	# Custom cd
  	c() {
  		cd $1;
- 		ls;
+ 		ls -l;
  	}
+#Aliases
  	alias cd="c"
+    alias pubip="curl ipinfo.io/ip"
 
 # For vim mappings: 
 	stty -ixon
@@ -64,7 +65,6 @@ source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/history.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/key-bindings.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/completion.zsh
 source ~/dotfiles/zsh/plugins/vi-mode.plugin.zsh
-source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/keybindings.sh
 
