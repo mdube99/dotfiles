@@ -39,6 +39,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 #Aliases
  	alias cd="c"
     alias pubip="curl ipinfo.io/ip"
+    alias ll=" ls -l"
 
 # For vim mappings: 
 	stty -ixon
