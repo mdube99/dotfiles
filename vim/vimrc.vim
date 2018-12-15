@@ -42,6 +42,8 @@ let g:lightline = {
     set shiftwidth=4
     set expandtab
     set softtabstop=4
+    set ignorecase
+    set formatoptions-=cro
 "Background     |   colors
     set t_Co=256
     colorscheme janah
@@ -63,4 +65,4 @@ let g:instant_markdown_autostart = 0	" disable autostart
     map <leader>md :InstantMarkdownPreview<CR>
     map <leader><DEL> :exe ':NERDTree'<CR>
     map <leader>g :exe ':Goyo'<CR><CR>
-    map <leader>d :exe ':CtrlP'<CR>
+    map <leader>p :exe ':CtrlP'<CR>
