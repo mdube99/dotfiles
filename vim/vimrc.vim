@@ -63,6 +63,6 @@ let g:instant_markdown_autostart = 0	" disable autostart
 
 " Mappings
     map <leader>md :InstantMarkdownPreview<CR>
-    map <leader><DEL> :exe ':NERDTree'<CR>
+    map <leader>d :exe ':NERDTree'<CR>
     map <leader>g :exe ':Goyo'<CR><CR>
     map <leader>p :exe ':CtrlP'<CR>
