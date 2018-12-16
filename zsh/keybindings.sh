@@ -47,6 +47,14 @@
 	zle -N enter_line
 	bindkey "^o" enter_line
 
+# Enter
+	function exit_tmux() {
+        BUFFER="exit"
+		zle accept-line
+	}
+	zle -N exit_tmux
+	bindkey "^q" exit_tmux
+
 # Sudo
 	function add_sudo() {
 		BUFFER="sudo "$BUFFER
