@@ -45,11 +45,10 @@ let g:lightline = {
     set softtabstop=4
     set ignorecase
     set formatoptions-=cro " When creating new lines, vim won't create comments automatically
-    set clipboard=unnamedplus
+    set clipboard=unnamedplus " Makes vim use system clipboard
 	set splitbelow splitright " SPlits open at the bottom and right
     set noshowmode " Needed for lightline
     set laststatus=2 " Needed for lightline
-    set clipboard=unnamedplus
 	set go+=a               " Visual selection automatically copied to the clipboard
 
 " Mappings
