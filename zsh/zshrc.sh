@@ -1,3 +1,6 @@
+clear
+
+
 # Vars
 	HISTFILE=~/.zsh_history
 	SAVEHIST=1000 
@@ -40,6 +43,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
  	alias cd="c"
     alias pubip="curl ipinfo.io/ip"
     alias ll=" ls -l"
+    alias v="vim"
 
 # For vim mappings: 
 	stty -ixon

@@ -1,10 +1,3 @@
-
-
-
-let mapleader=" "
-
-
-
 " Installs vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -24,12 +17,20 @@ call plug#begin()
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
     Plug 'kien/ctrlp.vim'
+    Plug 'mhinz/vim-signify'
+    Plug 'joshdick/onedark.vim'
+    
 call plug#end()
 
 " lightline color
 let g:lightline = {
-	\ 'colorscheme': 'wombat'
+	\ 'colorscheme': 'one'
 	\ }
+
+"Background
+    set t_Co=256
+    colorscheme janah
+    set background=dark
 
 " Basics
     set nocompatible
@@ -43,14 +44,29 @@ let g:lightline = {
     set expandtab
     set softtabstop=4
     set ignorecase
-    set formatoptions-=cro
-"Background     |   colors
-    set t_Co=256
-    colorscheme janah
-    set background=dark
-" Needed for lightline
-    set laststatus=2
-    set noshowmode 
+    set formatoptions-=cro " When creating new lines, vim won't create comments automatically
+    set clipboard=unnamedplus
+	set splitbelow splitright " SPlits open at the bottom and right
+    set noshowmode " Needed for lightline
+    set laststatus=2 " Needed for lightline
+    set clipboard=unnamedplus
+	set go+=a               " Visual selection automatically copied to the clipboard
+
+" Mappings
+    let mapleader=" "
+    map <leader>md :InstantMarkdownPreview<CR>
+    map <leader>d :exe ':NERDTree'<CR>
+    map <leader>g :exe ':Goyo'<CR><CR>
+    map <leader>p :exe ':CtrlP'<CR>
+    
+    " Create lines without being in insert mode
+        map <leader>o o<esc>
+        map <leader>O O<esc>
+    " Shortcutting split navigation, saving a keypress:
+        map <C-h> <C-w>h
+        map <C-j> <C-w>j
+        map <C-k> <C-w>k
+        map <C-l> <C-w>l
 
 " vimwiki - Personal Wiki for Vim
 " https://github.com/vimwiki/vimwiki
@@ -60,9 +76,3 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown'
 " vim-instant-markdown - Instant Markdown previews from Vim
 " https://github.com/suan/vim-instant-markdown
 let g:instant_markdown_autostart = 0	" disable autostart
-
-" Mappings
-    map <leader>md :InstantMarkdownPreview<CR>
-    map <leader>d :exe ':NERDTree'<CR>
-    map <leader>g :exe ':Goyo'<CR><CR>
-    map <leader>p :exe ':CtrlP'<CR>
