@@ -63,6 +63,11 @@ let g:lightline = {
     map <leader>p :exe ':CtrlP'<CR>
     map <leader>G :exe ':Magit'<CR>
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
+" Enable going down in case text is wrapped
+    nnoremap j gj
+    nnoremap k gk
+    vnoremap j gj
+    vnoremap k gk
     
     " Create lines without being in insert mode
         map <leader>o o<esc>
