@@ -19,6 +19,7 @@ call plug#begin()
     Plug 'kien/ctrlp.vim'
     Plug 'mhinz/vim-signify'
     Plug 'joshdick/onedark.vim'
+    Plug 'jreybert/vimagit'
     
 call plug#end()
 
