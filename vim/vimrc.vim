@@ -7,19 +7,20 @@ endif
 
 " All vim-plug plugins
 call plug#begin()
-    Plug 'vimwiki/vimwiki'
-    Plug 'itchyny/lightline.vim'
-    Plug 'scrooloose/nerdtree'
-    Plug 'PotatoesMaster/i3-vim-syntax'
-    Plug 'suan/vim-instant-markdown'
-    Plug 'junegunn/goyo.vim'
-    Plug 'Yggdroot/indentline'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-commentary'
-    Plug 'kien/ctrlp.vim'
-    Plug 'mhinz/vim-signify'
-    Plug 'joshdick/onedark.vim'
-    Plug 'jreybert/vimagit'
+    Plug 'vimwiki/vimwiki'                 " Gives markdown syntax
+    Plug 'itchyny/lightline.vim'           " Theme
+    Plug 'scrooloose/nerdtree'             " File browser
+    Plug 'PotatoesMaster/i3-vim-syntax'    " Gives i3-wm config's syntax
+    Plug 'suan/vim-instant-markdown'       " Let's you see markdown files in browser while editting
+    Plug 'junegunn/goyo.vim'               " Allows for easy reading when using vim
+    Plug 'Yggdroot/indentline'             " Shows lines on indentation
+    Plug 'tpope/vim-surround'              " Makes it easy to change and add tags surrounding a word or sentance
+    Plug 'tpope/vim-commentary'            " Allows for easy commenting with vim
+    Plug 'kien/ctrlp.vim'                  " Fuzzy finder
+    Plug 'mhinz/vim-signify'               " changes at the number line
+    Plug 'joshdick/onedark.vim'            " Theme
+    Plug 'jreybert/vimagit'                " Allows for committing and adding files with git
+    Plug 'airblade/vim-rooter'             " Sets the working directory to the root directory
     
 call plug#end()
 
@@ -45,6 +46,8 @@ let g:lightline = {
     set expandtab
     set softtabstop=4
     set ignorecase
+    set hlsearch
+    set incsearch
     set formatoptions-=cro " When creating new lines, vim won't create comments automatically
     set clipboard=unnamedplus " Makes vim use system clipboard
 	set splitbelow splitright " SPlits open at the bottom and right
@@ -59,6 +62,7 @@ let g:lightline = {
     map <leader>g :exe ':Goyo'<CR><CR>
     map <leader>p :exe ':CtrlP'<CR>
     map <leader>G :exe ':Magit'<CR>
+    nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
     
     " Create lines without being in insert mode
         map <leader>o o<esc>
