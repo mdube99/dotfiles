@@ -58,6 +58,7 @@ let g:lightline = {
     map <leader>d :exe ':NERDTree'<CR>
     map <leader>g :exe ':Goyo'<CR><CR>
     map <leader>p :exe ':CtrlP'<CR>
+    map <leader>g :exe ':Magit'<CR>
     
     " Create lines without being in insert mode
         map <leader>o o<esc>
