@@ -8,30 +8,32 @@ endif
 " All vim-plug plugins
 call plug#begin()
     Plug 'vimwiki/vimwiki'                 " Gives markdown syntax
-    Plug 'itchyny/lightline.vim'           " Theme
     Plug 'scrooloose/nerdtree'             " File browser
-    Plug 'PotatoesMaster/i3-vim-syntax'    " Gives i3-wm config's syntax
     Plug 'suan/vim-instant-markdown'       " Let's you see markdown files in browser while editting
-    Plug 'junegunn/goyo.vim'               " Allows for easy reading when using vim
-    Plug 'Yggdroot/indentline'             " Shows lines on indentation
     Plug 'tpope/vim-surround'              " Makes it easy to change and add tags surrounding a word or sentance
     Plug 'tpope/vim-commentary'            " Allows for easy commenting with vim
     Plug 'kien/ctrlp.vim'                  " Fuzzy finder
-    Plug 'mhinz/vim-signify'               " changes at the number line
-    Plug 'joshdick/onedark.vim'            " Theme
     Plug 'jreybert/vimagit'                " Allows for committing and adding files with git
     Plug 'airblade/vim-rooter'             " Sets the working directory to the root directory
-    
+" Ui enhancements
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'joshdick/onedark.vim'            " Theme
+    Plug 'junegunn/goyo.vim'               " Allows for easy reading when using vim
+    Plug 'itchyny/lightline.vim'           " Theme
+    Plug 'mhinz/vim-signify'               " changes at the number line
+    Plug 'Yggdroot/indentline'             " Shows lines on indentation
+    Plug 'PotatoesMaster/i3-vim-syntax'    " Gives i3-wm config's syntax
+
 call plug#end()
 
 " lightline color
 let g:lightline = {
-	\ 'colorscheme': 'one'
+	\ 'colorscheme': 'nord'
 	\ }
 
 "Background
     set t_Co=256
-    colorscheme janah
+    colorscheme nord
     set background=dark
 
 " Basics
