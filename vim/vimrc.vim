@@ -68,8 +68,6 @@ let g:lightline = {
 " Enable going down in case text is wrapped
     nnoremap j gj
     nnoremap k gk
-    vnoremap j gj
-    vnoremap k gk
     
     " Create lines without being in insert mode
         map <leader>o o<esc>
