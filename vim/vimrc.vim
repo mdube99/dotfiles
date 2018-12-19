@@ -50,12 +50,12 @@ let g:lightline = {
     set ignorecase
     set hlsearch
     set incsearch
-    set formatoptions-=cro " When creating new lines, vim won't create comments automatically
-    set clipboard=unnamedplus " Makes vim use system clipboard
-	set splitbelow splitright " SPlits open at the bottom and right
-    set noshowmode " Needed for lightline
-    set laststatus=2 " Needed for lightline
-	set go+=a               " Visual selection automatically copied to the clipboard
+    set formatoptions-=cro      " When creating new lines, vim won't create comments automatically
+    set clipboard=unnamedplus   " Makes vim use system clipboard
+	set splitbelow splitright   " SPlits open at the bottom and right
+    set noshowmode              " Needed for lightline
+    set laststatus=2            " Needed for lightline
+	set go+=a                   " Visual selection automatically copied to the clipboard
 
 " Mappings
     let mapleader=" "
@@ -68,15 +68,15 @@ let g:lightline = {
 " Enable going down in case text is wrapped
     nnoremap j gj
     nnoremap k gk
-    
-    " Create lines without being in insert mode
-        map <leader>o o<esc>
-        map <leader>O O<esc>
-    " Shortcutting split navigation, saving a keypress:
-        map <C-h> <C-w>h
-        map <C-j> <C-w>j
-        map <C-k> <C-w>k
-        map <C-l> <C-w>l
+
+" Create lines without being in insert mode
+    map <leader>o o<esc>
+    map <leader>O O<esc>
+" Shortcutting split navigation, saving a keypress:
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
 
 " vimwiki - Personal Wiki for Vim
 " vimwiki with markdown support
