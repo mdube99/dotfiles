@@ -75,6 +75,8 @@ check_for_software vim
 echo
 check_for_software tmux
 echo
+check_for_software npm
+echo
 
 check_default_shell
 
