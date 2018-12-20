@@ -16,7 +16,7 @@ call plug#begin()
     Plug 'jreybert/vimagit'                " Allows for committing and adding files with git
     Plug 'airblade/vim-rooter'             " Sets the working directory to the root directory
 " Ui enhancements
-    Plug 'arcticicestudio/nord-vim'
+    Plug 'arcticicestudio/nord-vim'        " Theme
     Plug 'joshdick/onedark.vim'            " Theme
     Plug 'junegunn/goyo.vim'               " Allows for easy reading when using vim
     Plug 'itchyny/lightline.vim'           " Theme
@@ -50,12 +50,12 @@ let g:lightline = {
     set ignorecase
     set hlsearch
     set incsearch
-    set formatoptions-=cro      " When creating new lines, vim won't create comments automatically
-    set clipboard=unnamedplus   " Makes vim use system clipboard
-	set splitbelow splitright   " SPlits open at the bottom and right
-    set noshowmode              " Needed for lightline
-    set laststatus=2            " Needed for lightline
-	set go+=a                   " Visual selection automatically copied to the clipboard
+    set formatoptions-=cro      
+    set clipboard=unnamedplus   
+	set splitbelow splitright   
+    set noshowmode              
+    set laststatus=2            
+	set go+=a                   
 
 " Mappings
     let mapleader=" "
