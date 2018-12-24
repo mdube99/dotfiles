@@ -97,6 +97,7 @@ fi
 printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "so $HOME/dotfiles/vim/vimrc.vim" > ~/.vimrc
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
+printf "soource '$HOME/dotfiles/config'" > ~/.config/i3/config
 printf "so $HOME/dotfiles/vim/colors/hipster.vim" > ~/.vim/colors/hipster.vim
 printf "so $HOME/dotfiles/vim/colors/janah.vim" > ~/.vim/colors/janah.vim
 
