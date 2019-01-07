@@ -20,3 +20,6 @@ My dotfiles! Based off of Parth's dotfiles, used to keep work, desktop, and lapt
 
 Make sure that instant-markdown-d is installed using
     npm -g install instant-markdown-d
+    
+    
+pandoc -V geometry:margin=.5in -V fontsize:12pt -s -o diversifyincome.pdf diversifyincome.md
