@@ -8,6 +8,7 @@ endif
 " All vim-plug plugins
 call plug#begin()
     Plug 'vimwiki/vimwiki'                 " Gives markdown syntax
+    Plug 'plasticboy/vim-markdown'
     Plug 'scrooloose/nerdtree'             " File browser
     Plug 'suan/vim-instant-markdown'       " Let's you see markdown files in browser while editting
     Plug 'tpope/vim-surround'              " Makes it easy to change and add tags surrounding a word or sentance
