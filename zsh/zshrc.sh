@@ -44,6 +44,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias pubip="curl ipinfo.io/ip"
     alias ll=" ls -l"
     alias v="vim"
+    alias r="ranger"
 
 # For vim mappings: 
 	stty -ixon
