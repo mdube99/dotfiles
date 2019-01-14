@@ -29,7 +29,7 @@ call plug#end()
 
 " lightline color
 let g:lightline = {
-	\ 'colorscheme': 'nord'
+	\ 'colorscheme': 'onedark'
 	\ }
 
 "Background
