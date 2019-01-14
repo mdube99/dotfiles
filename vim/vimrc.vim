@@ -34,7 +34,7 @@ let g:lightline = {
 
 "Background
     set t_Co=256
-    colorscheme nord
+    colorscheme onedark
     set background=dark
 
 " Basics
