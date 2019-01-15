@@ -82,5 +82,4 @@ let g:lightline = {
 " vimwiki - Personal Wiki for Vim
 " vimwiki with markdown support
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-" helppage -> :h vimwiki-syntax 
 let g:instant_markdown_autostart = 0	" disable autostart
