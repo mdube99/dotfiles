@@ -58,6 +58,9 @@ let g:lightline = {
     set laststatus=2            
 	set go+=a                   
 
+    set history=1000
+    set noswapfile
+
 " Mappings
     let mapleader=" "
     map <leader>md :InstantMarkdownPreview<CR>
