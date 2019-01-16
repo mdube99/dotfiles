@@ -10,8 +10,8 @@ call plug#begin()
     Plug 'vimwiki/vimwiki'                 " Gives markdown syntax
     Plug 'plasticboy/vim-markdown'
     Plug 'scrooloose/nerdtree'             " File browser
-    Plug 'suan/vim-instant-markdown'       " Let's you see markdown files in browser while editting
-    Plug 'tpope/vim-surround'              " Makes it easy to change and add tags surrounding a word or sentance
+    Plug 'suan/vim-instant-markdown'       " Let's you see markdown files in browser while editing
+    Plug 'tpope/vim-surround'              " Makes it easy to change and add tags surrounding a word or sentence
     Plug 'tpope/vim-commentary'            " Allows for easy commenting with vim
     Plug 'kien/ctrlp.vim'                  " Fuzzy finder
     Plug 'jreybert/vimagit'                " Allows for committing and adding files with git
@@ -23,7 +23,7 @@ call plug#begin()
     Plug 'itchyny/lightline.vim'           " Theme
     Plug 'mhinz/vim-signify'               " changes at the number line
     Plug 'Yggdroot/indentline'             " Shows lines on indentation
-    Plug 'PotatoesMaster/i3-vim-syntax'    " Gives i3-wm config's syntax
+    Plug 'PotatoesMaster/i3-vim-syntax'    " Gives i3-wm config file syntax
 
 call plug#end()
 
@@ -65,7 +65,10 @@ let g:lightline = {
     map <leader>g :exe ':Goyo'<CR><CR>
     map <leader>p :exe ':CtrlP'<CR>
     map <leader>G :exe ':Magit'<CR>
+
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
+    nnoremap <leader>ss :setlocal spell!<CR>
+
 " Enable going down in case text is wrapped
     nnoremap j gj
     nnoremap k gk
@@ -73,6 +76,7 @@ let g:lightline = {
 " Create lines without being in insert mode
     map <leader>o o<esc>
     map <leader>O O<esc>
+
 " Shortcutting split navigation, saving a keypress:
     map <C-h> <C-w>h
     map <C-j> <C-w>j
