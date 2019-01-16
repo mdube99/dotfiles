@@ -45,6 +45,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias ll=" ls -l"
     alias v="vim"
     alias r="ranger"
+    alias wiki="vim ~/vimwiki/index.md"
 
 # For vim mappings: 
 	stty -ixon
