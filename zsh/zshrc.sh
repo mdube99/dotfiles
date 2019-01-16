@@ -74,6 +74,7 @@ source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/completion.zsh
 source ~/dotfiles/zsh/plugins/vi-mode.plugin.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/keybindings.sh
+source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Fix for arrow-key searching
 # start typing + [Up-Arrow] - fuzzy find history forward
