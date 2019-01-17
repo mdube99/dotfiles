@@ -7,7 +7,7 @@ endif
 
 " All vim-plug plugins
 call plug#begin()
-    Plug 'vimwiki/vimwiki'                 " Gives markdown syntax
+    Plug 'vimwiki/vimwiki'                 " Note taking system for vim
     Plug 'plasticboy/vim-markdown'
     Plug 'scrooloose/nerdtree'             " File browser
     Plug 'suan/vim-instant-markdown'       " Let's you see markdown files in browser while editing
