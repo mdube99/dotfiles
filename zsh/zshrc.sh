@@ -46,6 +46,8 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias v="vim"
     alias r="ranger"
     alias wiki="vim ~/vimwiki/index.md"
+    alias yt="youtube-dl --add-metadata -i" # Download video link
+    alias yta="yt -x -f bestaudio/best" # Download only audio
 
 # For vim mappings: 
 	stty -ixon
