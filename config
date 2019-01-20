@@ -1,7 +1,7 @@
 ##--i3 config --##
 ##################################
 ##################################
-##	        MODIFIERS		    ##
+##	MODIFIERS		##
 ##################################
 ##################################
 
@@ -23,7 +23,7 @@ popup_during_fullscreen smart
 focus_on_window_activation focus
 font pango:monospace 11
 
-set $term exec --no-startup-id terminator
+set $term exec --no-startup-id gnome-terminal --hide-menubar --window-with-profile=Unnamed
 bindsym $mod+shift+f exec firefox
 
 set $floater floating enable, resize set 1600 900
@@ -37,11 +37,10 @@ set $scratch_show scratchpad show, move position center
 ##################################
 ##################################
 
-exec_always feh --bg-scale ~/Pictures/Wallpapers/Canyon.jpg
+exec_always feh --bg-scale ~/Pictures/Wallpapers/Stark.jpg
 exec compton -f
 exec --no-startup-id nm-applet
 exec --no-startup-id /opt/pia/run.sh
-exec --no-startup-id firefox
 
 set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
@@ -74,26 +73,9 @@ bar {
 
 ##################################
 ##################################
-##	        BINDINGS	    	##
+##	BINDINGS		##
 ##################################
 ##################################
-
-bindsym $mod+Shift+q kill
-bindsym $mod+Return $term -e tmux
-
-
-bindsym $mod+u $term -e ranger
-#bindsym $mod+shift+u exec sudo $term -e ranger /
-
-#bindsym $mod+d exec rofi -show run -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
-bindsym $mod+d exec dmenu_run
-bindsym $mod+shift+d gaps inner current set 0; gaps outer current set 0
-
-bindsym $mod+s gaps inner current plus 5
-bindsym $mod+Shift+s gaps inner current minus 5
-
-bindsym $mod+$alt+t gaps inner current set 10; gaps outer current set 10
-bindsym $mod+t gaps inner current set 0; gaps outer current set 0
 
 #change focus
 bindsym $mod+j focus left
@@ -123,10 +105,22 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+Space floating toggle
 
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $Mod+Shift+x exec --no-startup-id i3lock -c 3b3b3b
+bindsym $Mod+Shift+x exec --no-startup-id i3lock -i ~/.config/i3/scripts/lockscreenimage.png
+
+bindsym $mod+Shift+q kill
+bindsym $mod+Return $term -e tmux
+
+bindsym $mod+u $term -e ranger
+#bindsym $mod+shift+u exec sudo $term -e ranger /
+
+#bindsym $mod+d exec rofi -show run -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
+bindsym $mod+d exec dmenu_run
+bindsym $mod+shift+d gaps inner current set 0; gaps outer current set 0
+
+bindsym $mod+s gaps inner current plus 5
+bindsym $mod+Shift+s gaps inner current minus 5
 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -165,11 +159,9 @@ bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- unmute
 # mute volume
 bindsym XF86AudioMute exec amixer -D pulse sset Master 0%
 
-
-
 ##################################
 ##################################
-##	        WORKSPACES		    ##
+##	WORKSPACES		##
 ##################################
 ##################################
 
@@ -183,6 +175,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+grave workspace Work 
 
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -194,8 +187,18 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+grave move container to workspace Work ; workspace Work ; gaps inner current set 0 ; gaps outer current set 0
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym $alt+Tab workspace bacK_and_forth
 
-bindsym $mod+Shift+Delete  workspace lmao ; exec $term -e htop ; exec $term -e ranger
+bindsym $mod+Shift+Delete workspace lmao ; exec $term -e htop ; exec $term -e ranger
+
+##################################
+##################################
+##	WORKFLOW		##
+##################################
+##################################
+
+bindsym $mod+space gaps inner current set 0; gaps outer current set 0
+bindsym $mod+$alt+space gaps inner current set 10; gaps outer current set 10
