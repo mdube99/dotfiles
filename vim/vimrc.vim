@@ -72,8 +72,6 @@ let g:lightline = {
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
     nnoremap <leader>ss :setlocal spell!<CR>
 
-    nmap <leader><tab> :e ~/vimwiki/index.md<CR>
-
 " Enable going down in case text is wrapped
     nnoremap j gj
     nnoremap k gk
