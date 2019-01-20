@@ -14,7 +14,6 @@ call plug#begin()
     Plug 'tpope/vim-surround'              " Makes it easy to change and add tags surrounding a word or sentence
     Plug 'tpope/vim-commentary'            " Allows for easy commenting with vim
     Plug 'kien/ctrlp.vim'                  " Fuzzy finder
-    Plug 'jreybert/vimagit'                " Allows for committing and adding files with git
     Plug 'airblade/vim-rooter'             " Sets the working directory to the root directory
 " Ui enhancements
     Plug 'arcticicestudio/nord-vim'        " Theme
