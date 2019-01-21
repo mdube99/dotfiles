@@ -15,6 +15,7 @@ call plug#begin()
     Plug 'tpope/vim-commentary'            " Allows for easy commenting with vim
     Plug 'kien/ctrlp.vim'                  " Fuzzy finder
     Plug 'airblade/vim-rooter'             " Sets the working directory to the root directory
+    Plug 'jiangmiao/auto-pairs'
 " Ui enhancements
     Plug 'arcticicestudio/nord-vim'        " Theme
     Plug 'joshdick/onedark.vim'            " Theme
@@ -23,7 +24,6 @@ call plug#begin()
     Plug 'mhinz/vim-signify'               " changes at the number line
     Plug 'Yggdroot/indentline'             " Shows lines on indentation
     Plug 'PotatoesMaster/i3-vim-syntax'    " Gives i3-wm config file syntax
-    Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
