@@ -23,6 +23,7 @@ call plug#begin()
     Plug 'mhinz/vim-signify'               " changes at the number line
     Plug 'Yggdroot/indentline'             " Shows lines on indentation
     Plug 'PotatoesMaster/i3-vim-syntax'    " Gives i3-wm config file syntax
+    Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -67,6 +68,8 @@ let g:lightline = {
     map <leader>g :exe ':Goyo'<CR><CR>
     map <leader>p :exe ':CtrlP'<CR>
     map <leader>G :exe ':Magit'<CR>
+" Turns off relativenumber in reviewing code with someone
+    map <F1> :set norelativenumber<CR>
 
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
     nnoremap <leader>ss :setlocal spell!<CR>
