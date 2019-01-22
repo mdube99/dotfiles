@@ -7,23 +7,25 @@ endif
 
 " All vim-plug plugins
 call plug#begin()
-    Plug 'vimwiki/vimwiki'                 " Note taking system for vim
-    Plug 'plasticboy/vim-markdown'
-    Plug 'scrooloose/nerdtree'             " File browser
-    Plug 'suan/vim-instant-markdown'       " Let's you see markdown files in browser while editing
-    Plug 'tpope/vim-surround'              " Makes it easy to change and add tags surrounding a word or sentence
-    Plug 'tpope/vim-commentary'            " Allows for easy commenting with vim
-    Plug 'kien/ctrlp.vim'                  " Fuzzy finder
-    Plug 'airblade/vim-rooter'             " Sets the working directory to the root directory
-    Plug 'jiangmiao/auto-pairs'            " Completes parenthesis
+    Plug 'vimwiki/vimwiki'                  " Note taking system for vim
+    Plug 'plasticboy/vim-markdown'          " Gives markdown syntax
+    Plug 'scrooloose/nerdtree'              " File browser
+    Plug 'suan/vim-instant-markdown'        " Let's you see markdown files in browser while editing
+    Plug 'tpope/vim-surround'               " Makes it easy to change and add tags surrounding a word or sentence
+    Plug 'tpope/vim-commentary'             " Allows for easy commenting with vim
+    Plug 'tpope/vim-repeat'
+    Plug 'kien/ctrlp.vim'                   " Fuzzy finder
+    Plug 'airblade/vim-roo ter'             " Sets the working directory to the root directory
+    Plug 'jiangmiao/auto-p airs'            " Completes pairs such as parenthesis
+    Plug 'christoomey/vim-system-copy'     " Allows vim to copy objects (such as iw) with xsel
 " Ui enhancements
-    Plug 'arcticicestudio/nord-vim'        " Theme
-    Plug 'joshdick/onedark.vim'            " Theme
-    Plug 'junegunn/goyo.vim'               " Allows for easy reading when using vim
-    Plug 'itchyny/lightline.vim'           " Theme
-    Plug 'mhinz/vim-signify'               " changes at the number line
-    Plug 'Yggdroot/indentline'             " Shows lines on indentation
-    Plug 'PotatoesMaster/i3-vim-syntax'    " Gives i3-wm config file syntax
+    Plug 'arctic icestudio/nord-vim'        " Theme
+    Plug 'joshdi ck/onedark.vim'            " Theme
+    Plug 'junegunn/goyo.vim'                " Allows for easy reading when using vim
+    Plug 'itchyny/lightline.vim'            " Theme
+    Plug 'mhinz/vim-signify'                " changes at the number line
+    Plug 'Yggdroot/indentline'              " Shows lines on indentation
+    Plug 'PotatoesMaster/i3-vim-syntax'     " Gives i3-wm config file syntax
 
 call plug#end()
 
@@ -70,6 +72,7 @@ let g:lightline = {
     map <leader>G :exe ':Magit'<CR>
 " Turns off relativenumber in reviewing code with someone
     map <F1> :set norelativenumber<CR>
+    map <F2> :set relativenumber<CR>
 
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
     nnoremap <leader>ss :setlocal spell!<CR>
