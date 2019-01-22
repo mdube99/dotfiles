@@ -15,7 +15,7 @@ call plug#begin()
     Plug 'tpope/vim-commentary'            " Allows for easy commenting with vim
     Plug 'kien/ctrlp.vim'                  " Fuzzy finder
     Plug 'airblade/vim-rooter'             " Sets the working directory to the root directory
-    Plug 'jiangmiao/auto-pairs'
+    Plug 'jiangmiao/auto-pairs'            " Completes parenthesis
 " Ui enhancements
     Plug 'arcticicestudio/nord-vim'        " Theme
     Plug 'joshdick/onedark.vim'            " Theme
