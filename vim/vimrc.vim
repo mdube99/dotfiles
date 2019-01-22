@@ -15,9 +15,9 @@ call plug#begin()
     Plug 'tpope/vim-commentary'             " Allows for easy commenting with vim
     Plug 'tpope/vim-repeat'
     Plug 'kien/ctrlp.vim'                   " Fuzzy finder
-    Plug 'airblade/vim-rooter'             " Sets the working directory to the root directory
-    Plug 'jiangmiao/auto-pairs'            " Completes pairs such as parenthesis
-    Plug 'christoomey/vim-system-copy'     " Allows vim to copy objects (such as iw) with xsel
+    Plug 'airblade/vim-rooter'              " Sets the working directory to the root directory
+    Plug 'jiangmiao/auto-pairs'             " Completes pairs such as parenthesis
+    Plug 'christoomey/vim-system-copy'      " Allows vim to copy objects (such as iw) with xsel
 " Ui enhancements
     Plug 'arctic icestudio/nord-vim'        " Theme
     Plug 'joshdi ck/onedark.vim'            " Theme
