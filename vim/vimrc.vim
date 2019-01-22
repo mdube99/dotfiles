@@ -19,8 +19,8 @@ call plug#begin()
     Plug 'jiangmiao/auto-pairs'             " Completes pairs such as parenthesis
     Plug 'christoomey/vim-system-copy'      " Allows vim to copy objects (such as iw) with xsel
 " Ui enhancements
-    Plug 'arctic icestudio/nord-vim'        " Theme
-    Plug 'joshdi ck/onedark.vim'            " Theme
+    Plug 'arcticicestudio/nord-vim'         " Theme
+    Plug 'joshdick/onedark.vim'             " Theme
     Plug 'junegunn/goyo.vim'                " Allows for easy reading when using vim
     Plug 'itchyny/lightline.vim'            " Theme
     Plug 'mhinz/vim-signify'                " changes at the number line
