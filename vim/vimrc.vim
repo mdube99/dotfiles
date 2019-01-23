@@ -11,13 +11,14 @@ call plug#begin()
     Plug 'plasticboy/vim-markdown'          " Gives markdown syntax
     Plug 'scrooloose/nerdtree'              " File browser
     Plug 'suan/vim-instant-markdown'        " Let's you see markdown files in browser while editing
-    Plug 'tpope/vim-surround'               " Makes it easy to change and add tags surrounding a word or sentence
+    Plug 'tpope/vim-surround'               " change and add tags surrounding a word or sentence
     Plug 'tpope/vim-commentary'             " Allows for easy commenting with vim
     Plug 'tpope/vim-repeat'
     Plug 'kien/ctrlp.vim'                   " Fuzzy finder
     Plug 'airblade/vim-rooter'              " Sets the working directory to the root directory
     Plug 'jiangmiao/auto-pairs'             " Completes pairs such as parenthesis
     Plug 'christoomey/vim-system-copy'      " Allows vim to copy objects (such as iw) with xsel
+    Plug 'christoomey/vim-tmux-navigator'
 " Ui enhancements
     Plug 'arcticicestudio/nord-vim'         " Theme
     Plug 'joshdick/onedark.vim'             " Theme
@@ -76,6 +77,23 @@ let g:lightline = {
 
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
     nnoremap <leader>ss :setlocal spell!<CR>
+
+" Fix previous spelling error
+function! FixLastSpellingError()
+    normal! mm[s1z='m""'
+endfunction
+nnoremap <leader>sp :call FixLastSpellingError()<CR>
+
+function! UnderlineHeading(level)
+    if a:level == 1
+        normal! yypVr=
+    elseif a:level == 2
+        normal! yypVr-
+    endif
+endfunction
+
+nnoremap <leader>u1 :call UnderlineHeading(1);<CR>
+nnoremap <leader>u2 :call UnderlineHeading(2);<CR>
 
 " Enable going down in case text is wrapped
     nnoremap j gj

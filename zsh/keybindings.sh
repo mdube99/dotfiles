@@ -47,7 +47,7 @@
 	zle -N enter_line
 	bindkey "^o" enter_line
 
-# Enter
+# Exit tmux-pane
 	function exit_tmux() {
         BUFFER="exit"
 		zle accept-line
