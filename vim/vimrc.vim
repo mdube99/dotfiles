@@ -20,9 +20,7 @@ call plug#begin()
     Plug 'christoomey/vim-system-copy'      " Allows vim to copy objects (such as iw) with xsel
     Plug 'christoomey/vim-tmux-navigator'
 " Ui enhancements
-    Plug 'arcticicestudio/nord-vim'         " Theme
     Plug 'joshdick/onedark.vim'             " Theme
-    Plug 'junegunn/goyo.vim'                " Allows for easy reading when using vim
     Plug 'itchyny/lightline.vim'            " Theme
     Plug 'mhinz/vim-signify'                " changes at the number line
     Plug 'Yggdroot/indentline'              " Shows lines on indentation
@@ -68,7 +66,6 @@ let g:lightline = {
     let mapleader=" "
     map <leader>md :InstantMarkdownPreview<CR>
     map <leader>d :exe ':NERDTree'<CR>
-    map <leader>g :exe ':Goyo'<CR><CR>
     map <leader>p :exe ':CtrlP'<CR>
     map <leader>G :exe ':Magit'<CR>
 " Turns off relativenumber in reviewing code with someone
