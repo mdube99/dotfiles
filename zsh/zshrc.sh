@@ -48,6 +48,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt -x -f bestaudio/best" # Download only audio
+    alias speedtest="speedtest-cli"
 
 # For vim mappings: 
 	stty -ixon
