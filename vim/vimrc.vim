@@ -19,6 +19,8 @@ call plug#begin()
     Plug 'jiangmiao/auto-pairs'             " Completes pairs such as parenthesis
     Plug 'christoomey/vim-system-copy'      " Allows vim to copy objects (such as iw) with xsel
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'romainl/vim-cool'
+	Plug 'junegunn/goyo.vim'
 " Ui enhancements
     Plug 'joshdick/onedark.vim'             " Theme
     Plug 'itchyny/lightline.vim'            " Theme
@@ -39,13 +41,11 @@ let g:lightline = {
     set background=dark
 
 " Basics
-    set nocompatible
     filetype plugin on
-    syntax on
-    set number
-    set relativenumber
+	if !has('g:syntax_on')|syntax enable|endif
+    set number relativenumber
     set encoding=utf-8
-    set tabstop=4
+    set tabstop=8
     set shiftwidth=4
     set expandtab
     set softtabstop=4
@@ -64,13 +64,13 @@ let g:lightline = {
 
 " Mappings
     let mapleader=" "
-    map <leader>md :InstantMarkdownPreview<CR>
-    map <leader>d :exe ':NERDTree'<CR>
-    map <leader>p :exe ':CtrlP'<CR>
-    map <leader>G :exe ':Magit'<CR>
+    noremap <leader>md :InstantMarkdownPreview<CR>
+    noremap <leader>d :exe ':NERDTree'<CR>
+    noremap <leader>p :exe ':CtrlP'<CR>
+    noremap <leader>G :exe ':Magit'<CR>
 " Turns off relativenumber in reviewing code with someone
-    map <F1> :set norelativenumber<CR>
-    map <F2> :set relativenumber<CR>
+    noremap <F1> :set norelativenumber<CR>
+    noremap <F2> :set relativenumber<CR>
 
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
     nnoremap <leader>ss :setlocal spell!<CR>
@@ -81,6 +81,7 @@ function! FixLastSpellingError()
 endfunction
 nnoremap <leader>sp :call FixLastSpellingError()<CR>
 
+" line breaks in markdown
 function! UnderlineHeading(level)
     if a:level == 1
         normal! yypVr=
@@ -97,14 +98,14 @@ nnoremap <leader>u2 :call UnderlineHeading(2);<CR>
     nnoremap k gk
 
 " Create lines without being in insert mode
-    map <leader>o o<esc>
-    map <leader>O O<esc>
+    noremap <leader>o o<esc>
+    noremap <leader>O O<esc>
 
 " Shortcutting split navigation, saving a keypress:
-    map <C-h> <C-w>h
-    map <C-j> <C-w>j
-    map <C-k> <C-w>k
-    map <C-l> <C-w>l
+    noremap <C-h> <C-w>h
+    noremap <C-j> <C-w>j
+    noremap <C-k> <C-w>k
+    noremap <C-l> <C-w>l
 
 " vimwiki - Personal Wiki for Vim
 " vimwiki with markdown support
