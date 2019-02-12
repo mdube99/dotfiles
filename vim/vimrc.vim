@@ -36,13 +36,12 @@ let g:lightline = {
 	\ }
 
 "Background
-    set t_Co=256
     colorscheme onedark
     set background=dark
 
 " Basics
     filetype plugin on
-	if !has('g:syntax_on')|syntax enable|endif
+    if !has('g:syntax_on')|syntax enable|endif
     set number relativenumber
     set encoding=utf-8
     set tabstop=8
@@ -54,11 +53,10 @@ let g:lightline = {
     set incsearch
     set formatoptions-=cro      
     set clipboard=unnamedplus   
-	set splitbelow splitright   
+    set splitbelow splitright   
     set noshowmode              
     set laststatus=2            
-	set go+=a                   
-
+    set go+=a                   
     set history=1000
     set noswapfile
 
