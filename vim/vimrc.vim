@@ -20,7 +20,7 @@ call plug#begin()
     Plug 'christoomey/vim-system-copy'      " Allows vim to copy objects (such as iw) with xsel
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'romainl/vim-cool'
-	Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/goyo.vim'
 " Ui enhancements
     Plug 'joshdick/onedark.vim'             " Theme
     Plug 'itchyny/lightline.vim'            " Theme
