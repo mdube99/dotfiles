@@ -51,7 +51,6 @@ let g:lightline = {
     set ignorecase
     set hlsearch
     set incsearch
-    set formatoptions-=cro      
     set clipboard=unnamedplus   
     set splitbelow splitright   
     set noshowmode              
@@ -79,17 +78,6 @@ function! FixLastSpellingError()
 endfunction
 nnoremap <leader>sp :call FixLastSpellingError()<CR>
 
-" line breaks in markdown
-function! UnderlineHeading(level)
-    if a:level == 1
-        normal! yypVr=
-    elseif a:level == 2
-        normal! yypVr-
-    endif
-endfunction
-
-nnoremap <leader>u1 :call UnderlineHeading(1);<CR>
-nnoremap <leader>u2 :call UnderlineHeading(2);<CR>
 
 " Enable going down in case text is wrapped
     nnoremap j gj
@@ -106,10 +94,11 @@ nnoremap <leader>u2 :call UnderlineHeading(2);<CR>
     noremap <C-l> <C-w>l
 
 " Markdown mappings
-noremap <leader>1 i# 
-noremap <leader>2 i## 
-noremap <leader>3 i### 
-noremap <leader>4 i#### 
+autocmd FileType markdown,md noremap <leader>1 i# 
+autocmd FileType markdown,md noremap <leader>2 i## 
+autocmd FileType markdown,md noremap <leader>3 i### 
+autocmd FileType markdown,md noremap <leader>4 i#### 
+autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
 
 
 " vimwiki - Personal Wiki for Vim
