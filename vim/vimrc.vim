@@ -65,7 +65,7 @@ let g:lightline = {
     noremap <leader>md :InstantMarkdownPreview<CR>
     noremap <leader>d :exe ':NERDTree'<CR>
     noremap <leader>p :exe ':CtrlP'<CR>
-    noremap <leader>G :exe ':Magit'<CR>
+    noremap <leader>g :exe ':Goyo'<CR>
 " Turns off relativenumber in reviewing code with someone
     noremap <F1> :set norelativenumber<CR>
     noremap <F2> :set relativenumber<CR>
@@ -104,6 +104,13 @@ nnoremap <leader>u2 :call UnderlineHeading(2);<CR>
     noremap <C-j> <C-w>j
     noremap <C-k> <C-w>k
     noremap <C-l> <C-w>l
+
+" Markdown mappings
+noremap <leader>1 i# 
+noremap <leader>2 i## 
+noremap <leader>3 i### 
+noremap <leader>4 i#### 
+
 
 " vimwiki - Personal Wiki for Vim
 " vimwiki with markdown support
