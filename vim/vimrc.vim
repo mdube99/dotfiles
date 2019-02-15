@@ -87,6 +87,12 @@ function! ReplayLastMacro()
 endfunction
 nnoremap <silent> <CR> :call ReplayLastMacro()<CR>
 
+" Navigating with guides
+    inoremap <leader><leader> <Esc>/<++><Enter>"_c41
+    vnoremap <leader><leader> <Esc>/<++><Enter>"_c41
+    map <leader><leader> <Esc>/<++><Enter>"_c41
+    nnoremap <leader>i I<++> <ESC>
+
 
 " Enable going down in case text is wrapped
     nnoremap j gj
