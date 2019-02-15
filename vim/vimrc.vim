@@ -16,7 +16,6 @@ call plug#begin()
     Plug 'tpope/vim-repeat'
     Plug 'kien/ctrlp.vim'                   " Fuzzy finder
     Plug 'airblade/vim-rooter'              " Sets the working directory to the root directory
-    Plug 'jiangmiao/auto-pairs'             " Completes pairs such as parenthesis
     Plug 'christoomey/vim-system-copy'      " Allows vim to copy objects (such as iw) with xsel
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'romainl/vim-cool'
@@ -77,6 +76,16 @@ function! FixLastSpellingError()
     normal! mm[s1z='m""'
 endfunction
 nnoremap <leader>sp :call FixLastSpellingError()<CR>
+
+" Easy replay last macro
+function! ReplayLastMacro()
+    try
+        normal @@
+    catch /E748/
+        normal @q
+    endtry
+endfunction
+nnoremap <silent> <CR> :call ReplayLastMacro()<CR>
 
 
 " Enable going down in case text is wrapped
