@@ -60,13 +60,13 @@ let g:lightline = {
 
 " Mappings
     let mapleader=" "
-    noremap <leader>md :InstantMarkdownPreview<CR>
-    noremap <leader>d :exe ':NERDTree'<CR>
-    noremap <leader>p :exe ':CtrlP'<CR>
-    noremap <leader>g :exe ':Goyo'<CR>
+    nnoremap <leader>md :InstantMarkdownPreview<CR>
+    nnoremap <leader>d :exe ':NERDTree'<CR>
+    nnoremap <leader>p :exe ':CtrlP'<CR>
+    nnoremap <leader>g :exe ':Goyo'<CR>
 " Turns off relativenumber in reviewing code with someone
-    noremap <F1> :set norelativenumber<CR>
-    noremap <F2> :set relativenumber<CR>
+    nnoremap <F1> :set norelativenumber<CR>
+    nnoremap <F2> :set relativenumber<CR>
 
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
     nnoremap <leader>ss :setlocal spell!<CR>
@@ -97,16 +97,16 @@ nnoremap <silent> <CR> :call ReplayLastMacro()<CR>
     noremap <leader>O O<esc>
 
 " Shortcutting split navigation, saving a keypress:
-    noremap <C-h> <C-w>h
-    noremap <C-j> <C-w>j
-    noremap <C-k> <C-w>k
-    noremap <C-l> <C-w>l
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-l> <C-w>l
 
 " Markdown mappings
-autocmd FileType markdown,md noremap <leader>1 i# 
-autocmd FileType markdown,md noremap <leader>2 i## 
-autocmd FileType markdown,md noremap <leader>3 i### 
-autocmd FileType markdown,md noremap <leader>4 i#### 
+autocmd FileType markdown,md nnoremap <leader>1 i# 
+autocmd FileType markdown,md nnoremap <leader>2 i## 
+autocmd FileType markdown,md nnoremap <leader>3 i### 
+autocmd FileType markdown,md nnoremap <leader>4 i#### 
 autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
 
 
