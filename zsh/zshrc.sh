@@ -40,6 +40,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
  		ls -l;
  	}
 #Aliases
+    alias cd="c"
     alias pubip="curl ipinfo.io/ip"
     alias ll=" ls -l"
     alias r="ranger"
