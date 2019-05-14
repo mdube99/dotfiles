@@ -40,10 +40,8 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
  		ls -l;
  	}
 #Aliases
-    alias cd="c"
     alias pubip="curl ipinfo.io/ip"
     alias ll=" ls -l"
-    alias v="vim"
     alias r="ranger"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
