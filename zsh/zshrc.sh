@@ -15,7 +15,7 @@ clear
 	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
 
 # Settings
-	export VISUAL=vim
+    export VISUAL=vim
     ZSH_THEME="agnoster"
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
