@@ -107,7 +107,9 @@ autocmd FileType markdown,md nnoremap <leader>2 i##
 autocmd FileType markdown,md nnoremap <leader>3 i### 
 autocmd FileType markdown,md nnoremap <leader>4 i#### 
 autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
-autocmd BufRead,BufNewFile *.md :Goyo 80
+
+" autostarts Goyo when opening or creating a markdown file
+" autocmd BufRead,BufNewFile *.md :Goyo 80
 
 
 " vimwiki - Personal Wiki for Vim
