@@ -43,7 +43,8 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias cd="c"
     alias pubip="curl ipinfo.io/ip"
     alias ll=" ls -l"
-    alias r="ranger"
+    alias r="vifm"
+    alias v="vifm"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt -x -f bestaudio/best" # Download only audio
