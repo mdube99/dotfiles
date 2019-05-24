@@ -49,6 +49,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias yta="yt -x -f bestaudio/best" # Download only audio
     alias speedtest="speedtest-cli"
     alias vscode="code"
+    alias calc="gcalccmd"
 
 # For vim mappings: 
 	stty -ixon
