@@ -51,6 +51,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias speedtest="speedtest-cli"
     alias vscode="code"
     alias calc="gcalccmd"
+    alias volume="amixer sset 'Master'"
 
 # For vim mappings: 
 	stty -ixon
