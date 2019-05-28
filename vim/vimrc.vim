@@ -26,6 +26,7 @@ call plug#begin()
     Plug 'mhinz/vim-signify'                " changes at the number line
     Plug 'Yggdroot/indentline'              " Shows lines on indentation
     Plug 'PotatoesMaster/i3-vim-syntax'     " Gives i3-wm config file syntax
+    Plug 'aonemd/kuroi.vim'
 
 call plug#end()
 
@@ -35,7 +36,8 @@ let g:lightline = {
 	\ }
 
 "Background
-    colorscheme onedark
+    " colorscheme onedark
+    colorscheme kuroi
     set background=dark
 
 " Basics
@@ -67,6 +69,10 @@ let g:lightline = {
 " Turns off relativenumber in reviewing code with someone
     nnoremap <F1> :set norelativenumber<CR>
     nnoremap <F2> :set relativenumber<CR>
+    nnoremap <F3> :set norelativenumber nonumber 
+
+" Open HTML file in browser
+    nnoremap <F12> :exe ':silent !firefox %'<CR>
 
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
     nnoremap <leader>ss :setlocal spell!<CR>
@@ -118,4 +124,5 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown'
 " has Vimwiki use default markdown syntax, rather than vimwiki's proprietary
 " usage
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_listsyms = '✗○◐●✓'
 let g:instant_markdown_autostart = 0	" disable autostart
