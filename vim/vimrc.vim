@@ -66,10 +66,14 @@ let g:lightline = {
     nnoremap <leader>d :exe ':NERDTree'<CR>
     nnoremap <leader>p :exe ':CtrlP'<CR>
     nnoremap <leader>g :exe ':Goyo'<CR>
+
+" Abbreviation to insert the current date when typings "cdate"
+    :iab cdate <c-r>=strftime("%Y-%m-%d")<CR>
+
 " Turns off relativenumber in reviewing code with someone
     nnoremap <F1> :set norelativenumber<CR>
     nnoremap <F2> :set relativenumber<CR>
-    nnoremap <F3> :set norelativenumber nonumber 
+    nnoremap <F3> :set norelativenumber nonumber<CR>
 
 " Open HTML file in browser
     nnoremap <F12> :exe ':silent !firefox %'<CR>
@@ -115,7 +119,8 @@ autocmd FileType markdown,md nnoremap <leader>4 i####
 autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
 
 " autostarts Goyo when opening or creating a markdown file
-" autocmd BufRead,BufNewFile *.md :Goyo 80
+autocmd BufRead,BufNewFile *.md :Goyo 80
+autocmd BufRead,BufNewFile *.wiki :Goyo 80
 
 
 " vimwiki - Personal Wiki for Vim
