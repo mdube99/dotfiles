@@ -105,12 +105,6 @@ nnoremap <silent> <CR> :call ReplayLastMacro()<CR>
     noremap <leader>o o<esc>
     noremap <leader>O O<esc>
 
-" Shortcutting split navigation, saving a keypress:
-    nnoremap <C-h> <C-w>h
-    nnoremap <C-j> <C-w>j
-    nnoremap <C-k> <C-w>k
-    nnoremap <C-l> <C-w>l
-
 " Markdown mappings
 autocmd FileType markdown,md nnoremap <leader>1 i# 
 autocmd FileType markdown,md nnoremap <leader>2 i## 
