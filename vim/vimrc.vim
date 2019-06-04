@@ -17,7 +17,6 @@ call plug#begin()
     Plug 'kien/ctrlp.vim'                   " Fuzzy finder
     Plug 'airblade/vim-rooter'              " Sets the working directory to the root directory
     Plug 'christoomey/vim-system-copy'      " Allows vim to copy objects (such as iw) with xsel
-    Plug 'christoomey/vim-tmux-navigator'
     Plug 'romainl/vim-cool'
     Plug 'junegunn/goyo.vim'
 " Ui enhancements
@@ -55,8 +54,6 @@ let g:lightline = {
     set clipboard=unnamedplus   
     set splitbelow splitright   
     set noshowmode              
-    set laststatus=2            
-    set go+=a                   
     set history=1000
     set noswapfile
 
@@ -112,7 +109,7 @@ autocmd FileType markdown,md nnoremap <leader>3 i###
 autocmd FileType markdown,md nnoremap <leader>4 i#### 
 autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
 
-" autostarts Goyo when opening or creating a markdown file
+" autostarts Goyo when opening or creating a markdown or wik ifile
 autocmd BufRead,BufNewFile *.md :Goyo 80
 autocmd BufRead,BufNewFile *.wiki :Goyo 80
 

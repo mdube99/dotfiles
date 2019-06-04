@@ -52,6 +52,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias vscode="code"
     alias calc="gcalccmd"
     alias volume="amixer sset 'Master'"
+    alias piavpn="/opt/piavpn/bin/pia-client"
 
 # For vim mappings: 
 	stty -ixon
