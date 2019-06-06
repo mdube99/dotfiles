@@ -41,6 +41,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
  	}
 #Aliases
     alias cd="c"
+    alias vi="vim"
     alias pubip="curl ipinfo.io/ip"
     alias ll=" ls -l"
     alias r="vifm"

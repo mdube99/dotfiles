@@ -70,7 +70,7 @@ let g:lightline = {
 
 " Turns off relativenumber in reviewing code with someone
     nnoremap <F1> :set norelativenumber<CR>
-    nnoremap <F2> :set relativenumber<CR>
+    nnoremap <F2> :set number relativenumber<CR>
     nnoremap <F3> :set norelativenumber nonumber<CR>
 
 " Open HTML file in browser
