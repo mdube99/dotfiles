@@ -26,6 +26,7 @@ call plug#begin()
     Plug 'Yggdroot/indentline'              " Shows lines on indentation
     Plug 'PotatoesMaster/i3-vim-syntax'     " Gives i3-wm config file syntax
     Plug 'aonemd/kuroi.vim'
+    Plug 'chase/vim-ansible-yaml'
 
 call plug#end()
 
@@ -112,7 +113,6 @@ autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
 " autostarts Goyo when opening or creating a markdown or wik ifile
 autocmd BufRead,BufNewFile *.md :Goyo 80
 autocmd BufRead,BufNewFile *.wiki :Goyo 80
-
 
 " vimwiki - Personal Wiki for Vim
 " vimwiki with markdown support
