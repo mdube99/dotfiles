@@ -110,9 +110,6 @@ autocmd FileType markdown,md nnoremap <leader>3 i###
 autocmd FileType markdown,md nnoremap <leader>4 i#### 
 autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
 
-" autostarts Goyo when opening or creating a markdown or wik ifile
-autocmd BufRead,BufNewFile *.md :Goyo 80
-autocmd BufRead,BufNewFile *.wiki :Goyo 80
 
 " vimwiki - Personal Wiki for Vim
 " vimwiki with markdown support
