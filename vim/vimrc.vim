@@ -57,6 +57,7 @@ let g:lightline = {
     set noshowmode              
     set history=1000
     set noswapfile
+    set cursorline
 
 " Mappings
     let mapleader=" "
@@ -98,10 +99,6 @@ nnoremap <silent> <CR> :call ReplayLastMacro()<CR>
 " Enable going down in case text is wrapped
     nnoremap j gj
     nnoremap k gk
-
-" Create lines without being in insert mode
-    noremap <leader>o o<esc>
-    noremap <leader>O O<esc>
 
 " Markdown mappings
 autocmd FileType markdown,md nnoremap <leader>1 i# 
