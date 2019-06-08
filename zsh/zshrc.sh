@@ -55,6 +55,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias volume="amixer sset 'Master'"
     alias piavpn="/opt/piavpn/bin/pia-client"
 
+
 # For vim mappings: 
 	stty -ixon
 

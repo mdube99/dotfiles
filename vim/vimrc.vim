@@ -70,7 +70,7 @@ let g:lightline = {
     :iab cdate <c-r>=strftime("%Y-%m-%d")<CR>
 
 " Turns off relativenumber in reviewing code with someone
-    nnoremap <F1> :set norelativenumber<CR>
+    nnoremap <F1> :set number norelativenumber<CR>
     nnoremap <F2> :set number relativenumber<CR>
     nnoremap <F3> :set norelativenumber nonumber<CR>
 
