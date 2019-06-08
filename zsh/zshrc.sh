@@ -54,6 +54,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias calc="gcalccmd"
     alias volume="amixer sset 'Master'"
     alias piavpn="/opt/piavpn/bin/pia-client"
+    alias league="WINEPREFIX=~/Games-Wine/LoL WINEARCH=win32 /opt/wine-lol/bin/wine ~/Games-Wine/LoL/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe"
 
 
 # For vim mappings: 
