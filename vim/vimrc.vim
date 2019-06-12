@@ -10,7 +10,6 @@ call plug#begin()
     Plug 'vimwiki/vimwiki'                  " Note taking system for vim
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'          " Gives markdown syntax
-    Plug 'scrooloose/nerdtree'              " File browser
     Plug 'suan/vim-instant-markdown'        " Let's you see markdown files in browser while editing
     Plug 'tpope/vim-surround'               " change and add tags surrounding a word or sentence
     Plug 'tpope/vim-commentary'             " Allows for easy commenting with vim
@@ -21,9 +20,8 @@ call plug#begin()
     Plug 'romainl/vim-cool'
     Plug 'junegunn/goyo.vim'
 " Ui enhancements
-    Plug 'joshdick/onedark.vim'             " Theme
     Plug 'itchyny/lightline.vim'            " Theme
-    Plug 'mhinz/vim-signify'                " changes at the number line
+    Plug 'mhinz/vim-signify'                " Shows changes at the number line
     Plug 'Yggdroot/indentline'              " Shows lines on indentation
     Plug 'PotatoesMaster/i3-vim-syntax'     " Gives i3-wm config file syntax
     Plug 'aonemd/kuroi.vim'
@@ -38,7 +36,7 @@ let g:lightline = {
 	\ }
 
 "Background
-    " colorscheme onedark
+    " colorscheme kuroi
     colorscheme agila
     set background=dark
 
