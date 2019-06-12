@@ -8,6 +8,7 @@ endif
 " All vim-plug plugins
 call plug#begin()
     Plug 'vimwiki/vimwiki'                  " Note taking system for vim
+    Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'          " Gives markdown syntax
     Plug 'scrooloose/nerdtree'              " File browser
     Plug 'suan/vim-instant-markdown'        " Let's you see markdown files in browser while editing
@@ -27,6 +28,7 @@ call plug#begin()
     Plug 'PotatoesMaster/i3-vim-syntax'     " Gives i3-wm config file syntax
     Plug 'aonemd/kuroi.vim'
     Plug 'chase/vim-ansible-yaml'
+    Plug 'NerdyPepper/agila.vim'
 
 call plug#end()
 
@@ -37,7 +39,7 @@ let g:lightline = {
 
 "Background
     " colorscheme onedark
-    colorscheme kuroi
+    colorscheme agila
     set background=dark
 
 " Basics
@@ -116,3 +118,4 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown'
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_listsyms = '✗○◐●✓'
 let g:instant_markdown_autostart = 0	" disable autostart
+let g:vim_markdown_folding_disabled = 1 " Disables folding for markdown files
