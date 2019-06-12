@@ -31,9 +31,9 @@ call plug#begin()
 call plug#end()
 
 " lightline color
-let g:lightline = {
-	\ 'colorscheme': 'onedark'
-	\ }
+" let g:lightline = {
+" 	\ 'colorscheme': 'kuroi'
+" 	\ }
 
 "Background
     " colorscheme kuroi
