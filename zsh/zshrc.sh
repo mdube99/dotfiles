@@ -16,7 +16,6 @@ clear
 
 # Settings
     export VISUAL=vim
-    ZSH_THEME="agnoster"
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
@@ -69,8 +68,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 autoload -U compinit
 
 plugins=(
-	docker
-    vi-mode
+    docker
 )
 
 for plugin ($plugins); do
