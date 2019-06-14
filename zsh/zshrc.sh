@@ -16,7 +16,6 @@ clear
 
 # Settings
     export VISUAL=vim
-    ZSH_THEME="agnoster"
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
