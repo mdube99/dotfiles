@@ -68,8 +68,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 autoload -U compinit
 
 plugins=(
-	docker
-    vi-mode
+    docker
 )
 
 for plugin ($plugins); do
