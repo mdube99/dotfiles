@@ -9,7 +9,7 @@ endif
 call plug#begin()
     Plug 'vimwiki/vimwiki'                  " Note taking system for vim
     Plug 'godlygeek/tabular'
-    Plug 'plasticboy/vim-markdown'          " Gives markdown syntax
+    " Plug 'plasticboy/vim-markdown'          " Gives markdown syntax
     Plug 'suan/vim-instant-markdown'        " Let's you see markdown files in browser while editing
     Plug 'tpope/vim-surround'               " change and add tags surrounding a word or sentence
     Plug 'tpope/vim-commentary'             " Allows for easy commenting with vim
@@ -20,20 +20,16 @@ call plug#begin()
     Plug 'romainl/vim-cool'
     Plug 'junegunn/goyo.vim'
 " Ui enhancements
-    Plug 'itchyny/lightline.vim'            " Theme
+    Plug 'vim-airline/vim-airline'
     Plug 'mhinz/vim-signify'                " Shows changes at the number line
     Plug 'Yggdroot/indentline'              " Shows lines on indentation
     Plug 'PotatoesMaster/i3-vim-syntax'     " Gives i3-wm config file syntax
     Plug 'aonemd/kuroi.vim'
-    Plug 'chase/vim-ansible-yaml'
     Plug 'NerdyPepper/agila.vim'
 
-call plug#end()
 
-" lightline color
-" let g:lightline = {
-" 	\ 'colorscheme': 'kuroi'
-" 	\ }
+
+call plug#end()
 
 "Background
     " colorscheme kuroi
@@ -62,7 +58,6 @@ call plug#end()
 " Mappings
     let mapleader=" "
     nnoremap <leader>md :InstantMarkdownPreview<CR>
-    nnoremap <leader>d :exe ':NERDTree'<CR>
     nnoremap <leader>p :exe ':CtrlP'<CR>
     nnoremap <leader>g :exe ':Goyo'<CR>
 
@@ -107,6 +102,8 @@ autocmd FileType markdown,md nnoremap <leader>3 i###
 autocmd FileType markdown,md nnoremap <leader>4 i#### 
 autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
 
+" Ansible settings
+autocmd FileType yaml setlocal ts=2 ai sw=2 sts=0
 
 " vimwiki - Personal Wiki for Vim
 " vimwiki with markdown support
