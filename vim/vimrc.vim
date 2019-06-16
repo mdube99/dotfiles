@@ -40,7 +40,7 @@ call plug#end()
     filetype plugin on
     if !has('g:syntax_on')|syntax enable|endif
     set number relativenumber
-    set encoding=utf-8
+    " set encoding=utf-8
     set tabstop=8
     set shiftwidth=4
     set expandtab
@@ -48,10 +48,9 @@ call plug#end()
     set ignorecase
     set hlsearch
     set incsearch
-    set clipboard=unnamedplus   
-    set splitbelow splitright   
-    set noshowmode              
-    set history=1000
+    set splitbelow splitright
+    set noshowmode
+    " set history=1000
     set noswapfile
     set cursorline
 
@@ -96,21 +95,17 @@ nnoremap <silent> <CR> :call ReplayLastMacro()<CR>
     nnoremap k gk
 
 " Markdown mappings
-autocmd FileType markdown,md nnoremap <leader>1 i# 
-autocmd FileType markdown,md nnoremap <leader>2 i## 
-autocmd FileType markdown,md nnoremap <leader>3 i### 
-autocmd FileType markdown,md nnoremap <leader>4 i#### 
+autocmd FileType markdown,md nnoremap <leader>1 i#
+autocmd FileType markdown,md nnoremap <leader>2 i##
+autocmd FileType markdown,md nnoremap <leader>3 i###
+autocmd FileType markdown,md nnoremap <leader>4 i####
 autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
 
-" Ansible settings
+" YAML file settings
 autocmd FileType yaml setlocal ts=2 ai sw=2 sts=0
 
 " vimwiki - Personal Wiki for Vim
-" vimwiki with markdown support
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-" has Vimwiki use default markdown syntax, rather than vimwiki's proprietary
-" usage
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_listsyms = '✗○◐●✓'
 let g:instant_markdown_autostart = 0	" disable autostart
 let g:vim_markdown_folding_disabled = 1 " Disables folding for markdown files
