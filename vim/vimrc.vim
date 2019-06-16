@@ -7,23 +7,21 @@ endif
 
 " All vim-plug plugins
 call plug#begin()
-    Plug 'vimwiki/vimwiki'                  " Note taking system for vim
-    Plug 'godlygeek/tabular'
-    " Plug 'plasticboy/vim-markdown'          " Gives markdown syntax
-    Plug 'suan/vim-instant-markdown'        " Let's you see markdown files in browser while editing
-    Plug 'tpope/vim-surround'               " change and add tags surrounding a word or sentence
-    Plug 'tpope/vim-commentary'             " Allows for easy commenting with vim
+    Plug 'vimwiki/vimwiki'                  
+    Plug 'suan/vim-instant-markdown'        
+    Plug 'tpope/vim-surround'               
+    Plug 'tpope/vim-commentary'             
     Plug 'tpope/vim-repeat'
-    Plug 'kien/ctrlp.vim'                   " Fuzzy finder
-    Plug 'airblade/vim-rooter'              " Sets the working directory to the root directory
-    Plug 'christoomey/vim-system-copy'      " Allows vim to copy objects (such as iw) with xsel
+    Plug 'kien/ctrlp.vim'                   
+    Plug 'airblade/vim-rooter'              
+    Plug 'christoomey/vim-system-copy'      
     Plug 'romainl/vim-cool'
     Plug 'junegunn/goyo.vim'
 " Ui enhancements
     Plug 'vim-airline/vim-airline'
-    Plug 'mhinz/vim-signify'                " Shows changes at the number line
-    Plug 'Yggdroot/indentline'              " Shows lines on indentation
-    Plug 'PotatoesMaster/i3-vim-syntax'     " Gives i3-wm config file syntax
+    Plug 'mhinz/vim-signify'                
+    Plug 'Yggdroot/indentline'              
+    Plug 'PotatoesMaster/i3-vim-syntax'     
     Plug 'aonemd/kuroi.vim'
     Plug 'NerdyPepper/agila.vim'
 
