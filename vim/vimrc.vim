@@ -57,6 +57,8 @@ call plug#end()
     nnoremap <leader>md :InstantMarkdownPreview<CR>
     nnoremap <leader>p :exe ':CtrlP'<CR>
     nnoremap <leader>g :exe ':Goyo'<CR>
+    nnoremap <leader>gc :exe ':Gcommit'<CR>
+    nnoremap <leader>gs :exe ':Gstatus'<CR>
 
 " Abbreviation to insert the current date when typings "cdate"
     :iab cdate <c-r>=strftime("%Y-%m-%d")<CR>
