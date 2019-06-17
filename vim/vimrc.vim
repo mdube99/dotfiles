@@ -7,8 +7,8 @@ endif
 
 " All vim-plug plugins
 call plug#begin()
-    Plug 'vimwiki/vimwiki'                  
-    Plug 'suan/vim-instant-markdown'        
+    Plug 'vimwiki/vimwiki'
+    Plug 'suan/vim-instant-markdown'
     Plug 'tpope/vim-surround'               
     Plug 'tpope/vim-commentary'             
     Plug 'tpope/vim-repeat'
@@ -19,11 +19,11 @@ call plug#begin()
     Plug 'junegunn/goyo.vim'
 " Ui enhancements
     Plug 'vim-airline/vim-airline'
-    Plug 'mhinz/vim-signify'                
-    Plug 'Yggdroot/indentline'              
-    Plug 'PotatoesMaster/i3-vim-syntax'     
-    Plug 'aonemd/kuroi.vim'
-    Plug 'NerdyPepper/agila.vim'
+    Plug 'mhinz/vim-signify'
+    Plug 'Yggdroot/indentline'
+    Plug 'PotatoesMaster/i3-vim-syntax'
+    Plug 'joshdick/onedark.vim'
+    Plug 'tpope/vim-fugitive'
 
 
 
@@ -31,7 +31,7 @@ call plug#end()
 
 "Background
     " colorscheme kuroi
-    colorscheme agila
+    colorscheme onedark
     set background=dark
 
 " Basics
