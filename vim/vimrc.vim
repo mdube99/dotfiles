@@ -9,7 +9,7 @@ endif
 call plug#begin()
     Plug 'vimwiki/vimwiki'
     Plug 'suan/vim-instant-markdown'
-    Plug 'tpope/vim-surround'               
+    Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'             
     Plug 'tpope/vim-repeat'
     Plug 'kien/ctrlp.vim'                   
