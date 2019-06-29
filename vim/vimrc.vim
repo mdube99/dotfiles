@@ -11,19 +11,20 @@ call plug#begin()
     Plug 'suan/vim-instant-markdown'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'             
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'kien/ctrlp.vim'                   
     Plug 'airblade/vim-rooter'              
     Plug 'christoomey/vim-system-copy'      
     Plug 'romainl/vim-cool'
     Plug 'junegunn/goyo.vim'
+    Plug 'xuhdev/vim-latex-live-preview'
 " Ui enhancements
     Plug 'vim-airline/vim-airline'
     Plug 'mhinz/vim-signify'
     Plug 'Yggdroot/indentline'
     Plug 'PotatoesMaster/i3-vim-syntax'
     Plug 'joshdick/onedark.vim'
-    Plug 'tpope/vim-fugitive'
 
 
 
