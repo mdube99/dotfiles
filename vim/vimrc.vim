@@ -25,6 +25,7 @@ call plug#begin()
     Plug 'Yggdroot/indentline'
     Plug 'PotatoesMaster/i3-vim-syntax'
     Plug 'joshdick/onedark.vim'
+    Plug 'arzg/vim-corvine'
 
 
 
@@ -32,7 +33,7 @@ call plug#end()
 
 "Background
     " colorscheme kuroi
-    colorscheme onedark
+    colorscheme corvine
     set background=dark
 
 " Basics
