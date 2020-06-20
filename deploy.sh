@@ -73,6 +73,8 @@ check_for_software zsh
 echo 
 check_for_software vim
 echo
+check_for_software neovim
+echo
 check_for_software tmux
 echo
 check_for_software npm
@@ -98,6 +100,10 @@ printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "so $HOME/dotfiles/vim/vimrc.vim" > ~/.vimrc
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 printf "source-file $HOME/dotfiles/vifm/vifmrc" > ~/.config/vifm/vifmrc
+
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 # printf "so $HOME/dotfiles/config" > > ~/.config/i3/config
 
 echo

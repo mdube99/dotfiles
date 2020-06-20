@@ -31,6 +31,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias ll=" ls -l"
     alias r="vifm"
     alias v="vifm"
+    alias vim="nvim"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
