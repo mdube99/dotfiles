@@ -23,7 +23,7 @@ popup_during_fullscreen smart
 focus_on_window_activation focus
 font pango:monospace 11
 
-set $term exec --no-startup-id gnome-terminal --hide-menubar --window-with-profile=Unnamed
+set $term exec --no-startup-id st
 bindsym $mod+shift+f exec firefox
 
 set $floater floating enable, resize set 1600 900
