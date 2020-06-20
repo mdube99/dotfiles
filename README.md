@@ -6,6 +6,7 @@ My dotfiles! Based off of Parth's dotfiles, used to keep work, desktop, and lapt
 
 + i3 (i3-gaps)
 + vim
++ neovim
 + bash
 + tmux
 + zsh
