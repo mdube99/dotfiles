@@ -16,6 +16,13 @@ clear
 
 # Settings
     export VISUAL=vim
+    MANPAGER='nvim +Man!'
+
+
+    plugins=(
+    colored-man-pages
+
+)
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
@@ -67,6 +74,7 @@ source ~/dotfiles/zsh/plugins/vi-mode.plugin.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/keybindings.sh
 source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/dotfiles/zsh/plugins/colored-man-pages.plugin.zsh
 
 # Fix for arrow-key searching
 # start typing + [Up-Arrow] - fuzzy find history forward

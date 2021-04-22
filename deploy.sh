@@ -19,7 +19,7 @@ prompt_install() {
 			sudo pacman -S $1
 
 		else
-			echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
+			echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again." 
 		fi 
 	fi
 }
@@ -83,21 +83,11 @@ echo
 check_default_shell
 
 echo
-echo -n "Would you like to backup your current dotfiles? (y/n) "
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg
-if echo "$answer" | grep -iq "^y" ;then
-	mv ~/.zshrc ~/.zshrc.old
-	mv ~/.tmux.conf ~/.tmux.conf.old
-	mv ~/.vimrc ~/.vimrc.old
-else
-	echo -e "\nNot backing up old dotfiles."
-fi
 
 printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "so $HOME/dotfiles/vim/vimrc.vim" > ~/.vimrc
+# symlink for neovim
+printf "so $HOME/.vimrc" > ~/.config/init.vim
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 printf "source-file $HOME/dotfiles/vifm/vifmrc" > ~/.config/vifm/vifmrc
 
