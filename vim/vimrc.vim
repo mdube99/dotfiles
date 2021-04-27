@@ -1,4 +1,4 @@
-" Installs vim-plug
+
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -18,7 +18,7 @@ call plug#begin()
     Plug 'christoomey/vim-system-copy'      
     Plug 'romainl/vim-cool'
     Plug 'junegunn/goyo.vim'
-    Plug 'xuhdev/vim-latex-live-preview'
+    Plug 'vim-pandoc/vim-pandoc'
 " Ui enhancements
     Plug 'vim-airline/vim-airline'
     Plug 'mhinz/vim-signify'
@@ -32,7 +32,6 @@ call plug#begin()
 call plug#end()
 
 "Background
-    " colorscheme kuroi
     colorscheme corvine
     set background=dark
 
@@ -61,6 +60,14 @@ call plug#end()
     nnoremap <leader>g :exe ':Goyo'<CR>
     nnoremap <leader>gc :exe ':Gcommit'<CR>
     nnoremap <leader>gs :exe ':Gstatus'<CR>
+    " Display absolute numbers when we lose focus
+    autocmd FocusLost * :set norelativenumber
+    " "Display relative numbers when we gain focus
+    autocmd FocusGained * :set relativenumber
+    " Display absolute numbers in insert mode
+    autocmd InsertEnter * :set norelativenumber
+    " Display relative numbers when we leave insert mode
+    autocmd InsertLeave * :set relativenumber
 
 " Abbreviation to insert the current date when typings "cdate"
     :iab cdate <c-r>=strftime("%Y-%m-%d")<CR>
