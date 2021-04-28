@@ -1,37 +1,71 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# clear
+
+
+# Vars
+	HISTFILE=~/.zsh_history
+	SAVEHIST=1000 
+	setopt inc_append_history # To save every command before it is executed 
+	setopt share_history # setopt inc_append_history
+
+	git config --global push.default current
+
+	mkdir -p /tmp/log
+	
+	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
+	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
 
 # Settings
     export VISUAL=vim
     MANPAGER='nvim +Man!'
-    # history=1000
+
 
     plugins=(
-    git
-        )
+    colored-man-pages
 
-# Custom cd
-    c() {
-        cd $1;
-        ls -l;
-    }
+)
 
-# Aliases
+source ~/dotfiles/zsh/plugins/fixls.zsh
+
+ 	# Custom cd
+ 	c() {
+ 		cd $1;
+ 		ls -l;
+ 	}
+#Aliases
     alias cd="c"
-    alias ll="ls -l"
-    alias vi="nvim"
+    alias vi="vim"
     alias pubip="curl ipinfo.io/ip"
+    alias ll=" ls -l"
+    alias r="vifm"
+    alias v="vifm"
     alias vim="nvim"
+    alias wiki="vim ~/vimwiki/index.md"
+    alias yt="youtube-dl --add-metadata -i" # Download video link
+    alias yta="yt --extract-audio --audio-format mp3" # Download only audio
+    alias speedtest="speedtest-cli"
+    alias vscode="code"
     alias calc="gcalccmd"
     alias volume="amixer sset 'Master'"
     alias piavpn="/opt/piavpn/bin/pia-client"
+    alias league="WINEPREFIX=~/Games-Wine/LoL WINEARCH=win32 /opt/wine-lol/bin/wine ~/Games-Wine/LoL/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe"
 
-# Vim mappings:
-    stty -ixon
+
+# For vim mappings: 
+	stty -ixon
+
+# Completions
+# These are all the plugin options available: https://github.com/robbyrussell/oh-my-zsh/tree/291e96dcd034750fbe7473482508c08833b168e3/plugins
+#
+# Edit the array below, or relocate it to ~/.zshrc before anything is sourced
+# For help create an issue at github.com/parth/dotfiles
+
+autoload -U compinit
 
 for plugin ($plugins); do
-    fpath=($HOME/dotfiles/zsh/plugins/oh-my-zsh/plugins/$plugin $fpath)
+    fpath=(~/dotfiles/zsh/plugins/oh-my-zsh/plugins/$plugin $fpath)
 done
+
+compinit
 
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/history.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/key-bindings.zsh
@@ -42,66 +76,19 @@ source ~/dotfiles/zsh/keybindings.sh
 source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/dotfiles/zsh/plugins/colored-man-pages.plugin.zsh
 
-
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/dotfiles/zsh/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="spaceship"
-ZSH_THEME="awesomepanda"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
+# Fix for arrow-key searching
+# start typing + [Up-Arrow] - fuzzy find history forward
+if [[ "${terminfo[kcuu1]}" != "" ]]; then
+	autoload -U up-line-or-beginning-search
+	zle -N up-line-or-beginning-search
+	bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+fi
+# start typing + [Down-Arrow] - fuzzy find history backward
+if [[ "${terminfo[kcud1]}" != "" ]]; then
+	autoload -U down-line-or-beginning-search
+	zle -N down-line-or-beginning-search
+	bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/dotfiles/zsh/prompt.sh
+export PATH=$PATH:$HOME/dotfiles/utils
