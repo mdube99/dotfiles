@@ -87,7 +87,6 @@ echo
 printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "so $HOME/dotfiles/vim/vimrc.vim" > ~/.vimrc
 # symlink for neovim
-printf "so $HOME/.vimrc" > ~/.config/init.vim
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 printf "source-file $HOME/dotfiles/vifm/vifmrc" > ~/.config/vifm/vifmrc
 
