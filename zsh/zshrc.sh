@@ -31,14 +31,20 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
  		cd $1;
  		ls -l;
  	}
+
+# I can never remember the exact command to convert from docx to md so i thought this would be easier
+        convert2md() {
+
+            pandoc -s $1 --wrap=none --reference-links -t markdown -o $2
+
+        } 
+
 #Aliases
     alias cd="c"
     alias vi="vim"
     alias pubip="curl ipinfo.io/ip"
     alias ll=" ls -l"
-    alias r="vifm"
-    alias v="vifm"
-    alias vim="vim"
+    alias vim="nvim"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
@@ -46,8 +52,10 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias vscode="code"
     alias calc="gcalccmd"
     alias volume="amixer sset 'Master'"
-    alias piavpn="/opt/piavpn/bin/pia-client"
+    alias piavpn="/opt/piavpn/bin/pia-client &"
+    alias myscrot="scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png"
     alias league="WINEPREFIX=~/Games-Wine/LoL WINEARCH=win32 /opt/wine-lol/bin/wine ~/Games-Wine/LoL/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe"
+    alias kalidocker="sudo docker run -ti -p 80:80 -p 443:443 -v /root/clients:/clients mdube/kali-docker"
 
 
 # For vim mappings: 

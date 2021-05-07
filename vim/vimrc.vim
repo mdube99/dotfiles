@@ -1,39 +1,45 @@
-
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " All vim-plug plugins
 call plug#begin()
+" Markdown / notetaking tools 
     Plug 'vimwiki/vimwiki'
     Plug 'suan/vim-instant-markdown'
+" tpope
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'             
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
+" fuzzy finder
     Plug 'kien/ctrlp.vim'                   
+    Plug 'dense-analysis/ale'
     Plug 'airblade/vim-rooter'              
     Plug 'christoomey/vim-system-copy'      
     Plug 'romainl/vim-cool'
     Plug 'junegunn/goyo.vim'
-    Plug 'vim-pandoc/vim-pandoc'
 " Ui enhancements
     Plug 'vim-airline/vim-airline'
     Plug 'mhinz/vim-signify'
     Plug 'Yggdroot/indentline'
     Plug 'PotatoesMaster/i3-vim-syntax'
     Plug 'joshdick/onedark.vim'
-    Plug 'arzg/vim-corvine'
+    Plug 'drewtempelmeyer/palenight.vim'
 
 
 
 call plug#end()
 
 "Background
-    colorscheme corvine
+    colorscheme palenight
     set background=dark
+
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " Basics
     filetype plugin on
@@ -59,29 +65,46 @@ call plug#end()
     nnoremap <leader>p :exe ':CtrlP'<CR>
     nnoremap <leader>g :exe ':Goyo'<CR>
     nnoremap <leader>gc :exe ':Gcommit'<CR>
+    nnoremap <leader>gd :exe ':Gdiff'<CR>
     nnoremap <leader>gs :exe ':Gstatus'<CR>
-    " Display absolute numbers when we lose focus
-    autocmd FocusLost * :set norelativenumber
-    " "Display relative numbers when we gain focus
-    autocmd FocusGained * :set relativenumber
-    " Display absolute numbers in insert mode
-    autocmd InsertEnter * :set norelativenumber
-    " Display relative numbers when we leave insert mode
-    autocmd InsertLeave * :set relativenumber
-
-" Abbreviation to insert the current date when typings "cdate"
-    :iab cdate <c-r>=strftime("%Y-%m-%d")<CR>
-
 " Turns off relativenumber in reviewing code with someone
     nnoremap <F1> :set number norelativenumber<CR>
     nnoremap <F2> :set number relativenumber<CR>
     nnoremap <F3> :set norelativenumber nonumber<CR>
-
 " Open HTML file in browser
-    nnoremap <F12> :exe ':silent !firefox %'<CR>
-
+    nnoremap <F12> :exe ':silent !brave %'<CR>
+" gets rid of search or visual bugs
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
+" shows spelling errors
     nnoremap <leader>ss :setlocal spell!<CR>
+" new line without going into insert mode
+    nnoremap <leader>o o<esc>
+    nnoremap <leader>O O<esc>
+" Enable going down in case text is wrapped
+    nnoremap j gj
+    nnoremap k gk
+" Open vimrc from vim
+    nnoremap <leader>vim mV:vsplit $MYVIMRC<CR>
+
+" Moving around in splits
+    nnoremap <C-H> <C-W><C-H>
+    nnoremap <C-J> <C-W><C-J>
+    nnoremap <C-K> <C-W><C-K>
+    nnoremap <C-L> <C-W><C-L>
+
+
+" Display absolute numbers when we lose focus
+    autocmd FocusLost * :set norelativenumber
+" "Display relative numbers when we gain focus
+    autocmd FocusGained * :set relativenumber
+" Display absolute numbers in insert mode
+    autocmd InsertEnter * :set norelativenumber
+" Display relative numbers when we leave insert mode
+    autocmd InsertLeave * :set relativenumber
+
+" Abbreviation to insert the current date when typings "cdate"
+" useful for markdown files
+    :iab cdate <c-r>=strftime("%Y-%m-%d")<CR>
 
 " Fix previous spelling error
 function! FixLastSpellingError()
@@ -89,7 +112,7 @@ function! FixLastSpellingError()
 endfunction
 nnoremap <leader>sp :call FixLastSpellingError()<CR>
 
-" Easy replay last macro
+" Easy replay last macro by pressing enter
 function! ReplayLastMacro()
     try
         normal @@
@@ -99,16 +122,11 @@ function! ReplayLastMacro()
 endfunction
 nnoremap <silent> <CR> :call ReplayLastMacro()<CR>
 
-" Enable going down in case text is wrapped
-    nnoremap j gj
-    nnoremap k gk
+" Update vimrc from another file
+    nnoremap <F5> :so $MYVIMRC<CR>
 
-" Markdown mappings
-autocmd FileType markdown,md nnoremap <leader>1 i#
-autocmd FileType markdown,md nnoremap <leader>2 i##
-autocmd FileType markdown,md nnoremap <leader>3 i###
-autocmd FileType markdown,md nnoremap <leader>4 i####
-autocmd FileType markdown,md nnoremap <leader>u i---<ESC>
+" Airline theme
+let g:airline_theme = "palenight"
 
 " YAML file settings
 autocmd FileType yaml setlocal ts=2 ai sw=2 sts=0
@@ -117,4 +135,6 @@ autocmd FileType yaml setlocal ts=2 ai sw=2 sts=0
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 let g:instant_markdown_autostart = 0	" disable autostart
+" has vim-instant-markdown use the suckless browser surf for markdown viewing
+let g:instant_markdown_browser = "surf"
 let g:vim_markdown_folding_disabled = 1 " Disables folding for markdown files
