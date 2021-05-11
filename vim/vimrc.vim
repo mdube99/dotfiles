@@ -249,3 +249,15 @@ let g:instant_markdown_autostart = 0	" disable autostart
 " has vim-instant-markdown use the suckless browser surf for markdown viewing
 let g:instant_markdown_browser = "surf"
 let g:vim_markdown_folding_disabled = 1 " Disables folding for markdown files
+
+
+" Treesitter config to get highlighting working
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
+
