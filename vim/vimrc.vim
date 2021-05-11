@@ -6,35 +6,87 @@ endif
 
 " All vim-plug plugins
 call plug#begin()
-" Markdown / notetaking tools 
+" Markdown / notetaking tools
     Plug 'vimwiki/vimwiki'
     Plug 'suan/vim-instant-markdown'
 " tpope
     Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-commentary'             
+    Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
 " fuzzy finder
-    Plug 'kien/ctrlp.vim'                   
-    Plug 'dense-analysis/ale'
-    Plug 'airblade/vim-rooter'              
-    Plug 'christoomey/vim-system-copy'      
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" LSP
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
+" Changes the working directory to the project root when you open a file or directory.
+    Plug 'airblade/vim-rooter'
+" can use 'cp' to copy objects
+    Plug 'christoomey/vim-system-copy'
+" disables search highlighting when you are done searching and re-enables it when you search again.
     Plug 'romainl/vim-cool'
+" used for markdown to look cool
     Plug 'junegunn/goyo.vim'
 " Ui enhancements
-    Plug 'vim-airline/vim-airline'
+    Plug 'akinsho/nvim-bufferline.lua'
+" Status line
+    Plug 'hoob3rt/lualine.nvim'
+" If you want to display icons, then use one of these plugins:
+    Plug 'kyazdani42/nvim-web-devicons'
+" Shows git changes left of number line
     Plug 'mhinz/vim-signify'
     Plug 'Yggdroot/indentline'
     Plug 'PotatoesMaster/i3-vim-syntax'
-    Plug 'joshdick/onedark.vim'
-    Plug 'drewtempelmeyer/palenight.vim'
+" themes
+    Plug 'dracula/vim', { 'as': 'dracula' }
 
+" Neovim Tree shitter
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/playground'
 
 
 call plug#end()
 
+" Statusline
+lua require'bufferline'.setup{}
+" configs for LSP
+lua require'lspconfig'.pyright.setup{ on_attach=on_attach }
+lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
+
+let g:lualine = {
+    \'options' : {
+    \  'theme' : 'dracula',
+    \  'section_separators' : ['', ''],
+    \  'component_separators' : ['', ''],
+    \  'disabled_filetypes' : [],
+    \  'icons_enabled' : v:true,
+    \},
+    \'sections' : {
+    \  'lualine_a' : [ ['mode', {'upper': v:true,},], ],
+    \  'lualine_b' : [ ['branch', {'icon': '',}, ], ],
+    \  'lualine_c' : [ ['filename', {'file_status': v:true,},], ],
+    \  'lualine_x' : [ 'encoding', 'fileformat', 'filetype' ],
+    \  'lualine_y' : [ 'progress' ],
+    \  'lualine_z' : [ 'location'  ],
+    \},
+    \'inactive_sections' : {
+    \  'lualine_a' : [  ],
+    \  'lualine_b' : [  ],
+    \  'lualine_c' : [ 'filename' ],
+    \  'lualine_x' : [ 'location' ],
+    \  'lualine_y' : [  ],
+    \  'lualine_z' : [  ],
+    \},
+    \'extensions' : [ 'fugitive' ],
+    \}
+lua require("lualine").setup()
+
+
 "Background
-    colorscheme palenight
+    colorscheme dracula
     set background=dark
 
 if (has("termguicolors"))
@@ -46,6 +98,7 @@ endif
     if !has('g:syntax_on')|syntax enable|endif
     set number relativenumber
     " set encoding=utf-8
+    set path+=**
     set tabstop=8
     set shiftwidth=4
     set expandtab
@@ -55,16 +108,29 @@ endif
     set incsearch
     set splitbelow splitright
     set noshowmode
+    set hidden
+    set autochdir
+    set nowrap
+    set wildmode=longest,list,full
+" Disable auto commenting on new line
+    set formatoptions-=cro
     " set history=1000
     set noswapfile
+" Cursor line config that makes it usable on dark background
     set cursorline
+    hi cursorline cterm=none term=none
+    autocmd WinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+    highlight CursorLine guibg=#303000 ctermbg=234
+    set guicursor=
+    " Needed for LSP
+    set completeopt=menuone,noselect
 
-" Mappings
+" ------------------------------------------------------- Mappings -------------------------------------------------------
     let mapleader=" "
     nnoremap <leader>md :InstantMarkdownPreview<CR>
-    nnoremap <leader>p :exe ':CtrlP'<CR>
     nnoremap <leader>g :exe ':Goyo'<CR>
-    nnoremap <leader>gc :exe ':Gcommit'<CR>
+    nnoremap <leader>gc :exe ':Git commit'<CR>
     nnoremap <leader>gd :exe ':Gdiff'<CR>
     nnoremap <leader>gs :exe ':Gstatus'<CR>
 " Turns off relativenumber in reviewing code with someone
@@ -77,59 +143,104 @@ endif
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
 " shows spelling errors
     nnoremap <leader>ss :setlocal spell!<CR>
-" new line without going into insert mode
-    nnoremap <leader>o o<esc>
-    nnoremap <leader>O O<esc>
 " Enable going down in case text is wrapped
     nnoremap j gj
     nnoremap k gk
 " Open vimrc from vim
-    nnoremap <leader>vim mV:vsplit $MYVIMRC<CR>
-
+    nnoremap <leader>vim :e $MYVIMRC<CR>
+    nnoremap <F5> :so $MYVIMRC<CR>
 " Moving around in splits
     nnoremap <C-H> <C-W><C-H>
     nnoremap <C-J> <C-W><C-J>
     nnoremap <C-K> <C-W><C-K>
     nnoremap <C-L> <C-W><C-L>
+" Moving through buffers
+    nnoremap <leader>bn :bnext<CR>
+    nnoremap <leader>bp :bprev<CR>
+    nnoremap <leader>bq :bdelete<CR>
+" Quickfixlist mappings
+    nnoremap <leader>q :copen<CR>
+    nnoremap <leader>h :cprev<CR>
+    nnoremap <leader>l :cnext<CR>
+" Telescope mappings
+    nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+    nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+    nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
+    nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+    nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
+    nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
+" LSP mappings
+    nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
+    nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
+    nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
+    nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
+    nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
+    nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
+    nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
+    nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
+    nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
+" Use tab & shift-tab to navigate through completion menu
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " opens VTerminal() HTerminal() functions for debugging scripts
+    nnoremap <leader>dv :call VTerminal()<CR>
+    nnoremap <leader>dh :call HTerminal()<CR>
 
 
-" Display absolute numbers when we lose focus
-    autocmd FocusLost * :set norelativenumber
-" "Display relative numbers when we gain focus
-    autocmd FocusGained * :set relativenumber
-" Display absolute numbers in insert mode
-    autocmd InsertEnter * :set norelativenumber
-" Display relative numbers when we leave insert mode
-    autocmd InsertLeave * :set relativenumber
 
-" Abbreviation to insert the current date when typings "cdate"
+" ------------------------------------------------------- Functions -------------------------------------------------------
+
+" Abbreviation to insert the current date when typings cdate
 " useful for markdown files
     :iab cdate <c-r>=strftime("%Y-%m-%d")<CR>
 
 " Fix previous spelling error
-function! FixLastSpellingError()
+fun! FixLastSpellingError()
     normal! mm[s1z='m""'
-endfunction
+endfun
 nnoremap <leader>sp :call FixLastSpellingError()<CR>
 
 " Easy replay last macro by pressing enter
-function! ReplayLastMacro()
+fun! ReplayLastMacro()
     try
         normal @@
     catch /E748/
         normal @q
     endtry
-endfunction
+endfun
 nnoremap <silent> <CR> :call ReplayLastMacro()<CR>
 
-" Update vimrc from another file
-    nnoremap <F5> :so $MYVIMRC<CR>
+" automatically trims whitespace on file save
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+autocmd BufWritePre * :call TrimWhitespace()
 
-" Airline theme
-let g:airline_theme = "palenight"
+
+" Splits for running scripts from inside neovim
+fun! VTerminal()
+    :vsp | :terminal
+    :vertical resize 45
+endfunction
+
+fun! HTerminal()
+    :split | :terminal
+    :resize 5
+endfunction
+
+
+" ------------------------------------------------------- Auto Commands -------------------------------------------------------
+
+" automatically highlight yanked text (requires neovim)
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=1000 }
+augroup END
 
 " YAML file settings
-autocmd FileType yaml setlocal ts=2 ai sw=2 sts=0
+    autocmd FileType yaml setlocal ts=2 ai sw=2 sts=0
 
 " vimwiki - Personal Wiki for Vim
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
