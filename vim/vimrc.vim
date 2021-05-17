@@ -14,6 +14,7 @@ call plug#begin()
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-unimpaired'
 " fuzzy finder
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
@@ -39,10 +40,10 @@ call plug#begin()
 " Shows git changes left of number line
     Plug 'mhinz/vim-signify'
     Plug 'Yggdroot/indentline'
+    Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'PotatoesMaster/i3-vim-syntax'
 " themes
     Plug 'dracula/vim', { 'as': 'dracula' }
-
 " Neovim Tree shitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
@@ -50,10 +51,32 @@ call plug#begin()
 
 call plug#end()
 
+" Needed for complete
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+
 " Statusline
 lua require'bufferline'.setup{}
 " configs for LSP
-lua require'lspconfig'.pyright.setup{ on_attach=on_attach }
 lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
 
 let g:lualine = {
@@ -85,13 +108,16 @@ let g:lualine = {
 lua require("lualine").setup()
 
 
-"Background
+" Color settings
     colorscheme dracula
+" Allows transparent backgrounds in vim
+    let g:dracula_colorterm = 0
     set background=dark
 
 if (has("termguicolors"))
   set termguicolors
 endif
+
 
 " Basics
     filetype plugin on
@@ -112,6 +138,7 @@ endif
     set autochdir
     set nowrap
     set wildmode=longest,list,full
+    set scrolloff=8
 " Disable auto commenting on new line
     set formatoptions-=cro
     " set history=1000
@@ -185,9 +212,14 @@ endif
     " opens VTerminal() HTerminal() functions for debugging scripts
     nnoremap <leader>dv :call VTerminal()<CR>
     nnoremap <leader>dh :call HTerminal()<CR>
-
-
-
+" Sizing window horizontally
+    nnoremap <A-,> <C-W>5<
+    nnoremap <A-.> <C-W>5>
+" Make esc leave terminal mode
+    tnoremap <leader><Esc> <C-\><C-n>
+" Switch between tabs
+    nnoremap <Right> gt
+    nnoremap <Left>  gT
 " ------------------------------------------------------- Functions -------------------------------------------------------
 
 " Abbreviation to insert the current date when typings cdate
