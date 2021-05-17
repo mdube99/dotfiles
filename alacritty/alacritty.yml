@@ -64,6 +64,25 @@ colors:
     magenta: '#ff92d0'
     cyan:    '#9aedfe'
     white:   '#e6e6e6'
+window:
+  dimensions:
+    columns: 140
+    lines: 38
+  padding:
+    x: 10
+    y: 10
+decorations: full
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+background_opacity: 0.94
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
 
 key_bindings:
 
@@ -75,7 +94,6 @@ key_bindings:
 
 font:
   size: 10
-
 
 mouse_binding:
   - { mouse: Middle,            action: PasteSelection        }
