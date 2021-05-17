@@ -3,14 +3,14 @@ clear
 
 # Vars
 	HISTFILE=~/.zsh_history
-	SAVEHIST=1000 
-	setopt inc_append_history # To save every command before it is executed 
+	SAVEHIST=1000
+	setopt inc_append_history # To save every command before it is executed
 	setopt share_history # setopt inc_append_history
 
 	git config --global push.default current
 
 	mkdir -p /tmp/log
-	
+
 	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
 	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
 
@@ -37,13 +37,13 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 
             pandoc -s $1 --wrap=none --reference-links -t markdown -o $2
 
-        } 
+        }
 
 #Aliases
     alias cd="c"
     alias vi="vim"
     alias pubip="curl ipinfo.io/ip"
-    alias ll=" ls -l"
+    alias ll=" ls -l --group-directories-first"
     alias vim="nvim"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
@@ -58,7 +58,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias kalidocker="sudo docker run -ti -p 80:80 -p 443:443 -v /root/clients:/clients mdube/kali-docker"
 
 
-# For vim mappings: 
+# For vim mappings:
 	stty -ixon
 
 # Completions
