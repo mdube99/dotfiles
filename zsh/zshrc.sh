@@ -44,7 +44,8 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias vi="vim"
     alias pubip="curl ipinfo.io/ip"
     alias ll=" ls -l --group-directories-first"
-    alias vim="nvim"
+    alias vim="/usr/local/bin/nvim"
+    alias nvim "/usr/local/bin/nvim"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
@@ -53,7 +54,6 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias calc="gcalccmd"
     alias volume="amixer sset 'Master'"
     alias piavpn="/opt/piavpn/bin/pia-client &"
-    alias myscrot="scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png"
     alias league="WINEPREFIX=~/Games-Wine/LoL WINEARCH=win32 /opt/wine-lol/bin/wine ~/Games-Wine/LoL/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe"
     alias kalidocker="sudo docker run -ti -p 80:80 -p 443:443 -v /root/clients:/clients mdube/kali-docker"
 
