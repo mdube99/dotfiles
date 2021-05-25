@@ -122,7 +122,6 @@ endif
     filetype plugin on
     if !has('g:syntax_on')|syntax enable|endif
     set number relativenumber
-    " set encoding=utf-8
     set path+=**
     set tabstop=8
     set shiftwidth=4
@@ -158,9 +157,6 @@ cmap w!! w !sudo tee %
     let mapleader=" "
     nnoremap <leader>md :InstantMarkdownPreview<CR>
     nnoremap <leader>g :exe ':Goyo'<CR>
-    nnoremap <leader>gc :exe ':Git commit'<CR>
-    nnoremap <leader>gd :exe ':Git diff'<CR>
-    nnoremap <leader>gs :exe ':Gstatus'<CR>
 " Turns off relativenumber in reviewing code with someone
     nnoremap <F1> :set number norelativenumber<CR>
     nnoremap <F2> :set number relativenumber<CR>
@@ -182,11 +178,6 @@ cmap w!! w !sudo tee %
 " Moving through buffers
     nnoremap <TAB> :bnext<CR>
     nnoremap <S-TAB> :bprevious<CR>
-    nnoremap <leader>bq :bdelete!<CR>
-" Quickfixlist mappings
-    nnoremap <leader>q :copen<CR>
-    nnoremap <leader>h :cprev<CR>
-    nnoremap <leader>l :cnext<CR>
 " Telescope mappings
     nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
     nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
@@ -335,41 +326,4 @@ require'nvim-treesitter.configs'.setup {
     enable = true,              -- false will disable the whole extension
   },
 }
-EOF
-
-" nvim-bufferline config
-" Pretty much just sets style and removes icons
-lua <<EOF
-    require"bufferline".setup{
-        options = {
-            view = "multiwindow",
-            numbers = "ordinal",
-            number_style = "superscript",
-            mappings = true,
-            buffer_close_icon= "",
-            modified_icon = "●",
-            close_icon = "",
-            left_trunc_marker = "",
-            right_trunc_marker = "",
-            max_name_length = 18,
-            max_prefix_length = 15, -- prefix used when a buffer is deduplicated
-            tab_size = 15,
-            diagnostics = "nvim_lsp",
-            diagnostics_indicator = function(count, level)
-                return "("..count..")"
-            end,
-            show_buffer_icons = false,
-            show_buffer_close_icons = false,
-            show_close_icon = false,
-            show_tab_indicators = true,
-            persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-            -- can also be a table containing 2 custom separators
-            -- [focused and unfocused]. eg: { "|", "|" }
-            separator_style = "thin",
-            enforce_regular_tabs = true,
-            always_show_bufferline = true,
-            sort_by = "directory",
-            -- add custom logic
-        }
-    }
 EOF
