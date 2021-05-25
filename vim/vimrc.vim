@@ -48,7 +48,6 @@ call plug#begin()
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
 
-
 call plug#end()
 
 " Needed for complete
@@ -105,7 +104,7 @@ require'lualine'.setup {
     lualine_z = {}
   },
   tabline = {},
-  extensions = {}
+  extensions = {'fugitive'}
 }
 EOF
 
@@ -144,6 +143,8 @@ endif
     set formatoptions-=cro
     " set history=1000
     set noswapfile
+" sudo
+cmap w!! w !sudo tee %
 " Cursor line config that makes it usable on dark background
     set cursorline
     hi cursorline cterm=none term=none
@@ -159,7 +160,7 @@ endif
     nnoremap <leader>md :InstantMarkdownPreview<CR>
     nnoremap <leader>g :exe ':Goyo'<CR>
     nnoremap <leader>gc :exe ':Git commit'<CR>
-    nnoremap <leader>gd :exe ':Gdiff'<CR>
+    nnoremap <leader>gd :exe ':Git diff'<CR>
     nnoremap <leader>gs :exe ':Gstatus'<CR>
 " Turns off relativenumber in reviewing code with someone
     nnoremap <F1> :set number norelativenumber<CR>
@@ -171,9 +172,6 @@ endif
     nnoremap <leader>cc :nohlsearch<CR>:redraw!<CR>
 " shows spelling errors
     nnoremap <leader>ss :setlocal spell!<CR>
-" Enable going down in case text is wrapped
-    nnoremap j gj
-    nnoremap k gk
 " Open vimrc from vim
     nnoremap <leader>vim :e $MYVIMRC<CR>
     nnoremap <F5> :so $MYVIMRC<CR>
@@ -183,9 +181,9 @@ endif
     nnoremap <C-K> <C-W><C-K>
     nnoremap <C-L> <C-W><C-L>
 " Moving through buffers
-    nnoremap <leader>bn :bnext<CR>
-    nnoremap <leader>bp :bprev<CR>
-    nnoremap <leader>bq :bdelete<CR>
+    nnoremap <TAB> :bnext<CR>
+    nnoremap <S-TAB> :bprevious<CR>
+    nnoremap <leader>bq :bdelete!<CR>
 " Quickfixlist mappings
     nnoremap <leader>q :copen<CR>
     nnoremap <leader>h :cprev<CR>
@@ -213,11 +211,15 @@ endif
     " opens VTerminal() HTerminal() functions for debugging scripts
     nnoremap <leader>dv :call VTerminal()<CR>
     nnoremap <leader>dh :call HTerminal()<CR>
-" Sizing window horizontally
-    nnoremap <A-,> <C-W>5<
-    nnoremap <A-.> <C-W>5>
-" Make esc leave terminal mode
-    tnoremap <leader><Esc> <C-\><C-n>
+" Use alt + hjkl to resize windows
+    nnoremap <M-j>    :resize -2<CR>
+    nnoremap <M-k>    :resize +2<CR>
+    nnoremap <M-h>    :vertical resize -2<CR>
+    nnoremap <M-l>    :vertical resize +2<CR>
+" Maximize current split
+    nnoremap <C-w>o :call MaximizeToggle()<CR>
+" Maximize current split while in terminal mode
+    tnoremap <C-w>o <C-\><C-n>:call MaximizeToggle()<CR>A
 " Switch between tabs
     nnoremap <Right> gt
     nnoremap <Left>  gT
@@ -264,6 +266,23 @@ fun! HTerminal()
 endfunction
 
 
+" Function to maximize current split
+" Credit - https://vim.fandom.com/wiki/Maximize_window_and_return_to_previous_split_structure
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
 " ------------------------------------------------------- Auto Commands -------------------------------------------------------
 
 " automatically highlight yanked text (requires neovim)
@@ -282,7 +301,32 @@ let g:instant_markdown_autostart = 0	" disable autostart
 " has vim-instant-markdown use the suckless browser surf for markdown viewing
 let g:instant_markdown_browser = "surf"
 let g:vim_markdown_folding_disabled = 1 " Disables folding for markdown files
+" Goyo settings
+let g:goyo_width = 140
+let g:goyo_height = 50
 
+function! s:goyo_enter()
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+    let g:indentLine_enabled = 0
+    let g:indent_blankline_enabled = v:false
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+endfunction
+
+function! s:goyo_leave()
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+    let g:indentLine_enabled = 1
+    let g:indent_blankline_enabled = v:true
+    set showmode
+    set showcmd
+    set scrolloff=8
+endfunction
+
+    autocmd! User GoyoEnter nested call <SID>goyo_enter()
+    autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Treesitter config to get highlighting working
 lua <<EOF
