@@ -47,6 +47,9 @@ call plug#begin()
 " Neovim Tree shitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
+" Magit neogit clone
+    Plug 'TimUntersberger/neogit'
+
 
 call plug#end()
 
@@ -73,9 +76,17 @@ let g:compe.source.nvim_lua = v:true
 let g:compe.source.vsnip = v:true
 let g:compe.source.ultisnips = v:true
 
+" Required for bufferline
 lua require'bufferline'.setup{}
 " configs for LSP
 lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
+
+" Required for neogit
+lua <<EOF
+local neogit = require('neogit')
+neogit.setup {}
+EOF
+
 
 lua <<EOF
 require'lualine'.setup {
@@ -88,17 +99,17 @@ require'lualine'.setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch'},
+    --lualine_b = {'branch'},
     lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_x = {'fileformat', 'filetype'},
+    lualine_y = {'diff'}
+    --lualine_z = {'location'}
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
     lualine_c = {'filename'},
-    lualine_x = {'location'},
+    --lualine_x = {'location'},
     lualine_y = {},
     lualine_z = {}
   },
@@ -157,7 +168,8 @@ cmap w!! w !sudo tee %
     let mapleader=" "
     nnoremap <leader>md :InstantMarkdownPreview<CR>
     nnoremap <leader>g :exe ':Goyo'<CR>
-" Turns off relativenumber in reviewing code with someone
+    nnoremap <leader>gd :Neogit kind=vsplit<CR>:set relativenumber<CR>
+" Turns off elativenumber in reviewing code with someone
     nnoremap <F1> :set number norelativenumber<CR>
     nnoremap <F2> :set number relativenumber<CR>
     nnoremap <F3> :set norelativenumber nonumber<CR>
@@ -193,7 +205,6 @@ cmap w!! w !sudo tee %
     nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
     nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
     nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
-    nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
     nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
 " Use tab & shift-tab to navigate through completion menu
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
