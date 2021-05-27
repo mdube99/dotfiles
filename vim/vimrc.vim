@@ -38,7 +38,7 @@ call plug#begin()
 " If you want to display icons, then use one of these plugins:
     Plug 'kyazdani42/nvim-web-devicons'
 " Shows git changes left of number line
-    Plug 'mhinz/vim-signify'
+    Plug 'lewis6991/gitsigns.nvim'
     Plug 'Yggdroot/indentline'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'PotatoesMaster/i3-vim-syntax'
@@ -47,11 +47,9 @@ call plug#begin()
 " Neovim Tree shitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
-" Magit neogit clone
-    Plug 'TimUntersberger/neogit'
 
 
-call plug#end()
+    call plug#end()
 
 " Needed for complete
 let g:compe = {}
@@ -80,21 +78,18 @@ let g:compe.source.ultisnips = v:true
 lua require'bufferline'.setup{}
 " configs for LSP
 lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
-
-" Required for neogit
-lua <<EOF
-local neogit = require('neogit')
-neogit.setup {}
-EOF
+lua require('gitsigns').setup()
 
 
+" Lualine config
 lua <<EOF
 require'lualine'.setup {
   options = {
     icons_enabled = true,
     theme = 'dracula',
     component_separators = {'', ''},
-    section_separators = {'', ''},
+    --section_separators = {'', ''},
+    section_separators = {'', ''},
     disabled_filetypes = {}
   },
   sections = {
@@ -103,7 +98,7 @@ require'lualine'.setup {
     lualine_c = {'filename'},
     lualine_x = {'fileformat', 'filetype'},
     lualine_y = {'diff'}
-    --lualine_z = {'location'}
+    --lualine_z = {'hostname'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -115,6 +110,16 @@ require'lualine'.setup {
   },
   tabline = {},
   extensions = {'fugitive'}
+}
+EOF
+
+" Treesitter config to get highlighting working
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
 }
 EOF
 
@@ -152,8 +157,6 @@ endif
     set formatoptions-=cro
     " set history=1000
     set noswapfile
-" sudo
-cmap w!! w !sudo tee %
 " Cursor line config that makes it usable on dark background
     set cursorline
     hi cursorline cterm=none term=none
@@ -168,8 +171,7 @@ cmap w!! w !sudo tee %
     let mapleader=" "
     nnoremap <leader>md :InstantMarkdownPreview<CR>
     nnoremap <leader>g :exe ':Goyo'<CR>
-    nnoremap <leader>gd :Neogit kind=vsplit<CR>:set relativenumber<CR>
-" Turns off elativenumber in reviewing code with someone
+" Turns off relativenumber in reviewing code with someone
     nnoremap <F1> :set number norelativenumber<CR>
     nnoremap <F2> :set number relativenumber<CR>
     nnoremap <F3> :set norelativenumber nonumber<CR>
@@ -224,6 +226,10 @@ cmap w!! w !sudo tee %
 " Switch between tabs
     nnoremap <Right> gt
     nnoremap <Left>  gT
+" yes
+    nnoremap Y y$
+" sudo
+    cmap w!! w !sudo tee %
 " ------------------------------------------------------- Functions -------------------------------------------------------
 
 " Abbreviation to insert the current date when typings cdate
@@ -284,27 +290,6 @@ function! MaximizeToggle()
     only
   endif
 endfunction
-" ------------------------------------------------------- Auto Commands -------------------------------------------------------
-
-" automatically highlight yanked text (requires neovim)
-augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=1000 }
-augroup END
-
-" YAML file settings
-    autocmd FileType yaml setlocal ts=2 ai sw=2 sts=0
-
-" vimwiki - Personal Wiki for Vim
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
-let g:instant_markdown_autostart = 0	" disable autostart
-" has vim-instant-markdown use the suckless browser surf for markdown viewing
-let g:instant_markdown_browser = "surf"
-let g:vim_markdown_folding_disabled = 1 " Disables folding for markdown files
-" Goyo settings
-let g:goyo_width = 140
-let g:goyo_height = 50
 
 function! s:goyo_enter()
     silent !tmux set status off
@@ -325,16 +310,70 @@ function! s:goyo_leave()
     set showcmd
     set scrolloff=8
 endfunction
+" ------------------------------------------------------- Auto Commands -------------------------------------------------------
 
+" automatically highlight yanked text (requires neovim)
+    augroup highlight_yank
+        autocmd!
+        au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=1000 }
+    augroup END
+
+" Goyo
     autocmd! User GoyoEnter nested call <SID>goyo_enter()
     autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-" Treesitter config to get highlighting working
+" starts terminals in insert mode
+    autocmd! TermOpen  * startinsert
+
+" YAML file settings
+    autocmd FileType yaml setlocal ts=2 ai sw=2 sts=0
+
+" vimwiki - Personal Wiki for Vim
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:instant_markdown_autostart = 0	" disable autostart
+" has vim-instant-markdown use the suckless browser surf for markdown viewing
+let g:instant_markdown_browser = "surf"
+let g:vim_markdown_folding_disabled = 1 " Disables folding for markdown files
+" Goyo settings
+let g:goyo_width = 140
+let g:goyo_height = 50
+
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
+  numhl = false,
+  linehl = false,
+  keymaps = {
+    -- Default keymap options
+    noremap = true,
+    buffer = true,
+
+    ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+    ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+    ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+    ['n <leader>hR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+    ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+    ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+
+    -- Text objects
+    ['o ih'] = ':<C-U>lua require"gitsigns".select_hunk()<CR>',
+    ['x ih'] = ':<C-U>lua require"gitsigns".select_hunk()<CR>'
+  },
+  watch_index = {
+    interval = 1000
+  },
+  current_line_blame = false,
+  sign_priority = 6,
+  update_debounce = 100,
+  status_formatter = nil, -- Use default
+  use_decoration_api = true,
+  use_internal_diff = true,  -- If luajit is present
 }
 EOF
