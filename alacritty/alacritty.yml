@@ -32,10 +32,6 @@
 #     cyan:    '#86c1b9'
 #     white:   '#f8f8f8'
 
-
-
-
-
 # Colors (Dracula)
 colors:
   # Default colors
@@ -64,6 +60,7 @@ colors:
     magenta: '#ff92d0'
     cyan:    '#9aedfe'
     white:   '#e6e6e6'
+
 window:
   dimensions:
     columns: 140
