@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+declare -i KEY
+KEY='14'
+declare -i STATE
+STATE=`xinput list-props $KEY|grep 'Device Enabled'|awk '{print $4}'`
+if [[ $STATE -eq 1 ]]; then
+  xinput disable $KEY
+else
+  xinput enable $KEY
+fi
+
