@@ -83,47 +83,6 @@ lua require'lspconfig'.pyright.setup{ on_attach=require'completion'.on_attach }
 lua require('gitsigns').setup()
 
 
-" Lualine config
-lua <<EOF
-require'lualine'.setup {
-  options = {
-    icons_enabled = true,
-    theme = 'dracula-nvim',
-    component_separators = {'', ''},
-    --section_separators = {'', ''},
-    section_separators = {'', ''},
-    disabled_filetypes = {}
-  },
-  sections = {
-    lualine_a = {'mode'},
-    --lualine_b = {'branch'},
-    lualine_c = {'filename'},
-    lualine_x = {'fileformat', 'filetype'},
-    lualine_y = {'diff'}
-    --lualine_z = {'hostname'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {'fugitive'}
-}
-EOF
-
-" Treesitter config to get highlighting working
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-  },
-}
-EOF
 
 " Color settings
     colorscheme dracula
@@ -161,10 +120,6 @@ endif
     set noswapfile
 " Cursor line config that makes it usable on dark background
     set cursorline
-    hi cursorline cterm=none term=none
-    autocmd WinEnter * setlocal cursorline
-    autocmd WinLeave * setlocal nocursorline
-    highlight CursorLine guibg=#303000 ctermbg=234
     set guicursor=
     " Needed for LSP
     set completeopt=menuone,noselect
@@ -176,7 +131,6 @@ endif
 " Turns off relativenumber in reviewing code with someone
     nnoremap <F1> :set number norelativenumber<CR>
     nnoremap <F2> :set number relativenumber<CR>
-    nnoremap <F3> :set norelativenumber nonumber<CR>
 " Open HTML file in browser
     nnoremap <F12> :exe ':silent !brave %'<CR>
 " gets rid of search or visual bugs
@@ -243,16 +197,6 @@ fun! FixLastSpellingError()
     normal! mm[s1z='m""'
 endfun
 nnoremap <leader>sp :call FixLastSpellingError()<CR>
-
-" Easy replay last macro by pressing enter
-fun! ReplayLastMacro()
-    try
-        normal @@
-    catch /E748/
-        normal @q
-    endtry
-endfun
-nnoremap <silent> <CR> :call ReplayLastMacro()<CR>
 
 " automatically trims whitespace on file save
 fun! TrimWhitespace()
@@ -403,7 +347,49 @@ require("toggleterm").setup{
   insert_mappings = true, -- whether or not the open mapping applies in insert mode
   persist_size = true,
   direction = 'float',
-  close_on_exit = true, -- close the terminal window when the process exits
+  close_on_exit = false, -- close the terminal window when the process exits
   shell = vim.o.shell, -- change the default shell
   }
+EOF
+
+" Lualine config
+lua <<EOF
+require'lualine'.setup {
+  options = {
+    icons_enabled = true,
+    theme = 'dracula-nvim',
+    component_separators = {'', ''},
+    --section_separators = {'', ''},
+    section_separators = {'', ''},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    --lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {'fileformat', 'filetype'},
+    lualine_y = {'diff'}
+    --lualine_z = {'hostname'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {'fugitive'}
+}
+EOF
+
+" Treesitter config to get highlighting working
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
 EOF
