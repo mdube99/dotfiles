@@ -55,10 +55,8 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias calc="gcalccmd"
     alias volume="amixer sset 'Master'"
     alias piavpn="/opt/piavpn/bin/pia-client &"
-    alias league="WINEPREFIX=~/Games-Wine/LoL WINEARCH=win32 /opt/wine-lol/bin/wine ~/Games-Wine/LoL/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe"
     alias kalidocker="sudo docker run -ti -p 80:80 -p 443:443 -v /root/clients:/clients mdube/kali-docker"
     alias sec+="mupdf ~/vimwiki/securityplus/professor_messer_secplus_notes/professor-messer-comptia-sy0-501-security-plus-course-notes-v193.pdf &"
-
 
 # For vim mappings:
 	stty -ixon
