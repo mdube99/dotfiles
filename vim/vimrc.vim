@@ -43,11 +43,13 @@ call plug#begin()
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'PotatoesMaster/i3-vim-syntax'
 " themes
-    Plug 'dracula/vim', { 'as': 'dracula' }
-" Neovim Tree shitter
+" dracula nvim port that supports treesitter
+    Plug 'Mofiqul/dracula.nvim'
+" Neovim Tree sitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
 
+    Plug 'akinsho/nvim-toggleterm.lua'
 
     call plug#end()
 
@@ -86,7 +88,7 @@ lua <<EOF
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'dracula',
+    theme = 'dracula-nvim',
     component_separators = {'', ''},
     --section_separators = {'', ''},
     section_separators = {'', ''},
@@ -104,7 +106,7 @@ require'lualine'.setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = {'filename'},
-    --lualine_x = {'location'},
+    lualine_x = {'location'},
     lualine_y = {},
     lualine_z = {}
   },
@@ -327,6 +329,10 @@ endfunction
 
 " YAML file settings
     autocmd FileType yaml setlocal ts=2 ai sw=2 sts=0
+" Markdown file settings
+    autocmd FileType md setlocal spell!
+" Java file settings
+    autocmd FileType java set makeprg=javac\ %
 
 " vimwiki - Personal Wiki for Vim
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
@@ -376,4 +382,28 @@ require('gitsigns').setup {
   use_decoration_api = true,
   use_internal_diff = true,  -- If luajit is present
 }
+EOF
+
+lua <<EOF
+require("toggleterm").setup{
+  -- size can be a number or function which is passed the current terminal
+  size = function(term)
+    if term.direction == "horizontal" then
+      return 15
+    elseif term.direction == "vertical" then
+      return vim.o.columns * 0.3
+    end
+  end,
+  open_mapping = [[<c-\>]],
+  hide_numbers = true, -- hide the number column in toggleterm buffers
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = '2', -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+  start_in_insert = true,
+  insert_mappings = true, -- whether or not the open mapping applies in insert mode
+  persist_size = true,
+  direction = 'float',
+  close_on_exit = true, -- close the terminal window when the process exits
+  shell = vim.o.shell, -- change the default shell
+  }
 EOF
