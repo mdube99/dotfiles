@@ -91,6 +91,16 @@ key_bindings:
 
 font:
   size: 10
+  normal:
+    family: JetBrainsMono Nerd Font
+    style: Regular
+  bold:
+    family: JetBrainsMono Nerd Font
+    style: Bold
+  italic:
+    family: JetBrainsMono Nerd Font
+    style: Italic
+
 
 mouse_binding:
   - { mouse: Middle,            action: PasteSelection        }
