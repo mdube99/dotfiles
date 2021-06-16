@@ -1,10 +1,10 @@
-# up
-	function up_widget() {
-		BUFFER="cd .."
-		zle accept-line
-	}
-	zle -N up_widget
-	bindkey "^k" up_widget
+# # up
+# 	function up_widget() {
+# 		BUFFER="cd .."
+# 		zle accept-line
+# 	}
+# 	zle -N up_widget
+# 	bindkey "^k" up_widget
 
 # git
 	function git_prepare() {
@@ -23,14 +23,14 @@
 	zle -N git_prepare
 	bindkey "^g" git_prepare
 
-# home
-	function goto_home() { 
-		BUFFER="cd ~/"$BUFFER
-		zle end-of-line
-		zle accept-line
-	}
-	zle -N goto_home
-	bindkey "^h" goto_home
+# # home
+# 	function goto_home() { 
+# 		BUFFER="cd ~/"$BUFFER
+# 		zle end-of-line
+# 		zle accept-line
+# 	}
+# 	zle -N goto_home
+# 	bindkey "^h" goto_home
 
 # Edit and rerun
 	function edit_and_run() {
@@ -62,3 +62,13 @@
 	}
 	zle -N add_sudo
 	bindkey "^s" add_sudo
+
+# Run last command again
+	function runLastLine() {
+        # Get previous history item
+        zle up-history
+        # confirm command
+		zle accept-line
+	}
+	zle -N runLastLine
+	bindkey "^n" runLastLine
