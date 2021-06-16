@@ -16,8 +16,9 @@ clear
 	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
 
 # Settings
-    export VISUAL=vim
-    MANPAGER='vim +Man!'
+    export VISUAL=nvim
+    MANPAGER='nvim +Man!'
+    export EDITOR=nvim
 
 
     plugins=(
@@ -42,8 +43,10 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 
 #Aliases
     alias cd="c"
+    alias ls="ls -F --color=auto --group-directories-first --sort=version"
     alias vi="vim"
     alias pubip="curl ipinfo.io/ip"
+    alias ls="ls --color=auto"
     alias ll=" ls -l --group-directories-first"
     alias vim="/usr/local/bin/nvim"
     alias nvim "/usr/local/bin/nvim"
