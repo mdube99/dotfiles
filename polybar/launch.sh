@@ -9,4 +9,11 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bar
-polybar -q main --config=/$HOME/dotfiles/polybar/config.ini &
+# Little script to have polybar open on every monitor
+if type "xrandr"; then
+    for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+        MONITOR=$m polybar -q main --config=/$HOME/dotfiles/polybar/config.ini &
+    done
+else
+    polybar -q main --config=/$HOME/dotfiles/polybar/config.ini &
+fi
