@@ -86,9 +86,7 @@ echo
 
 printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "so $HOME/dotfiles/vim/vimrc.vim" > ~/.vimrc
-# symlink for neovim
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
-printf "source-file $HOME/dotfiles/vifm/vifmrc" > ~/.config/vifm/vifmrc
 
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
