@@ -5,7 +5,7 @@ ID=`xinput list | grep -Eio '(touchpad|glidepoint|Synaptics TM3471).*id\=[0-9]{1
 declare -i STATE
 STATE=`xinput list-props $ID|grep 'Device Enabled'|awk '{print $4}'`
 if [[ $STATE -eq 1 ]]; then
-  xinput disable $ID
+  xinput disable $ID && notify-send "Touchpad disabled"
 else
-  xinput enable $ID
+  xinput enable $ID && notify-send "Touchpad enabled"
 fi
