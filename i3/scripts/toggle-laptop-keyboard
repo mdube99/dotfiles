@@ -5,8 +5,8 @@ KEY=`xinput list | grep -Eio 'Razer Razer Blade Keyboard.*id\=[0-9]{1,2}' |  gre
 declare -i STATE
 STATE=`xinput list-props $KEY|grep 'Device Enabled'|awk '{print $4}'`
 if [[ $STATE -eq 1 ]]; then
-  xinput disable $KEY && notify-send "Keyboard disabled"
+  xinput disable $KEY && notify-send --icon=N/A -u low "Keyboard disabled"
 else
-  xinput enable $KEY && notify-send "Keyboard enabled"
+  xinput enable $KEY && notify-send --icon=N/A -u low "Keyboard enabled"
 fi
 
