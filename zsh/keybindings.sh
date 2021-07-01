@@ -1,11 +1,3 @@
-# # up
-# 	function up_widget() {
-# 		BUFFER="cd .."
-# 		zle accept-line
-# 	}
-# 	zle -N up_widget
-# 	bindkey "^k" up_widget
-
 # git
 	function git_prepare() {
 		if [ -n "$BUFFER" ];
@@ -22,15 +14,6 @@
 	}
 	zle -N git_prepare
 	bindkey "^g" git_prepare
-
-# # home
-# 	function goto_home() { 
-# 		BUFFER="cd ~/"$BUFFER
-# 		zle end-of-line
-# 		zle accept-line
-# 	}
-# 	zle -N goto_home
-# 	bindkey "^h" goto_home
 
 # Edit and rerun
 	function edit_and_run() {
@@ -55,6 +38,14 @@
 	zle -N exit_tmux
 	bindkey "^q" exit_tmux
 
+# Exit tmux-session
+	function tmux_kill_session() {
+        BUFFER="tmux kill-session"
+		zle accept-line
+	}
+	zle -N tmux_kill_session
+	bindkey "^k" tmux_kill_session
+
 # Sudo
 	function add_sudo() {
 		BUFFER="sudo "$BUFFER
@@ -72,3 +63,11 @@
 	}
 	zle -N runLastLine
 	bindkey "^n" runLastLine
+
+    # Home - Navigates to the current root workspace
+function git_root() {
+	BUFFER="cd $(git rev-parse --show-toplevel || echo ".")"
+	zle accept-line
+}
+zle -N git_root
+bindkey "^h" git_root
