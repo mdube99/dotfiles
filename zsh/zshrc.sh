@@ -1,12 +1,13 @@
 clear
+export TERM=screen-256color
 
 
 # Vars
 	HISTFILE=~/.zsh_history
-	SAVEHIST=1000
+	SAVEHIST=10000
 	setopt inc_append_history # To save every command before it is executed
 	setopt share_history # setopt inc_append_history
-        KEYTIMEOUT=1
+    KEYTIMEOUT=2
 
 	git config --global push.default current
 
@@ -31,35 +32,42 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
  	# Custom cd
  	c() {
  		cd $1;
- 		ls -l;
+ 		ls -1;
  	}
 
 # I can never remember the exact command to convert from docx to md so i thought this would be easier
-        convert2md() {
+    convert2md() {
 
-            pandoc -s $1 --wrap=none --reference-links -t markdown -o $2
+        pandoc -s $1 --wrap=none --reference-links -t markdown -o $2
 
-        }
+    }
+
+# easier to type to run docx or excel files from command line
+    office() {
+        libreoffice $1 &
+
+    }
 
 #Aliases
     alias cd="c"
-    alias ls="ls -F --color=auto --group-directories-first --sort=version"
-    alias vi="vim"
+    alias ls="ls --color=auto  --sort=version --group-directories-first"
     alias pubip="curl ipinfo.io/ip"
     alias ls="ls --color=auto"
     alias ll=" ls -l --group-directories-first"
+    alias vi="/usr/local/bin/nvim"
     alias vim="/usr/local/bin/nvim"
     alias nvim "/usr/local/bin/nvim"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
     alias speedtest="speedtest-cli"
-    alias vscode="code"
     alias calc="gcalccmd"
     alias volume="amixer sset 'Master'"
     alias piavpn="/opt/piavpn/bin/pia-client &"
     alias kalidocker="sudo docker run -ti -p 80:80 -p 443:443 -v /root/clients:/clients mdube/kali-docker"
     alias sec+="mupdf ~/vimwiki/securityplus/professor_messer_secplus_notes/professor-messer-comptia-sy0-501-security-plus-course-notes-v193.pdf &"
+    alias pomodoro="python ~/development/Pomodoro/main.py"
+    alias pptxtopdf="soffice --headless --convert-to pdf $1"
 
 # For vim mappings:
 	stty -ixon
@@ -102,4 +110,5 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 fi
 
 source ~/dotfiles/zsh/prompt.sh
-export PATH=$PATH:$HOME/dotfiles/utils
+# Path for scripts such as ta
+export PATH=$HOME/development/scripts:$PATH
