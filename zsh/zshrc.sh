@@ -1,5 +1,4 @@
 clear
-export TERM=screen-256color
 
 
 # Vars
@@ -18,8 +17,11 @@ export TERM=screen-256color
 
 # Settings
     export VISUAL=nvim
+    export TERM=screen-256color
     MANPAGER='nvim +Man!'
     export EDITOR=nvim
+    # Path for scripts such as ta
+    export PATH=$HOME/development/scripts:$PATH
 
 
     plugins=(
@@ -110,5 +112,3 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 fi
 
 source ~/dotfiles/zsh/prompt.sh
-# Path for scripts such as ta
-export PATH=$HOME/development/scripts:$PATH
