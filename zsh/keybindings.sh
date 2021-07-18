@@ -65,9 +65,9 @@
 	bindkey "^n" runLastLine
 
     # Home - Navigates to the current root workspace
-function git_root() {
-	BUFFER="cd $(git rev-parse --show-toplevel || echo ".")"
-	zle accept-line
-}
-zle -N git_root
-bindkey "^h" git_root
+    function git_root() {
+        BUFFER="cd $(git rev-parse --show-toplevel || echo ".")"
+        zle accept-line
+    }
+    zle -N git_root
+    bindkey "^h" git_root
