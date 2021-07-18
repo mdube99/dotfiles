@@ -20,26 +20,39 @@ gaps inner 10
 gaps outer 10
 for_window [class="^.*"] border pixel 0
 popup_during_fullscreen smart
-focus_on_window_activation focus
+focus_on_window_activation smart
 font pango:monospace 11
 
-set $term exec --no-startup-id st
-bindsym $mod+shift+f exec firefox
+set $term exec --no-startup-id alacritty --config-file $HOME/dotfiles/alacritty/alacritty.yml
+bindsym $mod+shift+f exec brave
+bindsym $mod+z $floater
+bindsym $mod+shift+z floating disable
+bindsym $alt+z $scratch_move
+bindsym $alt+shift+z $scratch_show
+# Floating youtube window
+bindsym $mod+y fullscreen disable; floating enable; resize set 400 300; sticky enable; move window to position 1340 20
 
-set $floater floating enable, resize set 1600 900
+
+set $floater floating enable, resize set 1600 900, move position center
 set $float_center floating enable, resize set 1920 783, move position center
 set $scratch_move sticky enable, move scratchpad
-set $scratch_show scratchpad show, move position center
+set $scratch_show scratchpad show
+
+for_window [class="blueman-applet"] floating enable
+for_window [class="nm-connection-editor"] floating enable,
+for_window [class="Gnome-calculator"] floating enable, move position 900 px 580 px, exec xdotool search --class Gnome-calculator getwindowpid -- windowsize %@ 250 195
 
 ##################################
 ##################################
-##	         STARTUP 			##
+##	         STARTUP 	##
 ##################################
 ##################################
 
-exec_always feh --bg-scale ~/Pictures/Wallpapers/Stark.jpg
+exec_always feh --bg-scale ~/Pictures/Mountain.jpg
+exec bash $HOME/dotfiles/polybar/launch.sh
 exec compton -f
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id /opt/pia/run.sh
 
 set $bg-color            #2f343f
@@ -55,22 +68,6 @@ client.unfocused        $iancative-bg-color $inactive-bg-color $inactive-text-co
 client.focused_inactive $iancative-bg-color $inactive-bg-color $inactive-text-color #00ff00
 client.urgent $urgent-bg-color $urgent-bg-color $text-color #00ff00
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar
-bar {
-   status_command i3blocks -c ~/.i3blocks.conf
-        position bottom
-        colors {
-                background $bg-color
-                separator #757575
-                #                  border             background         text
-                focused_workspace  $bg-color          $bg-color          $text-color
-                inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-                urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-        }
-}
-
 ##################################
 ##################################
 ##	BINDINGS		##
@@ -78,10 +75,10 @@ bar {
 ##################################
 
 #change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+H focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -89,18 +86,18 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 #move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
+bindsym $mod+Shift+H move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move right
 bindsym $mod+Shift+l move right
-bindsym $mod+Shift+semicolon move right
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+h split h
-bindsym $mod+v split v
+# bindsym $mod+h split h
+# bindsym $mod+v split v
 
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+Space floating toggle
@@ -109,15 +106,20 @@ bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $Mod+Shift+x exec --no-startup-id i3lock -i ~/.config/i3/scripts/lockscreenimage.png
 
+# Floating positions (all corners of the screen) - useful for terminals
+bindsym $alt+H floating enable; resize set 720 480; move window to position 50px 50px
+bindsym $alt+j floating enable; resize set 720 480; move window to position 100px 500px
+bindsym $alt+k floating enable; resize set 720 480; move window to position 1150px 500px
+bindsym $alt+l floating enable; resize set 720 480; move window to position 1150px 50px
+
 bindsym $mod+Shift+q kill
 bindsym $mod+Return $term -e tmux
 
 bindsym $mod+u $term -e ranger
 #bindsym $mod+shift+u exec sudo $term -e ranger /
 
-#bindsym $mod+d exec rofi -show run -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
-bindsym $mod+d exec dmenu_run -fn 'Monospace-11'  
-bindsym $mod+shift+d gaps inner current set 0; gaps outer current set 0
+bindsym $mod+d exec ~/.config/rofi/bin/launcher_colorful
+bindsym $mod+shift+d exec dmenu_run
 
 bindsym $mod+s gaps inner current plus 5
 bindsym $mod+Shift+s gaps inner current minus 5
@@ -140,6 +142,16 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
+        bindsym shift+j resize shrink width 25 px or 25 ppt
+        bindsym shift+k resize grow height 25 px or 25 ppt
+        bindsym shift+l resize shrink height 25 px or 25 ppt
+        bindsym shift+semicolon resize grow width 25 px or 25 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym shift+Left resize shrink width 25 px or 25 ppt
+        bindsym shift+Down resize grow height 25 px or 25 ppt
+        bindsym shift+Up resize shrink height 25 px or 25 ppt
+        bindsym shift+Right resize grow width 25 px or 25 ppt
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -148,16 +160,22 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Multimedia Keys
 # increase volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 3%+
 # decrease volume
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- unmute
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 3%- unmute
 # mute volume
 bindsym XF86AudioMute exec amixer -D pulse sset Master 0%
+# Print screen
+bindsym Print exec flameshot gui
+# Disable touchpad
+bindsym $mod+t exec $HOME/dotfiles/i3/toggle-touchpad
+# Disable laptop keyboard
+bindsym $mod+$alt+shift+t exec $HOME/dotfiles/i3/toggle-laptop-keyboard
 
 ##################################
 ##################################
@@ -175,7 +193,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-bindsym $mod+grave workspace Work 
+bindsym $mod+grave workspace Work
 
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -201,4 +219,4 @@ bindsym $mod+Shift+Delete workspace lmao ; exec $term -e htop ; exec $term -e ra
 ##################################
 
 bindsym $mod+space gaps inner current set 0; gaps outer current set 0
-bindsym $mod+$alt+space gaps inner current set 10; gaps outer current set 10
+bindsym $mod+$alt+l gaps inner current set 10; gaps outer current set 10
