@@ -2,7 +2,7 @@
 colors:
   # Default colors
   primary:
-    background: '#282a36'
+    background: '#282a34'
     foreground: '#f8f8f2'
 
   # Normal colors
@@ -56,7 +56,7 @@ key_bindings:
 - { key: End,      mods: Shift, action: ScrollToBottom,        }
 
 font:
-  size: 10
+  size: 14
   normal:
     family: JetBrainsMono Nerd Font
     style: Regular
