@@ -70,6 +70,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias sec+="mupdf ~/vimwiki/securityplus/professor_messer_secplus_notes/professor-messer-comptia-sy0-501-security-plus-course-notes-v193.pdf &"
     alias pomodoro="python ~/development/Pomodoro/main.py"
     alias pptxtopdf="soffice --headless --convert-to pdf $1"
+    alias league="sudo sysctl -w abi.vsyscall32=0"
 
 # For vim mappings:
 	stty -ixon
