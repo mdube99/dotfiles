@@ -33,8 +33,8 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 
  	# Custom cd
  	c() {
- 		cd $1;
- 		ls -1;
+        cd $1;
+        ls -1;
  	}
 
 # I can never remember the exact command to convert from docx to md so i thought this would be easier
@@ -57,7 +57,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias ls="ls --color=auto"
     alias ll=" ls -l --group-directories-first"
     alias vi="/usr/local/bin/nvim"
-    alias vim="/usr/local/bin/nvim"
+    alias vim="lvim"
     alias nvim "/usr/local/bin/nvim"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
@@ -113,3 +113,32 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 fi
 
 source ~/dotfiles/zsh/prompt.sh
+
+# FZF
+
+# fzf command history search
+fh() {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
+# fkill - kill process
+fkill() {
+  local pid
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    echo $pid | xargs kill -${1:-9}
+  fi
+}
+
+# Install packages using yay (change to pacman/AUR helper of your choice)
+pacin() {
+    yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
+}
+
+# Remove installed packages (change to pacman/AUR helper of your choice)
+pacre() {
+    yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
+}
+
