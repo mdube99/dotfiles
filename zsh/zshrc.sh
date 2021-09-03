@@ -1,6 +1,3 @@
-clear
-
-
 # Vars
 	HISTFILE=~/.zsh_history
 	SAVEHIST=10000
@@ -12,13 +9,9 @@ clear
 
 	mkdir -p /tmp/log
 
-	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
-	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
-
 # Settings
     export VISUAL=nvim
     export TERM=screen-256color
-    MANPAGER='nvim +Man!'
     export EDITOR=nvim
     # Path for scripts such as ta
     export PATH=$HOME/development/scripts:$PATH
@@ -34,7 +27,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
  	# Custom cd
  	c() {
         cd $1;
-        ls -1;
+        logo-ls -1;
  	}
 
 # I can never remember the exact command to convert from docx to md so i thought this would be easier
@@ -52,25 +45,27 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 
 #Aliases
     alias cd="c"
+    alias activateanaconda="source /opt/anaconda/bin/activate root"
     alias ls="ls --color=auto  --sort=version --group-directories-first"
     alias pubip="curl ipinfo.io/ip"
-    alias ls="ls --color=auto"
-    alias ll=" ls -l --group-directories-first"
-    alias vi="/usr/local/bin/nvim"
+    alias ls="logo-ls"
+    alias ll="ls -l"
     alias vim="lvim"
     alias nvim "/usr/local/bin/nvim"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
     alias speedtest="speedtest-cli"
-    alias calc="gcalccmd"
     alias volume="amixer sset 'Master'"
-    alias piavpn="/opt/piavpn/bin/pia-client &"
     alias kalidocker="sudo docker run -ti -p 80:80 -p 443:443 -v /root/clients:/clients mdube/kali-docker"
     alias sec+="mupdf ~/vimwiki/securityplus/professor_messer_secplus_notes/professor-messer-comptia-sy0-501-security-plus-course-notes-v193.pdf &"
     alias pomodoro="python ~/development/Pomodoro/main.py"
     alias pptxtopdf="soffice --headless --convert-to pdf $1"
     alias league="sudo sysctl -w abi.vsyscall32=0"
+    #NOTE: for ST
+    alias load="kill -USR1 $(pidof st)"
+    alias use="xrdb merge"
+
 
 # For vim mappings:
 	stty -ixon
@@ -117,7 +112,7 @@ source ~/dotfiles/zsh/prompt.sh
 # FZF
 
 # fzf command history search
-fh() {
+fzh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
