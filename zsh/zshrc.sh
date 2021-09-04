@@ -32,15 +32,12 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 
 # I can never remember the exact command to convert from docx to md so i thought this would be easier
     convert2md() {
-
         pandoc -s $1 --wrap=none --reference-links -t markdown -o $2
-
     }
 
 # easier to type to run docx or excel files from command line
     office() {
         libreoffice $1 &
-
     }
 
 #Aliases
