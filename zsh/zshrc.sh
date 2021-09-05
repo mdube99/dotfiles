@@ -130,7 +130,7 @@ pacin() {
 }
 
 # Remove installed packages (change to pacman/AUR helper of your choice)
-pacre() {
+pacrm() {
     yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
 
