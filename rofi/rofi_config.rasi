@@ -5,7 +5,7 @@ configuration{
     lines: 5;
     font: "JetBrainsMono NerdFont 12";
     show-icons: true;
-    icon-theme: "Oranchelo";
+    icon-theme: "Papirus";
     terminal: "st";
     drun-display-format: "{icon} {name}";
     display-drun: " ";
@@ -29,7 +29,7 @@ window {
     height: 420px;
     border: 4px;
     border-color: #e16c75;
-    border-radius: 13px;
+    /* border-radius: 13px; */
 }
 
 mainbox {
