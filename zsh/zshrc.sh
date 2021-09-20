@@ -47,7 +47,8 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
     alias pubip="curl ipinfo.io/ip"
     alias ls="logo-ls"
     alias ll="ls -l"
-    alias vim="lvim"
+    alias vim="$HOME/.local/bin/lvim"
+    alias lvim="$HOME/.local/bin/lvim"
     alias nvim "/usr/local/bin/nvim"
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
@@ -133,4 +134,3 @@ pacin() {
 pacrm() {
     yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
-
