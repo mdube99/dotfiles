@@ -11,19 +11,21 @@ option6="monitor DP-1-0 right of eDP-1"
 option7="monitor DP-1-0 left of eDP-1"
 option8="monitor DP-1-0 above eDP-1"
 option9="gaming"
-option10="dock monitor"
-option11="jpl"
+option10="dock laptop"
+option11="side monitor normal"
+option12="side monitor portrait"
 
 # Variable passed to rofi
-options="$option0\n$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7\n$option8\n$option9\n$option10\n$option11"
+options="$option0\n$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7\n$option8\n$option9\n$option10\n$option11\n$option12"
 
-selected="$(echo -e "$options" | rofi -lines 13 -dmenu -theme ~/dotfiles/rofi/rofi_config.rasi -p "xrandr")"
+selected="$(echo -e "$options" | rofi -lines 13 -dmenu -p "xrandr" -theme ~/dotfiles/rofi/rofi_no_icon_config.rasi "xrandr")"
 
 case $selected in
     $option0)
         xrandr --auto;;
     $option1)
-        xrandr --output eDP-1 --off;;
+        xrandr --output eDP-1-1 --off
+        bash ~/dotfiles/polybar/launch.sh &;;
     $option2)
         xrandr --output DP-1-0 --off;;
 	$option3)
@@ -43,5 +45,7 @@ case $selected in
     $option10)
         bash $HOME/development/scripts/dock;;
     $option11)
-        bash $HOME/dotfiles/i3/scripts/jpl;;
+        bash $HOME/dotfiles/i3/scripts/docked_non_portrait.sh;;
+    $option12)
+        bash $HOME/development/scripts/dock;;
 esac

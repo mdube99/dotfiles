@@ -8,7 +8,7 @@ configuration{
     icon-theme: "Papirus";
     terminal: "st";
     drun-display-format: "{name}";
-    display-drun: " ";
+    display-drun: "hello";
     location: 0;
     separator-style: "solid";
     disable-history: false;
