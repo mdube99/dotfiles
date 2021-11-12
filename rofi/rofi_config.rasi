@@ -1,6 +1,6 @@
 configuration{
     modi: "drun";
-    width: 40;
+    width: 30;
     columns: 1;
     lines: 5;
     font: "JetBrainsMono NerdFont 12";
@@ -8,7 +8,7 @@ configuration{
     icon-theme: "Papirus";
     terminal: "st";
     drun-display-format: "{icon} {name}";
-    display-drun: " ";
+    display-drun: "search";
     location: 0;
     separator-style: "solid";
     disable-history: false;
@@ -16,7 +16,7 @@ configuration{
 }
 
 * {
-    background-color:  #1e222a;
+    background-color:  #1a1b26;
     border-color: #D8DEE9;
     border-radius: 10;
     text-color: #D8DEE9;
@@ -29,7 +29,7 @@ window {
     padding: 10px;
     height: 420px;
     border: 4px;
-    border-color: #e16c75;
+    border-color: #414868;
     /* border-radius: 13px; */
 }
 
@@ -43,7 +43,7 @@ inputbar {
 }
 
 prompt {
-    background-color: #61afef;
+    background-color: #7aa2f7;
     padding: 5px 5px 0px;
     text-color: @background-color;
 }
@@ -59,20 +59,25 @@ entry {
 
 listview {
     border: 0px 0px 0px;
-    padding: 6px 0px 0px;
     columns: 2;
 }
 
-element {
-    padding: 5px;
-}
 
 element-icon {
-size: 25px;
+    size: 30px;
+    padding: 0px;
+}
+
+element-icon selected {
+    background-color: #414868;
+}
+
+element-text selected {
+    background-color: #414868;
 }
 
 element selected {
-    background-color: #282c34  ;
+    background-color: #414868;
     text-color: #fff ;
 }
 
