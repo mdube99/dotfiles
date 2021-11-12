@@ -19,6 +19,7 @@ option12="side monitor portrait"
 options="$option0\n$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7\n$option8\n$option9\n$option10\n$option11\n$option12"
 
 selected="$(echo -e "$options" | rofi -lines 13 -dmenu -p "xrandr" -theme ~/dotfiles/rofi/rofi_no_icon_config.rasi "xrandr")"
+# selected="$(echo -e "$options" | rofi -lines 13 -dmenu -theme ~/dotfiles/rofi/test.rasi "xrandr")"
 
 case $selected in
     $option0)
