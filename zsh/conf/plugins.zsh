@@ -19,4 +19,3 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "iridakos/goto"
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
