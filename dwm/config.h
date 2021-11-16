@@ -3,7 +3,7 @@
 #define XF86MonBrightnessDown 0x1008ff03
 #define XF86MonBrightnessUp 0x1008ff02
 #define PrintScreenDWM	    0x0000ff61
-#define ALTKEY Mod4Mask
+#define ALTKEY Mod1Mask
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -128,6 +128,7 @@ static const char *rofi[] = {"rofi", "-show", "drun", "-modi", "drun", "-theme",
 static const char *browser[] =  { "brave", NULL };
 static const char *dock[] =  { "bash", "/home/mdube-manjaro/development/scripts/dock", NULL };
 static const char *flux[] =  { "bash", "/home/mdube-manjaro/development/scripts/flux", NULL };
+static const char *mute[] =  { "bash", "/home/mdube-manjaro/dotfiles/scripts/volume-toggle", NULL };
 static const char *flameshot[] =  { "flameshot", "gui", NULL };
 static const char *xi[] = {"light", "-A", "5", NULL};
 static const char *xd[] = {"light", "-U", "5", NULL};
@@ -139,6 +140,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = browser } },
     { MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dock }},
     { 0|ShiftMask,                  XK_F1,    spawn,          {.v = flux }},
+    { MODKEY|ShiftMask,                  XK_m,    spawn,          {.v = mute }},
 
     {MODKEY | ControlMask, XK_u, spawn, SHCMD("maim | xclip -selection clipboard -t image/png")},
     {MODKEY, XK_u, spawn,   SHCMD("maim --select | xclip -selection clipboard -t image/png")},
@@ -159,7 +161,9 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
     { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
     { MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+    { MODKEY|ALTKEY,                XK_space,  zoom,           {0} },
     { MODKEY,                       XK_Tab,    view,           {0} },
+    { MODKEY,                       XK_v,      focusmaster,           {0} },
 
     // overall gaps
     { MODKEY|ControlMask,           XK_i,      incrgaps,       {.i = +1 } },
