@@ -97,6 +97,7 @@ static const Layout layouts[] = {
     /* symbol     arrange function */
     { "[]=",      tile },    /* first entry is default */
     { "[M]",      monocle },
+    { "|||",      col },
     { "[@]",      spiral },
     { "[\\]",     dwindle },
     { "H[]",      deck },
@@ -186,8 +187,9 @@ static Key keys[] = {
     { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
     { MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
     { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[3]} },
     { MODKEY|ControlMask,           XK_g,      setlayout,      {.v = &layouts[10]} },
-    { MODKEY|ControlMask|ShiftMask, XK_t,      setlayout,      {.v = &layouts[13]} },
+    { MODKEY|ControlMask|ShiftMask, XK_t,      setlayout,      {.v = &layouts[12]} },
     { MODKEY,                       XK_space,  setlayout,      {0} },
     { MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
     { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },

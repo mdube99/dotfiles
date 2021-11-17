@@ -226,6 +226,7 @@ static void checkotherwm(void);
 static void cleanup(void);
 static void cleanupmon(Monitor *mon);
 static void clientmessage(XEvent *e);
+static void col(Monitor *);
 static void configure(Client *c);
 static void configurenotify(XEvent *e);
 static void configurerequest(XEvent *e);
@@ -2020,6 +2021,37 @@ monocle(Monitor *m)
     resize(c, newx, newy, neww, newh, 0);
   }
 }
+
+
+void
+col(Monitor *m) {
+  unsigned int i, n, h, w, x, y, mw;
+  Client *c;
+
+  for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+  if(n == 0)
+    return;
+
+  if(n > m->nmaster)
+    mw = m->nmaster ? m->ww * m->mfact : 0;
+  else
+    mw = m->ww - m->gappih;
+
+  for(i = 0, x = y = m->gappih, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
+    if(i < m->nmaster) {
+      w = (mw - x) / (MIN(n, m->nmaster) - i);
+      resize(c, x + m->wx, m->wy + m->gappih, w - (2*c->bw), m->wh - (2*c->bw) - 2*m->gappih, False);
+      if (x + WIDTH(c) + m->gappih < m->ww)
+        x += WIDTH(c) + m->gappih;
+    } else {
+      h = (m->wh - y) / (n - i) - m->gappih;
+      resize(c, x + m->wx, m->wy + y, m->ww - x - (2*c->bw) - m->gappih, h - (2*c->bw), False);
+      if (y + HEIGHT(c) + m->gappih < m->wh)
+        y += HEIGHT(c) + m->gappih;
+    }
+  }
+}
+
 
 void motionnotify(XEvent *e) {
   unsigned int i, x;
