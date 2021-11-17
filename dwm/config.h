@@ -124,6 +124,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = {  "st", NULL }; // change this to your term
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 static const char *rofi[] = {"rofi", "-show", "drun", "-modi", "drun", "-theme", "/home/mdube-manjaro/dotfiles/rofi/rofi_config.rasi", NULL };
 static const char *browser[] =  { "brave", NULL };
 static const char *dock[] =  { "bash", "/home/mdube-manjaro/development/scripts/dock", NULL };
@@ -141,6 +143,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dock }},
     { 0|ShiftMask,                  XK_F1,    spawn,          {.v = flux }},
     { MODKEY|ShiftMask,                  XK_m,    spawn,          {.v = mute }},
+	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 
     {MODKEY | ControlMask, XK_u, spawn, SHCMD("maim | xclip -selection clipboard -t image/png")},
     {MODKEY, XK_u, spawn,   SHCMD("maim --select | xclip -selection clipboard -t image/png")},
@@ -160,7 +163,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
     { MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
     { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-    { MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, togglescratch,  {.v = scratchpadcmd } },
     { MODKEY|ALTKEY,                XK_space,  zoom,           {0} },
     { MODKEY,                       XK_Tab,    view,           {0} },
     { MODKEY,                       XK_v,      focusmaster,           {0} },
@@ -199,6 +202,7 @@ static Key keys[] = {
     { MODKEY|ControlMask,		    XK_comma,  cyclelayout,    {.i = -1 } },
     { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
     { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_s,      togglesticky,   {0} },
     { MODKEY,                       XK_f,      togglefullscr,  {0} },
     { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
     { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
