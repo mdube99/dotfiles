@@ -52,6 +52,10 @@ static const char *colors[][3]      = {
     [SchemeTag3]       = { orange, black,black },
     [SchemeTag4]       = { green, black, black },
     [SchemeTag5]       = { pink,  black, black },
+    [SchemeTag6]       = { blue,  black, black },
+    [SchemeTag7]       = { red,  black, black },
+    [SchemeTag8]       = { orange,  black, black },
+    [SchemeTag9]       = { green,  black, black },
     [SchemeLayout]     = { green, black, black }, 
     [SchemeBtnPrev]    = { green, black, black }, 
     [SchemeBtnNext]    = { yellow, black, black }, 
@@ -62,10 +66,12 @@ static const XPoint stickyicon[]    = { {0,0}, {4,0}, {4,8}, {2,6}, {0,8}, {0,0}
 static const XPoint stickyiconbb    = {4,8};	/* defines the bottom right corner of the polygon's bounding box (speeds up scaling) */
 
 /* tagging */
-static char *tags[] = {" ", " ", " ", " ", " ", "6"};
+// static char *tags[] = {" ", " ", " ", " ", " ", "6"};
+static char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
-                                  SchemeTag4, SchemeTag5
+                                  SchemeTag4, SchemeTag5, SchemeTag6,
+                                  SchemeTag7, SchemeTag8, SchemeTag9,
                                 };
 
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
