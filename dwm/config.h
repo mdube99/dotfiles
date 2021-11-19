@@ -202,7 +202,7 @@ static Key keys[] = {
     { MODKEY|ControlMask,           XK_t,      togglegaps,     {0} },
     { MODKEY|ControlMask|ShiftMask,             XK_d,      defaultgaps,    {0} },
 
-    { MODKEY|ShiftMask,                       XK_q,      killclient,     {0} },
+    { MODKEY,                       XK_q,      killclient,     {0} },
     { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
     { MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[2]} },
