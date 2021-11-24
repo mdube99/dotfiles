@@ -1,9 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 
-#define XF86MonBrightnessDown 0x1008ff03
-#define XF86MonBrightnessUp 0x1008ff02
-#define PrintScreenDWM	    0x0000ff61
-#define ALTKEY Mod1Mask
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -56,7 +52,7 @@ static const char *colors[][3]      = {
     [SchemeTag7]       = { red,  black, black },
     [SchemeTag8]       = { orange,  black, black },
     [SchemeTag9]       = { green,  black, black },
-    [SchemeLayout]     = { green, black, black }, 
+    [SchemeLayout]     = { green, gray2, black }, 
     [SchemeBtnPrev]    = { green, black, black }, 
     [SchemeBtnNext]    = { yellow, black, black }, 
     [SchemeBtnClose]   = { red, black, black }, 
@@ -121,6 +117,10 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
+#define XF86MonBrightnessDown   0x1008ff03
+#define XF86MonBrightnessUp     0x1008ff02
+#define PrintScreenDWM	        0x0000ff61
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -132,7 +132,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-g", "2", "-l", "15", "-p", " ", NULL };
 static const char *termcmd[]  = {  "st", NULL }; // change this to your term
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
@@ -147,7 +147,7 @@ static const char *xd[] = {"light", "-U", "5", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
-    { MODKEY,                       XK_d,      spawn,          {.v = rofi } },
+    { MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd }},  
     { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = browser } },
     { MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dock }},
