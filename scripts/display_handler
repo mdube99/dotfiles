@@ -1,7 +1,0 @@
-#!/bin/sh
-
-case "${SRANDRD_OUTPUT} ${SRANDRD_EVENT}" in
-    "DP-0 connected") echo "yes";;
-    "DP-2 connected") echo "yes";;
-    "eDP-1-1 connected") echo "yes";;
-esac
