@@ -132,7 +132,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-g", "2", "-l", "15", "-p", " ", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-c", "-g", "2", "-l", "20", "-p", " ", NULL };
 static const char *termcmd[]  = {  "st", NULL }; // change this to your term
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
