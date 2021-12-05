@@ -25,7 +25,7 @@ static const int vertpadtab         = 33;
 static const int horizpadtabi       = 15;
 static const int horizpadtabo       = 15;
 static const int scalepreview       = 4;
-static       int tag_preview        = 1;        /* 1 means enable, 0 is off */
+static       int tag_preview        = 0;        /* 1 means enable, 0 is off */
 
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=12",
                                         "Material Design Icons-Regular:size=12",
@@ -83,7 +83,7 @@ static const Rule rules[] = {
        	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
-      	{ "eww",      NULL,       NULL,       0,            0,           1,           -1 },
+    { "eww",      NULL,       NULL,       0,            0,           1,           -1 },
 };
 
 /* layout(s) */
@@ -136,14 +136,15 @@ static const char *dmenucmd[] = { "dmenu_run", "-c", "-g", "2", "-l", "20", "-p"
 static const char *termcmd[]  = {  "st", NULL }; // change this to your term
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-static const char *rofi[] = {"rofi", "-show", "drun", "-modi", "drun", "-theme", "/home/mdube-manjaro/dotfiles/rofi/rofi_config.rasi", NULL };
-static const char *browser[] =  { "brave", NULL };
+static const char *browser[] =  { "firefox", NULL };
 static const char *dock[] =  { "bash", "/home/mdube-manjaro/development/scripts/dock", NULL };
 static const char *flux[] =  { "bash", "/home/mdube-manjaro/development/scripts/flux", NULL };
 static const char *mute[] =  { "bash", "/home/mdube-manjaro/dotfiles/scripts/volume-toggle", NULL };
 static const char *flameshot[] =  { "flameshot", "gui", NULL };
 static const char *xi[] = {"light", "-A", "5", NULL};
 static const char *xd[] = {"light", "-U", "5", NULL};
+static const char *taskmanager[] = {"bash", "/home/mdube-manjaro/development/scripts/dm-kill", NULL};
+static const char *changebackground[] = {"bash", "/home/mdube-manjaro/development/scripts/bg-dm", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -154,6 +155,8 @@ static Key keys[] = {
     { 0|ShiftMask,                  XK_F1,     spawn,          {.v = flux }},
     { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mute }},
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+    { 0|ControlMask|ALTKEY,         XK_Delete, spawn,          {.v = taskmanager } },
+    { ALTKEY,                       XK_d,      spawn,          {.v = changebackground } },
 
     {MODKEY | ControlMask, XK_u, spawn, SHCMD("maim | xclip -selection clipboard -t image/png")},
     {MODKEY, XK_u, spawn,   SHCMD("maim --select | xclip -selection clipboard -t image/png")},
