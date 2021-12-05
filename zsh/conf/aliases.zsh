@@ -112,11 +112,11 @@ c() {
 }
 #Aliases
     alias cd="c"
+    alias g="git"
     alias activateanaconda="source /opt/anaconda/bin/activate root"
-    alias ls="ls --color=auto  --sort=version --group-directories-first"
     alias pubip="curl ipinfo.io/ip"
-    alias ls="exa --icons"
-    alias ll="ls -l"
+    alias ls="exa --icons --sort newest"
+    alias ll="ls -l --sort newest"
     alias vim="$HOME/.local/bin/lvim"
     alias lvim="$HOME/.local/bin/lvim"
     alias nvim "/usr/local/bin/nvim"
