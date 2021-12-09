@@ -19,7 +19,7 @@
 | neovim           | Text editor - I use lunarvim                             |
 | zsh              | Bash Alternative                                         |
 | tmux             | not really used anymore                                  |
-| picom            | jonaburg fork for rounded corners                        |
+| picom            | ibhagwan fork for rounded corners                        |
 | redshift         | Flux alternative                                         |
 | lxappearance     | For editing cursor, font, GTK applications               |
 | pavucontrol      | For controlling pulseaudio                               |
