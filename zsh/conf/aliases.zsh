@@ -108,27 +108,26 @@ pacrm() {
 # Custom cd
 c() {
     cd $1;
-    exa --icons -1;
+    exa --icons -1 --sort newest;
 }
 #Aliases
     alias cd="c"
     alias g="git"
-    alias activateanaconda="source /opt/anaconda/bin/activate root"
     alias pubip="curl ipinfo.io/ip"
     alias ls="exa --icons --sort newest"
     alias ll="ls -l --sort newest"
     alias vim="$HOME/.local/bin/lvim"
     alias lvim="$HOME/.local/bin/lvim"
     alias nvim "/usr/local/bin/nvim"
+    alias thunar="thunar . &"
+
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
     alias speedtest="speedtest-cli"
-    alias volume="amixer sset 'Master'"
-    alias kalidocker="sudo docker run -ti -p 80:80 -p 443:443 -v /root/clients:/clients mdube/kali-docker"
-    alias sec+="mupdf ~/vimwiki/securityplus/professor_messer_secplus_notes/professor-messer-comptia-sy0-501-security-plus-course-notes-v193.pdf &"
-    alias pomodoro="python ~/development/Pomodoro/main.py"
     alias pptxtopdf="soffice --headless --convert-to pdf $1"
-    alias league="sudo sysctl -w abi.vsyscall32=0"
+
+    alias cme="crackmapexec"
+
     #NOTE: for ST
     alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
