@@ -4,10 +4,10 @@ export EDITOR=lvim
 export TERM=screen-256color
 export PATH=$HOME/development/scripts:$PATH
 # Open manpages in lunarvim
-export MANPAGER="/bin/zsh -c \"col -b | lvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+export MANPAGER="/bin/zsh -c \"col -b | $HOME/.local/bin/lvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 # FOR CTFs - having $IP in terminal is really nice
-export IP="10.20.25.69"
+export IP="10.10.12.15"
 
 HISTFILE=~/.zsh_history
 SAVEHIST=10000
