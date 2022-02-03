@@ -1,20 +1,3 @@
-# git
-function git_prepare() {
-    if [ -n "$BUFFER" ];
-        then
-            BUFFER="git add -A && git commit -m \"$BUFFER\" && git push"
-    fi
-
-    if [ -z "$BUFFER" ];
-        then
-            BUFFER="git add -A && git commit -v && git push"
-    fi
-            
-    zle accept-line
-}
-zle -N git_prepare
-bindkey "^g" git_prepare
-
 # Edit and rerun
 function edit_and_run() {
     BUFFER="fc"
@@ -70,7 +53,11 @@ function git_root() {
     zle accept-line
 }
 zle -N git_root
-bindkey "^h" git_root
+bindkey "^g" git_root
+
+# Backwards search with C-r
+bindkey '^R' history-incremental-search-backward
+
 # I can never remember the exact command to convert from docx to md so i thought this would be easier
 convert2md() {
     pandoc -s $1 --wrap=none --reference-links -t markdown -o $2
