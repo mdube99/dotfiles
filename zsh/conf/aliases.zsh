@@ -101,15 +101,10 @@ c() {
     alias cd="c"
     alias g="git"
     alias pubip="curl ipinfo.io/ip"
-<<<<<<< HEAD
-    alias ls="exa --icons"
-    alias ll="ls -l"
     alias vim="nvim"
-=======
     alias ls="exa --icons --sort newest"
-    alias ll="ls -l --sort newest"
-    alias vim="$HOME/.local/bin/lvim"
->>>>>>> dwm
+    alias ll="exa -l --sort newest"
+    alias vim="nvim"
     alias lvim="$HOME/.local/bin/lvim"
     alias nvim "/usr/local/bin/nvim"
     alias thunar="thunar . &"
