@@ -3,6 +3,7 @@ export VISUAL="lvim"
 export TERM=screen-256color
 export EDITOR=nvim
 export PATH=$HOME/development/scripts:$PATH
+export TERMINAL=/usr/local/bin/st
 
 HISTFILE=~/.zsh_history
 SAVEHIST=10000
