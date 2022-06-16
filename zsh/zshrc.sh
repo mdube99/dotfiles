@@ -12,4 +12,5 @@ source $HOME/dotfiles/zsh/conf/exports.zsh
 source $HOME/dotfiles/zsh/conf/theme.zsh
 source $HOME/dotfiles/zsh/conf/plugins.zsh
 source $HOME/dotfiles/zsh/conf/general.zsh
+source ~/dotfiles/zsh/conf/prompt.sh
 

@@ -1,20 +1,3 @@
-# git
-function git_prepare() {
-    if [ -n "$BUFFER" ];
-        then
-            BUFFER="git add -A && git commit -m \"$BUFFER\" && git push"
-    fi
-
-    if [ -z "$BUFFER" ];
-        then
-            BUFFER="git add -A && git commit -v && git push"
-    fi
-            
-    zle accept-line
-}
-zle -N git_prepare
-bindkey "^g" git_prepare
-
 # Edit and rerun
 function edit_and_run() {
     BUFFER="fc"
@@ -70,7 +53,11 @@ function git_root() {
     zle accept-line
 }
 zle -N git_root
-bindkey "^h" git_root
+bindkey "^g" git_root
+
+# Backwards search with C-r
+bindkey '^R' history-incremental-search-backward
+
 # I can never remember the exact command to convert from docx to md so i thought this would be easier
 convert2md() {
     pandoc -s $1 --wrap=none --reference-links -t markdown -o $2
@@ -108,27 +95,32 @@ pacrm() {
 # Custom cd
 c() {
     cd $1;
-    exa --icons -1;
+    exa --icons -1 --sort newest;
 }
 #Aliases
     alias cd="c"
-    alias activateanaconda="source /opt/anaconda/bin/activate root"
-    alias ls="ls --color=auto  --sort=version --group-directories-first"
+    alias g="git"
     alias pubip="curl ipinfo.io/ip"
+<<<<<<< HEAD
     alias ls="exa --icons"
     alias ll="ls -l"
     alias vim="nvim"
+=======
+    alias ls="exa --icons --sort newest"
+    alias ll="ls -l --sort newest"
+    alias vim="$HOME/.local/bin/lvim"
+>>>>>>> dwm
     alias lvim="$HOME/.local/bin/lvim"
     alias nvim "/usr/local/bin/nvim"
+    alias thunar="thunar . &"
+
     alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
     alias speedtest="speedtest-cli"
-    alias volume="amixer sset 'Master'"
-    alias kalidocker="sudo docker run -ti -p 80:80 -p 443:443 -v /root/clients:/clients mdube/kali-docker"
-    alias sec+="mupdf ~/vimwiki/securityplus/professor_messer_secplus_notes/professor-messer-comptia-sy0-501-security-plus-course-notes-v193.pdf &"
-    alias pomodoro="python ~/development/Pomodoro/main.py"
     alias pptxtopdf="soffice --headless --convert-to pdf $1"
-    alias league="sudo sysctl -w abi.vsyscall32=0"
+
+    alias cme="crackmapexec"
+
     #NOTE: for ST
     alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
