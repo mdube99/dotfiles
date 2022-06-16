@@ -55,28 +55,32 @@ Type=Application
 
 #### Patches
 
-| Patch           |
-|-----------------|
-| barpadding      |
-| bottomstack     |
-| cfacts          |
-| dragmfact       |
-| dragcfact       |
-| fibonacii       |
-| gaplessgrid     |
-| horizgrid       |
-| movestack       |
-| vanity          |
-| colorful        |
-| statuspadding   |
-| status2d        |
-| underline tags  |
-| notitle         |
-| sticky          |
-| stickyindicator |
-| columns         |
-| columngaps      |
-| scratchpad      |
+| Patch            |
+|------------------|
+| barpadding       |
+| bottomstack      |
+| cfacts           |
+| dragmfact        |
+| dragcfact        |
+| fibonacii        |
+| gaplessgrid      |
+| horizgrid        |
+| movestack        |
+| vanity           |
+| colorful         |
+| statuspadding    |
+| status2d         |
+| underline tags   |
+| notitle          |
+| sticky           |
+| stickyindicator  |
+| columns          |
+| columngaps       |
+| scratchpad       |
+| always center    |
+| no border        |
+| hide vacant tags |
+
 
 ## ST - Suckless Terminal
 
