@@ -591,7 +591,7 @@ void attachstack(Client *c) {
 }
 
 void buttonpress(XEvent *e) {
-  unsigned int i, x, click;
+  unsigned int i, x, click, occ = 0;
   int loop;
   Arg arg = {0};
   Client *c;
@@ -611,9 +611,14 @@ void buttonpress(XEvent *e) {
 			selmon->previewshow = 0;
 	}
     i = x = 0;
-    do
+    for (c = m->clients; c; c = c->next)
+    			occ |= c->tags == 255 ? 0 : c->tags;
+    		do {
+    			/* do not reserve space for vacant tags */
+    			if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+    				continue;
       x += TEXTW(tags[i]);
-    while (ev->x >= x && ++i < LENGTH(tags));
+    } while (ev->x >= x && ++i < LENGTH(tags));
     if (i < LENGTH(tags)) {
       click = ClkTagBar;
       arg.ui = 1 << i;
@@ -1438,12 +1443,16 @@ void drawbar(Monitor *m) {
 
   resizebarwin(m);
   for (c = m->clients; c; c = c->next) {
-    occ |= c->tags;
+		occ |= c->tags == 255 ? 0 : c->tags;
     if (c->isurgent)
       urg |= c->tags;
   }
   x = borderpx;
   for (i = 0; i < LENGTH(tags); i++) {
+		/* do not draw vacant tags */
+		if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+		continue;
+
     w = TEXTW(tags[i]);
     drw_setscheme(drw, scheme[occ & 1 << i ? (m->colorfultag ? tagschemes[i] : SchemeSel) : SchemeTag]);
     drw_text(drw, x, y, w, bh_n, lrpad / 2, tags[i], urg & 1 << i);
@@ -1927,6 +1936,14 @@ void manage(Window w, XWindowAttributes *wa) {
 	}
 
   wc.border_width = c->bw;
+	if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
+	    || &monocle == c->mon->lt[c->mon->sellt]->arrange)
+	    && !c->isfullscreen && !c->isfloating
+	    && NULL != c->mon->lt[c->mon->sellt]->arrange) {
+		c->w = wc.width += c->bw * 2;
+		c->h = wc.height += c->bw * 2;
+		wc.border_width = 0;
+	}
   XConfigureWindow(dpy, w, CWBorderWidth, &wc);
   XSetWindowBorder(dpy, w, scheme[SchemeNorm][ColBorder].pixel);
   configure(c); /* propagates border_width, if size doesn't change */
