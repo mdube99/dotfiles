@@ -117,7 +117,7 @@ c() {
     alias pubip="curl ipinfo.io/ip"
     alias ls="exa --icons"
     alias ll="ls -l"
-    alias vim="$HOME/.local/bin/lvim"
+    alias vim="nvim"
     alias lvim="$HOME/.local/bin/lvim"
     alias nvim "/usr/local/bin/nvim"
     alias wiki="vim ~/vimwiki/index.md"
