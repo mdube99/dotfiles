@@ -268,7 +268,7 @@ static Button buttons[] = {
 		 * to control these separately (i.e. to retain the feature to move a tiled window
 		 * into a floating position).
 		 */
-		{ ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 0} },
+    { ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 0} },
     { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
     { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
     { ClkClientWin,         ShiftMask,      Button1,        dragmfact,      {0} },
