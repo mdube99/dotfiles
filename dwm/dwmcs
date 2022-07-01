@@ -1,0 +1,72 @@
+#!/bin/sh
+# Generate cheatsheet and put it in local cache.
+# Everything is done through awk.
+
+read_cs() {
+    awk 'NR>3 {print $0}' $HOME/.cache/dwmcs > $HOME/.cache/dwmcs.tmp
+    less $HOME/.cache/dwmcs.tmp
+    rm -f $HOME/.cache/dwmcs.tmp
+    exit 0
+}
+
+[ -f "$HOME/.cache/dwmcs" ] && read_cs
+[ ! -f "$HOME/.cache/dwmcs" ] &&
+    awk 'BEGIN{
+    print "Do not modify this file!";
+    print "It will be deleted when dwm restarts.";
+    print "";
+    } 
+    /STARTKEY/{flag=1; next } /ENDKEY/{flag=0} flag{
+    gsub("MODKEY","Mod",$2);
+    gsub("Mod1Mask","Alt",$2);
+    gsub("ShiftMask","Shift",$2);
+    gsub("ControlMask","Ctrl",$2);
+    gsub("0","No Mod",$2);
+    gsub("XK_","Tag ",$2);
+    gsub("\\|"," + ",$2);
+    gsub(",","",$2);
+    gsub("XK|XF86","",$3);
+    gsub("_","+ ",$3);
+    gsub("bracketleft","[",$3);
+    gsub("bracketright","]",$3);
+    gsub("BackSpace","<-- bsp",$3);
+    gsub("backslash","\\",$3);
+    gsub("slash","/",$3);
+    gsub("apostrophe","apost",$3);
+    gsub("semicolon",";",$3);
+    gsub("Audio","Aud",$3);
+    gsub("Pause","Pause  ",$3);
+    gsub("Print","Print  ",$3);
+    gsub("Up","Up  ",$3);
+    gsub("RaiseVolume","Up  ",$3);
+    gsub("LowerVolume","Down",$3);
+    gsub("MonBrightness","Brg",$3);
+    gsub("ScreenSaver","ScrnSvr",$3);
+    gsub(",","",$3);
+    gsub(",","",$4);
+    gsub("&layouts","",$7);
+    if ($0 == "") {
+        printf "%s", $0;
+    } else if ($1 ~ /TAGKEY/) {
+        printf "%11s", $2; 
+    } else if ($2 !~ /##|==/) {
+        printf "%11s %-9s - %s ", $2, $3, $4;
+    } else {
+        printf "%s %s %s %s", $2, $3, $4, $5;
+    }; 
+    if ($5 ~ /SHCMD/) {
+        gsub("SHCMD\\(","",$5);
+        gsub("\\)","",$5);
+        gsub("\\)","",$6);
+        gsub("},","",$6);
+        printf "%s %s ", $5, $6;
+    };
+    for (n=7;n<=NF;n++) {
+        gsub(",|}","",$n);
+        gsub("\\)","",$n);
+        gsub("//","#",$n);
+        printf $n" ";
+    }; 
+    print "";
+    }' /usr/local/src/config.def.h > $HOME/.cache/dwmcs && read_cs
+

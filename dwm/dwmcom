@@ -1,0 +1,90 @@
+#!/usr/bin/env sh
+# This is a little script to hanlde otherwise long SHCMD command in config.def.h
+
+# Used arg: b,c,d,f,h,i,l,m,n,p,r,s,t
+show_help(){
+printf "Available options:
+-i: Volume +5
+-d: Volume -5
+-t: Toggle mute
+-1: Open App 1 (\$APP1)
+-2: Open App 2 (\$APP2)
+-v: Open preferred *top program (\$PREFTOP)
+-b: Open default browser (\$BROWSER)
+-m: Open default file manager (\$FM)
+-f: Open last taken screenshot (\$IMAGE)
+-l: Logout menu
+-n: Select window to see its class name
+-r: Reload Xresources on ~/.Xresources and restart dwm itself
+-c: Stop compositor
+-p: Restart compositor
+-s: Stop all statusbar from running
+-h: Show this help and exit
+
+Volume control requires amixer (alsa-utils) to be installed.\\n" 
+}
+
+logout_menu() {
+local logopt=$(printf ' Lock Screen\n敏 Reload Xrdb\n Logout\n Suspend\nﰇ Reboot\n襤 Shutdown' | dmenu "$@")
+case ${logopt} in
+    *Lock*) i3lock-auto ;;
+    *Reload*) xrdb $HOME/.Xresources 2>/dev/null || xrdb $HOME/.config/x11/xresources 2>/dev/null ;;
+    *Logout) killall dwm ;;
+    *Suspend) i3lock-auto & systemctl suspend || loginctl suspend ;;
+    *Reboot) systemctl reboot || loginctl reboot ;;
+    *Shutdown) systemctl poweroff || loginctl poweroff ;;
+    *) exit 1 ;;
+esac
+}
+
+reload_bar() {
+    kill -44 $(cat ~/.cache/pidofbar) 2>/dev/null || kill -44 $(pidof dwmblocks) 2>/dev/null
+}
+
+kill_bar() {
+    killall dwmblocks 2>/dev/null
+    for pidofbar in $(ps --user "$USER" -F | grep dwmstatusbar | awk '{print $2}'); do kill -15 $pidofbar 2>/dev/null; done
+    notify-send -u normal "All running statusbars have been stopped"
+}
+
+amixer_inc_limit() {
+    [ "$(amixer sget Master | awk -F"[][]" '/Left:/ { print substr($2, 1, length($2)-1) }')" -lt 100 ] && amixer -q set Master 5%+
+}
+
+xprop_dialog() {
+    local xptxt=$(xprop | awk '/WM_WINDOW_ROLE/{print "Role: " $3} /WM_CLASS/{print "Name: " $3 "\nClass: " $4}' | sed 's/"\|,//g') || 
+    notify-send -u critical "xprop not installed" || exit 1
+    yad --title="xprop value" \
+        --image=dialog-information \
+        --button=COPY:1 \
+        --button=CLOSE:0 \
+        --text="${xptxt}" \
+        --escape-ok ||
+    { echo ${xptxt} | tr '\n' ' ' | sed 's/Role: \|Name: \|Class: //g;s/.$//' | xclip -r -selection clipboard &&
+      notify-send -u low "xprop copied" || notify-send -u critical "xclip not installed"; }
+}
+
+while getopts "idt12vbmflnrscph" op; do case "${op}" in
+    i) amixer_inc_limit || exit 1; reload_bar; exit 0;;
+    d) amixer -q set Master 5%- || exit 1; reload_bar; exit 0;;
+    t) amixer -q set Master toggle || exit 1; reload_bar; exit 0;;
+    1) ${APP1} & exit 0;;
+    2) ${APP2} & exit 0;;
+    v) ${PREFTOP:=htop}; exit 0;;
+    b) ${BROWSER:=firefox} & exit 0;;
+    m) ${FM:=thunar} & exit 0;;
+    f) ${IMAGE:=feh} $(ls -Art ~/Pictures/Screenshots/* | tail -n 1) & exit 0 ;;
+    l) logout_menu -c -l 3 -g 2 -h 50 -bw 3; exit 0;;
+    n) xprop_dialog; exit 0;; 
+    r) xrdb $HOME/.Xresources 2>/dev/null || xrdb $HOME/.config/x11/xresources; kill -HUP $(pidof dwm); exit 0;; 
+    s) kill_bar; exit 0;;
+    c) killall ${COMP:-picom} & notify-send -u normal "${COMP:-picom} stopped"; exit 0;;
+    p) killall ${COMP:-picom}; sleep 0.5; ${COMP:-picom} & notify-send -u normal "${COMP:-picom} restarted"; exit 0;;
+    h) show_help; exit 0 ;;
+    *) echo "Type \"dwmcom -h\" to see available commands."; exit 1;;
+esac done
+ 
+printf "dwmcom - long commands for dwm.
+Make sure you have pamixer or amixer, yad, and xorg-xrdb installed.
+
+Type \"dwmcom -h\" to see available commands.\\n"

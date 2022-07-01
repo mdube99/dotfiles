@@ -1,0 +1,121 @@
+#!/bin/env sh
+# A simple POSIX shell script for statusbar. No more dwmblocks
+# Forked from https://github.com/pystardust/sbar
+# Run this as an autostart
+
+# INIT
+echo "$$" > ~/.cache/pidofbar
+sec=0
+
+# MODULES
+update_cpu() { 
+        read cpu a b c previdle rest < /proc/stat
+        prevtotal=$((a+b+c+previdle))
+        sleep 0.5
+        read cpu a b c idle rest < /proc/stat
+        total=$((a+b+c+idle))
+        cpu="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))"
+        cpu_dis="^B4^  ${cpu} ^d^"
+}
+
+update_temp() {
+        temp="$(sensors | awk '/Tctl|Core 0/ {print $NF}' | sed 's/+//;s/\..°/\°/')"
+        [ "$temp" = "" ] && temp="--"
+        temp_dis="^B4^  ${temp} ^d^"
+}
+
+update_memory() { 
+        mem="$(free -h | awk '/^Mem:/ {print $3 "/" $2}' | sed 's/i//g')"
+        mem_dis="^B4^  ${mem} ^d^"
+}
+
+function_vol() {
+        vol_temp="$(amixer sget Master | awk -F"[][]" '/Left:/ { print $2 $4 }')"
+        echo $vol_temp | grep -q "off" && vol_icon="ﱝ" && vol="--" && return
+        vol="$(echo $vol_temp | sed 's/...$//')"
+        vol_icon=""
+        [ "$vol" -ge "70" ] && vol_icon=""
+        [ "$vol" -le "30" ] && vol_icon=""
+}
+
+update_vol() { 
+        function_vol
+        vol_dis="^B4^ ${vol_icon} ${vol} ^d^"
+}
+
+function_bat() {
+        # Check battery status
+        for batdev in /sys/class/power_supply/BAT?*; do
+
+        # Give empty status if there's no battery (e.g. Desktop)
+        [ ! -d "${batdev}" ] && bat_icon="" && bat="--" && return  
+
+        # Getting the capacity
+	bat=$(cat "${batdev}/capacity")
+
+	# Sets up bat_icon from capacity and status
+	[ "$bat" -le 20 ] && bat_icon=""
+	[ "$bat" -ge 21 ] && [ "$bat" -le 40 ] && bat_icon=""
+	[ "$bat" -ge 41 ] && [ "$bat" -le 60 ] && bat_icon=""
+	[ "$bat" -ge 61 ] && [ "$bat" -le 80 ] && bat_icon=""
+	[ "$bat" -ge 81 ] && bat_icon=""
+    	[ "$bat" -gt 100 ] && bat_icon="" && bat=100 # Workaround when bat goes beyond 100 sometimes
+
+	case "$(cat "${batdev}/status")" in
+		"Charging") bat_icon="" ;;
+		"Not charging") bat_icon="" ;;
+		"Unknown") bat_icon="" ;;
+	esac
+
+        # Will add a warning icon next to the current icon when battery is low
+        [ "$bat_icon" = "" ] && [ "$bat" -le 20 ] && warn=1 || unset warn
+
+        break
+        done
+}
+
+update_bat () { 
+        function_bat
+        bat_dis="^B4^ ${bat_icon} ${bat}$([ -n "${warn}" ] && echo "^C0^ ") ^d^"
+}
+
+update_time () { 
+        dat="$(date +"%a %m/%d")"
+        tim="$(date +"%H:%M")"
+        dte_dis="^B0^^C3^ ${dat} ^B1^ ${tim} ^d^" 
+        #dte_dis="^B1^^C3^  ^B0^ ${dat}, ${tim} ^d^" # Previous clock display
+}
+
+# modules that don't update on their own need to be run at the start for getting their initial value
+update_vol
+
+display () { 
+	#printf "%s\n" " ${cpu_dis} ${temp_dis} ${mem_dis} ${vol_dis} ${bat_dis} ${dte_dis} "
+	xsetroot -name " ${cpu_dis} ${temp_dis} ${mem_dis} ${vol_dis} ${bat_dis} ${dte_dis} "
+}
+
+# SIGNALLING
+# trap	"<function>;display"		"RTMIN+n"
+trap	"update_vol;display"		"RTMIN+10"
+
+# to update it from external commands
+## kill -m "$(cat ~/.cache/pidofbar)"
+# where m = 34 + n
+
+while true
+do
+	sleep 1 & wait && { 
+		# to update item ever n seconds with a offset of m
+		## [ $((sec % n)) -eq m ] && udpate_item
+		[ $((sec % 5 )) -eq 0 ] && update_cpu
+		[ $((sec % 5 )) -eq 0 ] && update_temp
+		[ $((sec % 5 )) -eq 0 ] && update_memory
+		[ $((sec % 5 )) -eq 0 ] && update_bat
+		[ $((sec % 60)) -eq 0 ] && update_time
+
+		# how often the display updates ( 5 seconds )
+		[ $((sec % 5 )) -eq 0 ] && display
+		sec=$((sec + 1))
+	}
+done 
+
