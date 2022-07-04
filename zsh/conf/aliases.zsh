@@ -116,6 +116,7 @@ c() {
     alias pptxtopdf="soffice --headless --convert-to pdf $1"
 
     alias cme="crackmapexec"
+    alias rustscan="docker run -it --rm --name rustscan rustscan/rustscan:1.10.0"
 
     #NOTE: for ST
     alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
