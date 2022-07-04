@@ -133,7 +133,6 @@ static const char *filecmd[]  = { "dwmcom", "-m", NULL };
 static const char *browsercmd[] = { "dwmcom", "-b", NULL };
 static const char *apponecmd[] = {"dwmcom", "-1", NULL};
 static const char *apptwocmd[] = {"dwmcom", "-2", NULL};
-static const char *xkillcmd[] = { "xkill", NULL};
 static const char *mute[] =  { "bash", "/home/mdube-manjaro/dotfiles/scripts/volume-toggle", NULL };
 
 /* Xresources preferences to load at startup */
@@ -259,7 +258,6 @@ static Key keys[] = {
  	{ MODKEY,                            XK_x, spawn,          {.v = apptwocmd } },   	
   { MODKEY,                            XK_b, spawn,          {.v = browsercmd } },
   { MODKEY,                            XK_m, spawn,          {.v = filecmd } },
-  { MODKEY,		        XK_Delete, spawn,          {.v = xkillcmd } },
 	{ MODKEY,                       XK_Escape, spawn,          SHCMD("dwmcom -l") },
 	{ MODKEY,		        XK_Insert, spawn,          SHCMD("dwmcom -n") }, // Class find
 	{ MODKEY,		     XK_BackSpace, spawn,      	   SHCMD("dm-websearch") }, // Brave
