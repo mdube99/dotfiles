@@ -85,6 +85,8 @@ static const Rule rules[] = {
 	{ "st-256color",   NULL,     NULL,           0 << 8,    0,	    1,	        0, 	   -1 },
   { "DesktopEditors",          NULL,   NULL,   1 << 4,    0,          0,          0,         -1 },
   { "Lxsession-default-apps",  NULL,   NULL,   0,         1,          0,          0,         -1 },
+  { "gnome-calculator",  NULL,   NULL,   0,         1,          0,          0,         -1 },
+  { NULL,  "spssh",   NULL,   1,         1,          1,          0,         -1 },
 	{ NULL,	       "spterm",     NULL,           SPTAG(0),  1,          1,          0,         -1 },
 	{ NULL,	        "sptop",     NULL,           SPTAG(1),  1,          0,          0,         -1 },
 	{ NULL,	        "spvol",     NULL,           SPTAG(2),  1,          0,          0,         -1 },
@@ -172,8 +174,9 @@ static Key keys[] = {
 	{ MODKEY,                            XK_r, togglealttag,   {0} },
 	{ MODKEY,                            XK_t, togglebar,      {0} },
   { 0|ControlMask|ALTKEY,         XK_Delete, spawn,          SHCMD("bash /home/mdube-manjaro/development/scripts/dm-kill") },
-  { ALTKEY,                       XK_d,      spawn,          SHCMD("bash /home/mdube-manjaro/development/scripts/bg-dm") },
-  { 0|ShiftMask,                  XK_F1,     spawn,          SHCMD("bash /home/mdube-manjaro/development/scripts/flux") },
+  { ALTKEY,                       XK_b,      spawn,          SHCMD("bash /home/mdube-manjaro/development/scripts/bg-dm") },
+  { ALTKEY,                       XK_s,      spawn,          SHCMD("bash /home/mdube-manjaro/development/scripts/sshmenu") },
+  { ALTKEY,                       XK_f,      spawn,          SHCMD("bash /home/mdube-manjaro/development/scripts/flux") },
 
 
    	// ======================
@@ -183,6 +186,14 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,                  XK_r, setlayout,      {.v = &layouts[1]} }, // CMaster
   { MODKEY|ShiftMask,                  XK_g, setlayout,      {.v = &layouts[2]} }, // Mono
 	{ MODKEY|ShiftMask,                  XK_f, setlayout,      {.v = &layouts[3]} }, // Float
+
+
+	{ MODKEY,                            XK_0, view,           {.ui = ~0  } },
+	{ ALTKEY,                            XK_1, setlayout,      {.v = &layouts[0]} }, // Tile
+	{ ALTKEY,                            XK_2, setlayout,      {.v = &layouts[1]} }, // CMaster
+  { ALTKEY,                            XK_3, setlayout,      {.v = &layouts[2]} }, // Mono
+	{ ALTKEY,                            XK_4, setlayout,      {.v = &layouts[3]} }, // Float
+
 	{ MODKEY|ShiftMask,	     XK_semicolon, cyclelayout,    {.i = -1 } },
 	{ MODKEY|ShiftMask,	    XK_apostrophe, cyclelayout,    {.i = +1 } },
 
