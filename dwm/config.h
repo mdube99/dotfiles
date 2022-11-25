@@ -41,7 +41,7 @@ static       char *xcolor[]         = { acc, hgl, fgr, bgr, dgr, lgr };
 static const char *colors[][3]      = {
 	/*               fg   bg   border   */
 	[SchemeNorm] = { fgr, bgr, bgr},
-	[SchemeSel]  = { acc, bgr, acc},
+	[SchemeSel]  = { acc, lgr, acc},
 };
 
 
@@ -86,6 +86,8 @@ static const Rule rules[] = {
   { "DesktopEditors",          NULL,   NULL,   1 << 4,    0,          0,          0,         -1 },
   { "Lxsession-default-apps",  NULL,   NULL,   0,         1,          0,          0,         -1 },
   { "gnome-calculator",  NULL,   NULL,   0,         1,          0,          0,         -1 },
+  { "discord",      NULL,   NULL,              1 << 2,         0,          0,          0,         -1 },
+  { "obsidian",      NULL,   NULL,              1 << 1,         0,          0,          0,         -1 },
   { NULL,  "spssh",   NULL,   1,         1,          1,          0,         -1 },
 	{ NULL,	       "spterm",     NULL,           SPTAG(0),  1,          1,          0,         -1 },
 	{ NULL,	        "sptop",     NULL,           SPTAG(1),  1,          0,          0,         -1 },
@@ -145,7 +147,7 @@ ResourcePref resources[] = {
 		{ "smartgaps",          INTEGER, &smartgaps },
 		{ "showbar",          	INTEGER, &showbar },
 		{ "showsystray",        INTEGER, &showsystray },
-		{ "topbar",          	INTEGER, &topbar },
+		{ "topbar",          	  INTEGER, &topbar },
 		{ "ulall",              INTEGER, &ulall },
 		{ "ulpad",              INTEGER, &ulpad },
 		{ "ulstroke",           INTEGER, &ulstroke },
@@ -222,7 +224,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,                XK_j, focusstack,     {.i = +1 } },
 	{ MODKEY,           	               XK_o, focusmaster,    {0} },
 	{ MODKEY|ShiftMask,                  XK_o, zoom,           {0} },
-  { MODKEY|ALTKEY,                XK_space,  zoom,           {0} },
+  { ALTKEY,                            XK_space,  zoom,           {0} },
 	{ MODKEY|ControlMask,                XK_o, focusurgent,    {0} },
 
 	// ====================
