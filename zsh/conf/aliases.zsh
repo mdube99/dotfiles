@@ -1,3 +1,4 @@
+
 # Edit and rerun
 function edit_and_run() {
     BUFFER="fc"
@@ -97,16 +98,22 @@ c() {
     cd $1;
     exa --icons -1 --sort newest;
 }
+
+up() {
+    ip a | grep -v inet6 | grep -F inet;
+    updog -p 4444;
+}
 #Aliases
     alias cd="c"
     alias g="git"
+    alias updog="up"
     alias pubip="curl ipinfo.io/ip"
-    alias vim="nvim"
     alias ls="exa --icons --sort newest"
     alias ll="exa -l --sort newest"
     alias vim="nvim"
     alias lvim="$HOME/.local/bin/lvim"
     alias nvim "/usr/local/bin/nvim"
+    alias vim="lvim"
     alias thunar="thunar . &"
 
     alias wiki="vim ~/vimwiki/index.md"
@@ -114,9 +121,11 @@ c() {
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
     alias speedtest="speedtest-cli"
     alias pptxtopdf="soffice --headless --convert-to pdf $1"
+    alias latexreload="latexmk -pdf -pvc $1"
 
     alias cme="crackmapexec"
     alias rustscan="docker run -it --rm --name rustscan rustscan/rustscan:1.10.0"
 
     #NOTE: for ST
     alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
+    alias notes='cd ~/notes && nvim -c ":Telescope live_grep" && cd -'
