@@ -1,4 +1,7 @@
 
+
+function tn() { tmux new-session -A -s $(basename "$PWD") }
+
 # Edit and rerun
 function edit_and_run() {
     BUFFER="fc"
@@ -21,14 +24,6 @@ function exit_tmux() {
 }
 zle -N exit_tmux
 bindkey "^q" exit_tmux
-
-# Exit tmux-session
-function tmux_kill_session() {
-    BUFFER="tmux kill-session"
-    zle accept-line
-}
-zle -N tmux_kill_session
-bindkey "^k" tmux_kill_session
 
 # Sudo
 function add_sudo() {
@@ -116,7 +111,6 @@ up() {
     alias vim="lvim"
     alias thunar="thunar . &"
 
-    alias wiki="vim ~/vimwiki/index.md"
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
     alias speedtest="speedtest-cli"
