@@ -5,7 +5,7 @@ export TERM=screen-256color
 export PATH=$HOME/development/scripts:$PATH
 export TERMINAL=/usr/local/bin/st
 # Open manpages in lunarvim
-export MANPAGER="/bin/zsh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+export MANPAGER="/bin/zsh -c \"col -b | lvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export FZF_DEFAULT_COMMAND='rg --vimgrep --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # FOR CTFs - having $IP in terminal is really nice
