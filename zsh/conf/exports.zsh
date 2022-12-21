@@ -2,7 +2,7 @@ export EDITOR="lvim"
 export VISUAL="lvim"
 export EDITOR=lvim
 export TERM=screen-256color
-export PATH=$HOME/development/scripts:$PATH
+export PATH=$HOME/development/scripts:$HOME/.local/bin:$PATH
 export TERMINAL=/usr/local/bin/st
 # Open manpages in lunarvim
 export MANPAGER="/bin/zsh -c \"col -b | lvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
