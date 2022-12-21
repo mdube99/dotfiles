@@ -122,4 +122,4 @@ up() {
 
     #NOTE: for ST
     alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
-    alias notes='cd ~/notes && nvim -c ":Telescope live_grep" && cd -'
+    alias notes='cd ~/notes && lvim -c ":Telescope live_grep" && cd -'
