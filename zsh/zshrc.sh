@@ -11,7 +11,6 @@ plug "zap-zsh/supercharge"
 
 source $HOME/dotfiles/zsh/conf/aliases.zsh
 source $HOME/dotfiles/zsh/conf/exports.zsh
-source $HOME/dotfiles/zsh/conf/theme.zsh
 
 unsetopt BEEP
 
