@@ -1,6 +1,5 @@
 export EDITOR="lvim"
 export VISUAL="lvim"
-export EDITOR=lvim
 export TERM=screen-256color
 export PATH=$HOME/development/scripts:$HOME/.local/bin:$PATH
 export TERMINAL=/usr/local/bin/st
