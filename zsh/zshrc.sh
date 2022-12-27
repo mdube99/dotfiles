@@ -5,7 +5,7 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 plug "zap-zsh/fzf"
 plug "zap-zsh/atmachine-prompt"
-plug "esc/conda-zsh-completion"
+plug "zap-zsh/completions"
 plug "zap-zsh/vim"
 plug "zap-zsh/supercharge"
 
