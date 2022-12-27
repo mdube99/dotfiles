@@ -9,8 +9,8 @@ plug "zap-zsh/completions"
 plug "zap-zsh/vim"
 plug "zap-zsh/supercharge"
 
-source $HOME/dotfiles/zsh/conf/aliases.zsh
-source $HOME/dotfiles/zsh/conf/exports.zsh
+source $HOME/.config/zsh/conf/aliases.zsh
+source $HOME/.config/zsh/conf/exports.zsh
 
 unsetopt BEEP
 
