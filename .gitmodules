@@ -7,3 +7,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/mdube99/nvim.git
+[submodule "/home/mdube-manjaro/dotfiles/.local/share/zap"]
+	path = /home/mdube-manjaro/dotfiles/.local/share/zap
+	url = https://github.com/zap-zsh/zap.git
