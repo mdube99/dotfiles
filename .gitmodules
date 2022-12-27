@@ -10,3 +10,9 @@
 [submodule "/home/mdube-manjaro/dotfiles/.local/share/zap"]
 	path = /home/mdube-manjaro/dotfiles/.local/share/zap
 	url = https://github.com/zap-zsh/zap.git
+[submodule "tmux/plugins/tmux-logging"]
+	path = tmux/plugins/tmux-logging
+	url = https://github.com/tmux-plugins/tmux-logging.git
+[submodule "tmux/plugins/tmux-yank"]
+	path = tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank.git
