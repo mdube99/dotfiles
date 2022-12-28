@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BG="Mountain.jpg"
+BG="cat-blue-eye.png"
 
 # add your autostart stuffs here
 
