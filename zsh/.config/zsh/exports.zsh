@@ -1,8 +1,9 @@
 export EDITOR="lvim"
 export VISUAL="lvim"
 export TERM=screen-256color
-export PATH=$HOME/development/scripts:$HOME/.local/bin:$PATH
+export PATH=$HOME/development/scripts:$HOME/.local/bin:$(go env GOPATH)/bin:$PATH
 export TERMINAL=/usr/local/bin/st
+export GOPATH=$(go env GOPATH)
 # Open manpages in lunarvim
 export MANPAGER="/bin/zsh -c \"col -b | lvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export FZF_DEFAULT_COMMAND='rg --vimgrep --files --no-ignore --hidden --follow --glob "!.git/*"'
