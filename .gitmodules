@@ -1,8 +1,8 @@
 [submodule ".config/lvim"]
-	path = .config/lvim
+	path = lvim/.config/lvim
 	url = https://github.com/mdube99/lvim.git
 [submodule ".config/nvim"]
-	path = .config/nvim
+	path = lvim.config/nvim
 	url = https://github.com/mdube99/nvim.git
 [submodule "/home/mdube-manjaro/dotfiles/.local/share/zap"]
 	path = /home/mdube-manjaro/dotfiles/.local/share/zap

@@ -1,4 +1,5 @@
     lvim.plugins = {
+    { "lunarvim/darkplus.nvim" },
     { "abzcoding/tokyonight.nvim" },
     { "ray-x/lsp_signature.nvim",
         config = function()
