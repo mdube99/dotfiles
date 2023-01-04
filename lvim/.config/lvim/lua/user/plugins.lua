@@ -1,6 +1,5 @@
     lvim.plugins = {
     { "lunarvim/darkplus.nvim" },
-    { "abzcoding/tokyonight.nvim" },
     { "ray-x/lsp_signature.nvim",
         config = function()
         require("user.lsp_signature").config()
@@ -10,12 +9,6 @@
     {
     "vimwiki/vimwiki",
       -- ft = {"markdown"},
-    },
-      "iamcco/markdown-preview.nvim",
-    { "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require "user.blankline"
-        end,
     },
     { "tpope/vim-fugitive" },
     { "tpope/vim-surround" },
