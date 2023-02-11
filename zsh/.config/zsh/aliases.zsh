@@ -110,6 +110,8 @@ up() {
     alias nvim "/usr/local/bin/nvim"
     alias vim="lvim"
     alias thunar="thunar . &"
+    alias td="tmux detach"
+    alias tk="tmux kill-session"
 
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
