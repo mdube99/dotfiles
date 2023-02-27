@@ -98,12 +98,20 @@ up() {
     ip a | grep -v inet6 | grep -F inet;
     updog -p 4444;
 }
+
+# Courtesy of Graham Helton
+# e.g. cp `DL` .
+DL() {
+    variable1=$(echo ~/Downloads/$(/usr/bin/ls -ltr ~/Downloads | tail -n1 | awk {"print \$9"}));
+    echo $variable1;
+}
+
 #Aliases
     alias cd="c"
     alias g="git"
     alias updog="up"
     alias pubip="curl ipinfo.io/ip"
-    alias ls="exa --icons --sort newest"
+    alias ls="exa --sort newest"
     alias ll="exa -l --sort newest"
     alias vim="nvim"
     alias lvim="$HOME/.local/bin/lvim"
