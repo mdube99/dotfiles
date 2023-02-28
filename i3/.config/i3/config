@@ -62,8 +62,8 @@ gaps outer 3
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym $mod+a scratchpad show
-bindsym $mod+shift+a move scratchpad
+# bindsym $mod+a scratchpad show
+# bindsym $mod+shift+a move scratchpad
 
 # switch/iterate between workspaces
 bindsym $mod+Tab workspace next
@@ -124,10 +124,13 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec --no-startup-id st
 
-bindsym $mod+grave exec --no-startup-id st --role floating_term
-for_window [window_role=floating_term] floating enable
+# bindsym $mod+grave exec --no-startup-id st -c floating_term
+bindsym $mod+grave floating toggle
+for_window [class=floating_term] floating toggle
+
+bindsym $mod+y fullscreen disable; floating enable; resize set 720 480; sticky enable; move window to position 2150px 50px
 
 # kill focused window
 bindsym $mod+q kill
@@ -198,7 +201,7 @@ bindsym $mod+g layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle
+bindsym $mod+a floating toggle
 
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
@@ -245,21 +248,32 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+# set $ws1 "1:"
+# set $ws2 "2:"
+# set $ws3 "3:"
+# set $ws4 "4:"
+# set $ws5 "5:"
+# set $ws6 "6"
+# set $ws7 "7"
+# set $ws8 "8"
+# set $ws9 "9"
+# set $ws10 "10"
+
+set $ws1 " 1 "
+set $ws2 " 2 "
+set $ws3 " 3 "
+set $ws4 " 4 "
+set $ws5 " 5 "
+set $ws6 " 6 "
+set $ws7 " 7 "
+set $ws8 " 8 "
+set $ws9 " 9 "
+set $ws10 " 10 "
 
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-workspace $ws1 output DP-1-0.1
+# workspace $ws1 output DP-1-0.1
 # workspace $ws1 output eDP1
 #workspace $ws3 output HDMI-0
 #workspace $ws4 output HDMI-0
@@ -268,14 +282,11 @@ workspace $ws1 output DP-1-0.1
 # bind program to workspace and focus to them on startup:
 #assign [class="Xfce4-terminal"] $ws1
 #assign [class="(?i)firefox"] $ws2
-assign [class="Thunar"] $ws3
-assign [class="TelegramDesktop"] $ws5
+assign [class="Discord"] $ws3
 
 # automatic set focus new window if it opens on another workspace than the current:
-for_window [class=Xfce4-terminal] focus
+for_window [class=st] focus
 for_window [class=(?i)firefox] focus
-for_window [class=Thunar] focus
-for_window [class=TelegramDesktop] focus
 
 ##############
 # compositor #
@@ -396,7 +407,7 @@ for_window [window_role="About"] floating enable
 
 # Define colors variables:
 set $darkbluetrans	#08052be6
-set $darkblue		#08052b
+set $darkblue		#7aa2f7
 set $lightblue		#96CDFB
 set $urgentred		#F28FAD
 set $white		#ffffff
@@ -409,7 +420,7 @@ set $yellowbrown	#e1b700
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$lightblue
+client.focused		    	$darkblue	$darkblue	$white		$mediumgrey	$darkblue
 client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
 client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
 client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
@@ -425,9 +436,6 @@ bar {
 		font pango: JetBrains Mono Regular 10
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	    	position bottom
-#	    	i3bar_command i3bar --transparency
-# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-# reference: https://i3wm.org/docs/userguide.html#_tray_output
 		    #tray_output primary
 		    tray_padding 0
 
@@ -442,7 +450,7 @@ strip_workspace_numbers yes
 		    background         $darkgrey
 		    statusline         $white
 #                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
+		focused_workspace	$lightblue	   	$lightblue		$darkgrey	$purple
 		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
 		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
 		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
