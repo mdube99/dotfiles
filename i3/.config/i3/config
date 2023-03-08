@@ -130,7 +130,7 @@ bindsym $mod+Return exec --no-startup-id st
 bindsym $mod+grave floating toggle
 for_window [class=floating_term] floating toggle
 
-bindsym $mod+y fullscreen disable; floating enable; resize set 720 480; sticky enable; move window to position 2150px 50px
+bindsym $mod+y fullscreen disable; floating enable; resize set 1280 720; sticky enable; move window to position 2100px 50px
 
 # kill focused window
 bindsym $mod+q kill
@@ -187,10 +187,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-#bindsym $mod+h split h
+bindsym $mod+o split h
 
 # split in vertical orientation
-#bindsym $mod+v split v
+bindsym $mod+u split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -201,10 +201,10 @@ bindsym $mod+g layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+a floating toggle
+bindsym $mod+Shift+a floating toggle; move window to position 2500px 50px
 
 # change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus mode_toggle
 
 # focus the parent container
 # bindsym $mod+a focus parent
@@ -236,7 +236,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+b exec /usr/bin/firefox
-bindsym $mod+n exec /usr/bin/thunar
+# bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec flameshot gui
 
 # Power Profiles menu switcher (rofi)
@@ -282,7 +282,8 @@ set $ws10 " 10 "
 # bind program to workspace and focus to them on startup:
 #assign [class="Xfce4-terminal"] $ws1
 #assign [class="(?i)firefox"] $ws2
-assign [class="Discord"] $ws3
+assign [class="discord"] $ws3
+assign [class="Steam"] $ws4
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=st] focus
@@ -316,7 +317,7 @@ for_window [class=(?i)firefox] focus
 #
 # for custom config:
 exec_always --no-startup-id picom --config  ~/.config/picom.conf
-exec_always --no-startup-id flameshot
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 #############################################
 # autostart applications/services on login: #
@@ -324,6 +325,9 @@ exec_always --no-startup-id flameshot
 
 #get auth work with polkit-gnome
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+exec --no-startup-id flameshot
+exec --no-startup-id discord
 
 # dex execute .desktop files + apps using /etc/xdg/autostart.
 # when second to i3 a DE is installed or mixed usage of i3 + xfce4 or GNOME
@@ -338,7 +342,6 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id ~/.screenlayout/ultrawide.sh
 
 # set wallpaper
-# exec --no-startup-id sleep 2 && nitrogen --restore
 exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/Backgrounds/gargantua.png
 
 # set powersavings for display:
@@ -383,16 +386,14 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # set floating (nontiling) for apps needing it
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Xsane" instance="xsane"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
-for_window [class="qt5ct" instance="qt5ct"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
+for_window [title="Friends List"] floating enable; resize set 720 480
 
 # set size of floating window
 #for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
@@ -407,7 +408,7 @@ for_window [window_role="About"] floating enable
 
 # Define colors variables:
 set $darkbluetrans	#08052be6
-set $darkblue		#7aa2f7
+set $darkblue		#668ee3
 set $lightblue		#96CDFB
 set $urgentred		#F28FAD
 set $white		#ffffff
@@ -429,33 +430,34 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 # bar settings (input comes from i3blocks) #
 ############################################
 
-# Start i3bar to display a workspace bar
-# (plus the system information i3status finds out, if available)
-bar {
-		# font pango: Noto Sans Regular 10
-		font pango: JetBrains Mono Regular 10
-		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	    	position bottom
-		    #tray_output primary
-		    tray_padding 0
+# # Start i3bar to display a workspace bar
+# # (plus the system information i3status finds out, if available)
+# bar {
+# 		# font pango: Noto Sans Regular 10
+# 		font pango: JetBrains Mono Regular 11
+# 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#         status_command polybar
+# 	    	position bottom
+# 		    #tray_output primary
+# 		    tray_padding 0
 
 # When strip_workspace_numbers is set to yes,
 # any workspace that has a name of the form
 # “[n][:][NAME]” will display only the name.
-strip_workspace_numbers yes
+# strip_workspace_numbers yes
 ##strip_workspace_name no
 
-		    colors {
-		    separator          $purple
-		    background         $darkgrey
-		    statusline         $white
-#                          		border 		        bg		txt		indicator
-		focused_workspace	$lightblue	   	$lightblue		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
-	}
-}
+# 		    colors {
+# 		    separator          $purple
+# 		    background         $darkgrey
+# 		    statusline         $white
+# #                          		border 		        bg		txt		indicator
+# 		focused_workspace	$lightblue	   	$lightblue		$darkgrey	$purple
+# 		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
+# 		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
+# 		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
+# 	}
+# }
 
 # you can add different bars for multidisplay setups on each display:
 # set output HDMI-0 to the display you want the bar, --transparency can be set.
