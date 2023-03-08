@@ -88,6 +88,11 @@ pacin() {
 pacrm() {
     yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
+
+rmf() {
+    ls | fzf -m | xargs -I {} rm -rf {
+}
+
 # Custom cd
 c() {
     cd $1;
