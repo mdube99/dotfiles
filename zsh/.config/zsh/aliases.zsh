@@ -99,8 +99,9 @@ c() {
     exa --icons -1 --sort newest;
 }
 
+# Print out IP address prior to 
 up() {
-    ip a | grep -v inet6 | grep -F inet;
+    ip a | grep -v inet6 | grep -F inet | grep /24;
     updog -p 4444;
 }
 
@@ -125,6 +126,8 @@ DL() {
     alias thunar="thunar . &"
     alias td="tmux detach"
     alias tk="tmux kill-session"
+    alias tl="tmux ls"
+    alias cat="bat"
 
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
