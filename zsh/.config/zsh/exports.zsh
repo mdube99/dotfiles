@@ -7,7 +7,6 @@ export GOPATH=$(go env GOPATH)
 # Open manpages in lunarvim
 export MANPAGER="/bin/zsh -c \"col -b | lvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export FZF_DEFAULT_COMMAND='rg --vimgrep --files --no-ignore --hidden --follow --glob "!.git/*"'
-export IP="$(pane)"
 
 HISTFILE=~/.zsh_history
 SAVEHIST=10000
