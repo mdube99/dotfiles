@@ -125,6 +125,9 @@ DL() {
     alias tk="tmux kill-session"
     alias tl="tmux ls"
     alias cat="batcat"
+    
+    # script to copy nmap scripts
+    alias nmapScripts="ls /usr/share/nmap/scripts | fzf --reverse | xsel --clipboard"
 
     alias yt="youtube-dl --add-metadata -i" # Download video link
     alias yta="yt --extract-audio --audio-format mp3" # Download only audio
