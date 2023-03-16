@@ -137,7 +137,7 @@ DL() {
     
     # super useful for grabbing IP address per pane active
     # Finds active pane by the '*', then filters out just to the IP address
-    alias pane='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
+    alias IP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
 
     #NOTE: for ST
     alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
