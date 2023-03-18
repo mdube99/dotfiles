@@ -119,7 +119,6 @@ DL() {
     alias ls="exa --sort newest"
     alias ll="exa -l --sort newest"
     alias vim="nvim"
-    alias vim="lvim"
     alias thunar="thunar . &"
     alias td="tmux detach"
     alias tk="tmux kill-session"
@@ -129,18 +128,9 @@ DL() {
     # script to copy nmap scripts
     alias nmapScripts="ls /usr/share/nmap/scripts | fzf --reverse | xsel --clipboard"
 
-    alias yt="youtube-dl --add-metadata -i" # Download video link
-    alias yta="yt --extract-audio --audio-format mp3" # Download only audio
-    alias speedtest="speedtest-cli"
-    alias pptxtopdf="soffice --headless --convert-to pdf $1"
     alias latexreload="latexmk -pdf -pvc $1"
     alias notes='cd ~/notes && lvim -c ":Telescope live_grep" && cd -'
 
-    alias cme="crackmapexec"
-    
     # super useful for grabbing IP address per pane active
     # Finds active pane by the '*', then filters out just to the IP address
     alias IP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
-
-    #NOTE: for ST
-    alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
