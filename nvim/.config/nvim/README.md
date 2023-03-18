@@ -1,2 +1,1 @@
 # nvim
-Lightweight neovim config
