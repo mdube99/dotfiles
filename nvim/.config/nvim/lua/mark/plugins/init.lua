@@ -1,16 +1,11 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
 return {
-    -- NOTE: First, some plugins that don't require any configuration
-
     -- Git related plugins
     'tpope/vim-fugitive',
     -- 'tpope/vim-rhubarb',
 
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
+    'tpope/vim-surround',
     -- NOTE: This is where your plugins related to LSP can be installed.
     --  The configuration is done below. Search for lspconfig to find it below.
     { -- LSP Configuration & Plugins
@@ -44,6 +39,7 @@ return {
                 delete = { text = '_' },
                 topdelete = { text = '‾' },
                 changedelete = { text = '~' },
+                untracked    = { text = '│' },
             },
         },
     },
@@ -116,12 +112,8 @@ return {
             require("lsp_signature").setup()
         end,
     },
-    "tpope/vim-surround",
-    "akinsho/bufferline.nvim",
-    tag = 'v3.*',
-    requires = "nvim-tree/nvim-web-devicons",
     {
         "lambdalisue/suda.vim",
         cmd = "SudaWrite",
-    }
+    },
 }

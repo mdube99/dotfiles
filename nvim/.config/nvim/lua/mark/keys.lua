@@ -7,7 +7,14 @@ vim.keymap.set("n", "<TAB>", "<cmd>bnext<CR>", { silent = true })
 vim.keymap.set("n", "<S-TAB>", "<cmd>bprev<CR>", { silent = true })
 -- -- back space to switch to alternative buffer with the cursor in the last position it was in the fil,
 vim.keymap.set("n", "<bs>", "<bs> <c-^>`”zz")
-vim.api.nvim_set_keymap('n', '<leader>mm', ':lua FixLastSpellingError()<CR>', { noremap = true, silent = true })
+
+-- Keymaps for better default experience
+-- See `:help vim.keymap.set()`
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- repeat macros with
 vim.keymap.set("x", ".", ":normal .<CR>")
@@ -37,4 +44,17 @@ vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "]q", ":cnext<CR>")
 vim.keymap.set("n", "[q", ":cprev<CR>")
-vim.keymap.set("n", "<C-q>", ":call QuickFixToggle()<CR>")
+
+function QuickFixToggle()
+  if vim.tbl_isempty(vim.fn.filter(vim.fn.getwininfo(), function(_, wininfo) return wininfo.quickfix end)) then
+    vim.cmd('copen')
+  else
+    vim.cmd('cclose')
+  end
+end
+vim.keymap.set("n", "<C-q>", ":lua QuickFixToggle()<CR>")
+
+function FixLastSpellingError()
+  vim.cmd("normal! mm[s1z='m\"\"'")
+end
+vim.api.nvim_set_keymap('n', '<leader>mm', ':lua FixLastSpellingError()<CR>', { noremap = true, silent = true })

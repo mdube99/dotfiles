@@ -1,5 +1,6 @@
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.showmode = false -- don't show what mode, this will let lualine do it for you
 
 -- Make line numbers default
 vim.wo.number = true
@@ -34,6 +35,8 @@ vim.o.timeoutlen = 100
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 vim.o.inccommand = 'split'
+vim.o.splitright = true       -- Vertical split to the right
+vim.o.splitbelow = true       -- Horizontal split to the bottom
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
