@@ -15,9 +15,6 @@ bindkey "^n" runLastLine
 # Backwards search with C-r
 bindkey '^R' history-incremental-search-backward
 
-# search history with fzh
-zle -N fzh
-bindkey '^f' fzh
 
 # easier to type to run docx or excel files from command line
 office() {
@@ -27,6 +24,9 @@ office() {
 fzh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
+# search history with fzh
+zle -N fzh
+bindkey '^f' fzh
 
 # fkill - kill process
 fkill() {
