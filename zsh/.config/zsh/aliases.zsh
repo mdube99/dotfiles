@@ -15,6 +15,10 @@ bindkey "^n" runLastLine
 # Backwards search with C-r
 bindkey '^R' history-incremental-search-backward
 
+# search history with fzh
+zle -N fzh
+bindkey '^h' fzh
+
 # easier to type to run docx or excel files from command line
 office() {
     libreoffice $1 &
