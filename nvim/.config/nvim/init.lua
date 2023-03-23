@@ -27,9 +27,8 @@ vim.opt.rtp:prepend(lazypath)
 require("mark") -- custom files
 
 require('lazy').setup({
-  -- require 'kickstart.plugins.autoformat',
+  require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
-
   { import = 'mark.plugins' },
 }, {})
 

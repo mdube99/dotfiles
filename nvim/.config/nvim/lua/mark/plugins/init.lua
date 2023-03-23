@@ -1,11 +1,16 @@
 return {
     -- Git related plugins
     'tpope/vim-fugitive',
-    -- 'tpope/vim-rhubarb',
-
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
     'tpope/vim-surround',
+
+    -- vscode snippets
+    {"rafamadriz/friendly-snippets",
+    config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+    },
     -- NOTE: This is where your plugins related to LSP can be installed.
     --  The configuration is done below. Search for lspconfig to find it below.
     { -- LSP Configuration & Plugins
@@ -22,6 +27,11 @@ return {
             -- Additional lua configuration, makes nvim stuff amazing!
             'folke/neodev.nvim',
         },
+    },
+    {
+    "windwp/nvim-autopairs",
+    lazy = true,
+    config = function() require("nvim-autopairs").setup {} end,
     },
     { -- Autocompletion
         'hrsh7th/nvim-cmp',
@@ -40,18 +50,6 @@ return {
                 topdelete = { text = '‾' },
                 changedelete = { text = '~' },
                 untracked    = { text = '│' },
-            },
-        },
-    },
-    { -- Set lualine as statusline
-        'nvim-lualine/lualine.nvim',
-        -- See `:help lualine.txt`
-        opts = {
-            options = {
-                icons_enabled = false,
-                theme = 'tokyodark',
-                component_separators = '|',
-                section_separators = '',
             },
         },
     },
@@ -115,5 +113,18 @@ return {
     {
         "lambdalisue/suda.vim",
         cmd = "SudaWrite",
+    },
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        opts = {
+        -- configurations go here
+        show_basename = false, -- won't show filename, since bufferline is doing this
+        },
     },
 }
