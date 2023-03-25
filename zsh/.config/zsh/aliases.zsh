@@ -1,16 +1,4 @@
-
-
 function tn() { tmux new-session -A -s $(basename "$PWD") }
-
-# Run last command again
-function runLastLine() {
-    # Get previous history item
-    zle up-history
-    # confirm command
-    zle accept-line
-}
-zle -N runLastLine
-bindkey "^n" runLastLine
 
 # Backwards search with C-r
 bindkey '^R' history-incremental-search-backward
@@ -20,6 +8,7 @@ bindkey '^R' history-incremental-search-backward
 office() {
     libreoffice $1 &
 }
+
 # fzf command history search
 fzh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
@@ -83,14 +72,15 @@ DL() {
     alias td="tmux detach"
     alias tk="tmux kill-session"
     alias tl="tmux ls"
-    alias cat="batcat"
+    alias cat="bat"
     
     # script to copy nmap scripts
     alias nmapScripts="ls /usr/share/nmap/scripts | fzf --reverse | xsel --clipboard"
 
     alias latexreload="latexmk -pdf -pvc $1"
-    alias notes='cd ~/notes && lvim -c ":Telescope live_grep" && cd -'
+    alias notes='cd ~/notes && vim -c ":Telescope live_grep" && cd -'
 
     # super useful for grabbing IP address per pane active
     # Finds active pane by the '*', then filters out just to the IP address
     alias IP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
+    # alias IP="tmux list-windows | grep '\*' | grep -o '^[^(]*' | awk -F ' ' '{print $2}'"
