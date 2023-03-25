@@ -3,13 +3,19 @@ return {
     'tpope/vim-fugitive',
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
-    'tpope/vim-surround',
-
+    {
+        'kylechui/nvim-surround',
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup()
+        end,
+    },
     -- vscode snippets
-    {"rafamadriz/friendly-snippets",
-    config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-    end,
+    { "rafamadriz/friendly-snippets",
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
     },
     -- NOTE: This is where your plugins related to LSP can be installed.
     --  The configuration is done below. Search for lspconfig to find it below.
@@ -22,16 +28,15 @@ return {
 
             -- Useful status updates for LSP
             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-            { 'j-hui/fidget.nvim', opts = {} },
+            -- { 'j-hui/fidget.nvim', opts = {} },
 
             -- Additional lua configuration, makes nvim stuff amazing!
             'folke/neodev.nvim',
         },
     },
     {
-    "windwp/nvim-autopairs",
-    lazy = true,
-    config = function() require("nvim-autopairs").setup {} end,
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end,
     },
     { -- Autocompletion
         'hrsh7th/nvim-cmp',
@@ -42,12 +47,11 @@ return {
     { -- Adds git releated signs to the gutter, as well as utilities for managing changes
         'lewis6991/gitsigns.nvim',
         opts = {
-            -- See `:help gitsigns.txt`
             signs = {
-                add = { text = '+' },
-                change = { text = '~' },
-                delete = { text = '_' },
-                topdelete = { text = '‾' },
+                add          = { text = '+' },
+                change       = { text = '~' },
+                delete       = { text = '_' },
+                topdelete    = { text = '‾' },
                 changedelete = { text = '~' },
                 untracked    = { text = '│' },
             },
@@ -77,10 +81,6 @@ return {
             return vim.fn.executable 'make' == 1
         end,
     },
-    {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-    },
     { -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
         dependencies = {
@@ -101,9 +101,10 @@ return {
         end,
     },
     {
-    "ellisonleao/gruvbox.nvim",
-    lazy=true,
+        "ellisonleao/gruvbox.nvim",
+        lazy = true,
     },
+    { "catppuccin/nvim", name = "catppuccin" },
     {
         "ray-x/lsp_signature.nvim",
         config = function()
@@ -123,8 +124,8 @@ return {
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
         opts = {
-        -- configurations go here
-        show_basename = false, -- won't show filename, since bufferline is doing this
+            -- configurations go here
+            show_basename = false, -- won't show filename, since bufferline is doing this
         },
     },
 }
