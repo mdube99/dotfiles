@@ -2,7 +2,7 @@
 
 #### Setup
 
-Use stow, along with [Setup Machine](https://github.com/mdube99/setup-machine.git)
+Use stow, along with [Setup Machine](https://github.com/mdube99/setupMachine.git)
 
 ```
 stow */
