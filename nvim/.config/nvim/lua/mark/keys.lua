@@ -45,6 +45,8 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "]q", ":cnext<CR>")
 vim.keymap.set("n", "[q", ":cprev<CR>")
 
+vim.keymap.set({ 'n', 'n' }, 'z.', ':<C-u>normal! zszH<CR>', { silent = true })
+
 function QuickFixToggle()
   if vim.tbl_isempty(vim.fn.filter(vim.fn.getwininfo(), function(_, wininfo) return wininfo.quickfix end)) then
     vim.cmd('copen')
@@ -52,9 +54,11 @@ function QuickFixToggle()
     vim.cmd('cclose')
   end
 end
+
 vim.keymap.set("n", "<C-q>", ":lua QuickFixToggle()<CR>")
 
 function FixLastSpellingError()
   vim.cmd("normal! mm[s1z='m\"\"'")
 end
+
 vim.api.nvim_set_keymap('n', '<leader>mm', ':lua FixLastSpellingError()<CR>', { noremap = true, silent = true })
