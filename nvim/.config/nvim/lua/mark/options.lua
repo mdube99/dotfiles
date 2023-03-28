@@ -41,3 +41,6 @@ vim.o.splitbelow = true -- Horizontal split to the bottom
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 vim.o.colorcolumn = '80'
+
+-- similar to 'scrolloff', but horizontal. allows for character padding around cursor.
+vim.o.sidescrolloff = '40'
