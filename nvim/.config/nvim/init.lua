@@ -62,10 +62,10 @@ require('telescope').setup {
   },
   extensions = {
     fzf = {
-      fuzzy = true, -- false will only do exact matching
+      fuzzy = true,                   -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
     }
   }
 }
@@ -128,6 +128,22 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
+}
+
+-- malleable c2 profile, courtesy of Henkru
+-- :TSInstall malleable_c2
+require('nvim-treesitter.parsers').get_parser_configs().malleable_c2 = {
+}
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.malleable_c2 = {
+  install_info = {
+    url = 'https://github.com/Henkru/tree-sitter-malleable-c2',
+    files = { 'src/parser.c' },
+    branch = 'main',
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = 'malleable_c2',
 }
 
 -- Diagnostic keymaps
@@ -239,7 +255,7 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-d>'] = cmp.mapping.scroll_docs( -4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
     ['<CR>'] = cmp.mapping.confirm {
@@ -258,8 +274,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable( -1) then
-        luasnip.jump( -1)
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
