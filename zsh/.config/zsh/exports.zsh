@@ -10,6 +10,7 @@ export FZF_DEFAULT_COMMAND='rg --vimgrep --files --no-ignore --hidden --follow -
 
 HISTFILE=~/.zsh_history
 SAVEHIST=10000
+HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 setopt inc_append_history # To save every command before it is executed
 setopt share_history # setopt inc_append_history
 KEYTIMEOUT=2
