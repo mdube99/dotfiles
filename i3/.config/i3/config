@@ -91,7 +91,7 @@ bindsym $mod+y fullscreen disable; floating enable; resize set 1280 720; sticky 
 # kill focused window
 bindsym $mod+q kill
 
-bindsym $alt+f exec ~/development/scripts/flux
+bindsym $alt+Shift+f exec ~/development/scripts/flux
 
 # lock by blurring the screen:
 bindsym $mod+Shift+x exec ~/.config/i3/scripts/blur-lock
