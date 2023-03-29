@@ -3,6 +3,11 @@
 --
 
 local wez = require 'wezterm'
+--
+-- EVENTS
+wez.on('format-window-title', function()
+	return 'wezterm'
+end)
 
 -- CONFIG
 return {
@@ -20,6 +25,12 @@ return {
 	enable_tab_bar = false,
 	color_scheme = 'tokyodark',
 	bold_brightens_ansi_colors = true,
+	window_padding = {
+		left = 5,
+		right = 5,
+		top = 5,
+		bottom = 5,
+	},
 	-- Settings
 	window_close_confirmation = "NeverPrompt", -- by default, will ask if you're sure you wanna quit.
 }
