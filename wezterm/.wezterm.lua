@@ -26,10 +26,14 @@ return {
 	color_scheme = 'tokyodark',
 	bold_brightens_ansi_colors = true,
 	window_padding = {
-		left = 5,
-		right = 5,
-		top = 5,
-		bottom = 5,
+		left = 0,
+		right = 0,
+		top = 0,
+		bottom = 0,
+		-- left = 5,
+		-- right = 5,
+		-- top = 5,
+		-- bottom = 5,
 	},
 	-- Settings
 	window_close_confirmation = "NeverPrompt", -- by default, will ask if you're sure you wanna quit.
