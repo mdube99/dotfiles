@@ -125,7 +125,7 @@ return {
         },
         opts = {
             -- configurations go here
-            show_basename = false, -- won't show filename, since bufferline is doing this
+            show_basename = true, -- won't show filename, since bufferline is doing this
         },
     },
 }
