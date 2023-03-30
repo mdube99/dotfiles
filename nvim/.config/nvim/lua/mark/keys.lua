@@ -2,10 +2,10 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { silent = true })
 vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 vim.keymap.set("n", "J", "mzJ`z", { silent = true })
-vim.keymap.set("n", "<F1>", "<Nop>", { silent = true })
 vim.keymap.set("n", "<TAB>", "<cmd>bnext<CR>", { silent = true })
 vim.keymap.set("n", "<S-TAB>", "<cmd>bprev<CR>", { silent = true })
--- -- back space to switch to alternative buffer with the cursor in the last position it was in the fil,
+
+-- back space to switch to alternative buffer with the cursor in the last position it was in the fil,
 vim.keymap.set("n", "<bs>", "<bs> <c-^>`”zz")
 
 -- Keymaps for better default experience
