@@ -95,16 +95,25 @@ return {
     --       Uncomment any of the lines below to enable them.
     {
         "tiagovla/tokyodark.nvim",
-        priority = 1000,
-        config = function()
-            vim.cmd.colorscheme "tokyodark"
-        end,
+        lazy = true,
+        -- priority = 1000,
+        -- config = function()
+        --     vim.cmd.colorscheme "tokyodark"
+        -- end,
     },
     {
         "ellisonleao/gruvbox.nvim",
         lazy = true,
     },
-    { "catppuccin/nvim", name = "catppuccin" },
+    { "catppuccin/nvim", name = "catppuccin",
+        lazy = true,
+    },
+    { "LunarVim/darkplus.nvim",
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme "darkplus"
+        end,
+    },
     {
         "ray-x/lsp_signature.nvim",
         config = function()
