@@ -9,9 +9,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Turn on spell check if you're in a markdown file
-vim.api.nvim_create_augroup('setIndent', { clear = true })
+vim.api.nvim_create_augroup('setSpell', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
-  group = 'setIndent',
+  group = 'setSpell',
   pattern = { 'md', 'markdown', 'wiki'
   },
   command = 'setlocal spell'
