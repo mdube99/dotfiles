@@ -93,21 +93,6 @@ return {
     -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
     --       These are some example plugins that I've included in the kickstart repository.
     --       Uncomment any of the lines below to enable them.
-    {
-        "tiagovla/tokyodark.nvim",
-        lazy = true,
-        -- priority = 1000,
-        -- config = function()
-        --     vim.cmd.colorscheme "tokyodark"
-        -- end,
-    },
-    {
-        "ellisonleao/gruvbox.nvim",
-        lazy = true,
-    },
-    { "catppuccin/nvim", name = "catppuccin",
-        lazy = true,
-    },
     { "LunarVim/darkplus.nvim",
         priority = 1000,
         config = function()
@@ -136,5 +121,11 @@ return {
             -- configurations go here
             show_basename = true, -- won't show filename, since bufferline is doing this
         },
+    },
+    {
+        "iamcco/markdown-preview.nvim",
+        ft = "markdown",
+        -- build = "cd app && yarn install",
+        build = ":call mkdp#util#install()",
     },
 }

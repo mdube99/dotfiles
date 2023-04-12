@@ -16,3 +16,19 @@ vim.api.nvim_create_autocmd('Filetype', {
   },
   command = 'setlocal spell'
 })
+
+vim.api.nvim_create_augroup('wrap', { clear = true })
+vim.api.nvim_create_autocmd('Filetype', {
+  group = 'setSpell',
+  pattern = { 'md', 'markdown', 'wiki'
+  },
+  command = 'set wrap'
+})
+
+vim.api.nvim_create_augroup('setcolorcolumn', { clear = true })
+vim.api.nvim_create_autocmd('Filetype', {
+  group = 'setcolorcolumn',
+  pattern = { 'md', 'markdown', 'wiki'
+  },
+  command = 'set colorcolumn=""'
+})
