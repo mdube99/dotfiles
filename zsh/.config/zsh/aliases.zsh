@@ -65,8 +65,13 @@ DL() {
     alias cd="c"
     alias g="git"
     alias updog="up"
+
+if command -v exa > /dev/null 2>&1; then
     alias ls="exa --sort newest"
     alias ll="exa -l --sort newest"
+else
+    alias ls="ls -l"
+fi
     alias vim="nvim"
     alias thunar="thunar . &"
     alias td="tmux detach"
