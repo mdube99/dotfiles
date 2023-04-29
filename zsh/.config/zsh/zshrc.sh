@@ -1,12 +1,13 @@
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-history-substring-search"
 plug "zap-zsh/atmachine-prompt"
 plug "zap-zsh/completions"
-plug "zap-zsh/vim"
-plug "zap-zsh/supercharge"
+plug "jeffreytse/zsh-vi-mode"
+plug "zap-zsh/fzf"
 
 source $HOME/.config/zsh/aliases.zsh
 source $HOME/.config/zsh/exports.zsh
@@ -41,3 +42,9 @@ if command -v rg > /dev/null 2>&1; then
   export FZF_DEFAULT_COMMAND="rg $RG_OPTS"
   export FZF_CTRL_T_COMMAND="rg $RG_OPTS"
 fi
+
+# # Fixes colors not working with zsh-vi-mode
+function zvm_after_init() {
+  autoload add-zle-hook-widget
+  add-zle-hook-widget zle-line-pre-redraw zvm_zle-line-pre-redraw
+}
