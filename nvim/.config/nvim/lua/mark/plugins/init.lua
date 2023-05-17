@@ -90,13 +90,17 @@ return {
             pcall(require('nvim-treesitter.install').update { with_sync = true })
         end,
     },
-    -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-    --       These are some example plugins that I've included in the kickstart repository.
-    --       Uncomment any of the lines below to enable them.
-    { "LunarVim/darkplus.nvim",
+    -- { "LunarVim/darkplus.nvim",
+    --     priority = 1000,
+    --     config = function()
+    --         vim.cmd.colorscheme "darkplus"
+    --     end,
+    -- },
+    {
+        "sainnhe/gruvbox-material",
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme "darkplus"
+            vim.cmd.colorscheme "gruvbox-material"
         end,
     },
     {
