@@ -1,7 +1,7 @@
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERM=screen-256color
-export PATH=$HOME/development/scripts:$HOME/.local/bin:$(go env GOPATH)/bin:$PATH
+export PATH=$HOME/development/scripts:$HOME/.local/bin:$(go env GOPATH)/bin:$HOME/.cargo/bin:$PATH
 export TERMINAL=/usr/local/bin/st
 export GOPATH=$(go env GOPATH)
 # Open manpages in lunarvim
