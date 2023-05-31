@@ -1,6 +1,10 @@
 keybinds {
     unbind "Ctrl b" // unbind in all modes
-    unbind "Ctrl o" // unbind in all modes, use this in vim all the time
+    unbind "Ctrl o" // unbind in all modes
+    normal {
+        unbind "Ctrl o"
+        bind "Ctrl n" { SwitchToMode "Session"; } // rebind from C-o
+    }
     resize {
         bind "Home" "+" { Resize "Increase"; }
         bind "End" { Resize "Decrease"; }
@@ -90,12 +94,12 @@ keybinds {
         bind "Ctrl c" { SwitchToMode "Normal"; }
         bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
     }
-    // session {
-    unbind "Ctrl o" // unbind in all modes, use this in vim all the time
-    //     bind "Ctrl o" { SwitchToMode "Normal"; }
-    //     bind "Ctrl s" { SwitchToMode "Scroll"; }
-    //     bind "d" { Detach; }
-    // }
+    session clear-defaults=true {
+        unbind "Ctrl o"
+        bind "Ctrl n" { SwitchToMode "Normal"; }
+        bind "Ctrl s" { SwitchToMode "Scroll"; }
+        bind "d" { Detach; }
+    }
     tmux {
         bind "[" { SwitchToMode "Scroll"; }
         bind "Ctrl a" { Write 2; SwitchToMode "Normal"; }
