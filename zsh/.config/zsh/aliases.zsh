@@ -61,6 +61,13 @@ DL() {
     echo $variable1;
 }
 
+# I do not like the random naming scheme zellij uses by default, so I use this
+zelli() {
+    zelCount=$(zellij list-sessions | wc -l)
+    ((zelCount++)) # increment zelCount
+    zellij attach --create $zelCount
+}
+
 #Aliases
     alias cd="c"
     alias g="git"
