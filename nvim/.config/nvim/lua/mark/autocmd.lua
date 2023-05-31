@@ -32,3 +32,10 @@ vim.api.nvim_create_autocmd('Filetype', {
   },
   command = 'set colorcolumn=""'
 })
+vim.api.nvim_create_augroup('webdev', { clear = true })
+vim.api.nvim_create_autocmd('Filetype', {
+  group = 'webdev',
+  pattern = { 'html', 'php', 'htm'
+  },
+  command = 'set ts=2 sw=2'
+})
