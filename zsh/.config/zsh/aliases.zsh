@@ -84,6 +84,8 @@ fi
     alias td="tmux detach"
     alias tk="tmux kill-session"
     alias tl="tmux ls"
+    alias zr="zellij run -- "
+    alias zrf="zellij run -f -- "
     alias cat="bat"
     
     # script to copy nmap scripts
