@@ -8,9 +8,8 @@ plug "zap-zsh/atmachine-prompt"
 plug "zap-zsh/completions"
 plug "jeffreytse/zsh-vi-mode"
 plug "zap-zsh/fzf"
-
-source $HOME/.config/zsh/aliases.zsh
-source $HOME/.config/zsh/exports.zsh
+plug "$HOME/.config/zsh/aliases.zsh"
+plug "$HOME/.config/zsh/exports.zsh"
 
 unsetopt BEEP
 
