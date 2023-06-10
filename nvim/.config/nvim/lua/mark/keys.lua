@@ -45,6 +45,14 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "]q", ":cnext<CR>")
 vim.keymap.set("n", "[q", ":cprev<CR>")
 
+-- move lines in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv==kgvo<esc>=kgvo", { desc = "move highlighted text down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv==jgvo<esc>=jgvo", { desc = "move highlighted text up" })
+
+-- switch to previous buffer
+vim.keymap.set("n", "<BS>", ":b#<CR>", { silent = true })
+
+-- align horizontally. super useful if your code lines are long
 vim.keymap.set({ 'n', 'n' }, 'z.', ':<C-u>normal! zszH<CR>', { silent = true })
 
 function QuickFixToggle()
@@ -61,4 +69,5 @@ function FixLastSpellingError()
   vim.cmd("normal! mm[s1z='m\"\"'")
 end
 
-vim.api.nvim_set_keymap('n', '<leader>mm', ':lua FixLastSpellingError()<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>mm', ':lua FixLastSpellingError()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>mm', ':lua FixLastSpellingError()<CR>', { silent = true })
