@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_augroup('setSpell', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'setSpell',
-  pattern = { 'md', 'markdown', 'wiki'
+  pattern = { 'md', 'markdown', 'wiki', 'tex'
   },
   command = 'setlocal spell'
 })
