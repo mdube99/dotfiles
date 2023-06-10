@@ -138,4 +138,7 @@ return {
         -- build = "cd app && yarn install",
         build = ":call mkdp#util#install()",
     },
+    {
+        "simrat39/rust-tools.nvim",
+    }
 }
