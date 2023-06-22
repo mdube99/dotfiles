@@ -50,7 +50,12 @@ c() {
 
 # Print out IP address prior to 
 up() {
-    ip a | grep -v inet6 | grep -F inet | grep /24;
+    # copy IP address into clipboard
+    IPADDRESS=$(ip a | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d '' | cut -f1 -d '/')
+    TOCLIP="$IPADDRESS:4444"
+    # copies the URL for updog into clipboard
+    echo $TOCLIP | xsel --clipboard
+    # ip a | grep -v inet6 | grep -F inet | grep /24;
     updog -p 4444;
 }
 
@@ -86,7 +91,7 @@ fi
     alias tl="tmux ls"
     alias zr="zellij run -- "
     alias zrf="zellij run -f -- "
-    alias cat="bat"
+    alias cat="batcat"
     
     # script to copy nmap scripts
     alias nmapScripts="ls /usr/share/nmap/scripts | fzf --reverse | xsel --clipboard"
