@@ -135,22 +135,13 @@ return {
         opts = {},
         keys = {
             {
-                "s",
+                "S",
                 mode = { "n", "x", "o" },
                 function()
                     -- default options: exact mode, multi window, all directions, with a backdrop
                     require("flash").jump()
                 end,
                 desc = "Flash",
-            },
-            {
-                "S",
-                mode = { "n", "o", "x" },
-                function()
-                    -- show labeled treesitter nodes around the cursor
-                    require("flash").treesitter()
-                end,
-                desc = "Flash Treesitter",
             },
             {
                 "r",
