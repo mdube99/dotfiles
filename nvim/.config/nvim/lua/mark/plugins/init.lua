@@ -43,20 +43,7 @@ return {
         dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
     },
     -- Useful plugin to show you pending keybinds.
-    { 'folke/which-key.nvim',          opts = {} },
-    { -- Adds git releated signs to the gutter, as well as utilities for managing changes
-        'lewis6991/gitsigns.nvim',
-        opts = {
-            signs = {
-                add          = { text = '+' },
-                change       = { text = '~' },
-                delete       = { text = '_' },
-                topdelete    = { text = '‾' },
-                changedelete = { text = '~' },
-                untracked    = { text = '│' },
-            },
-        },
-    },
+    { 'folke/which-key.nvim', opts = {} },
     {
         'lukas-reineke/indent-blankline.nvim',
         opts = {
@@ -66,7 +53,7 @@ return {
         },
     },
     -- "gc" to comment visual regions/lines
-    { 'numToStr/Comment.nvim',         opts = {} },
+    { 'numToStr/Comment.nvim', opts = {} },
     -- Fuzzy Finder (files, lsp, etc)
     { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -99,15 +86,15 @@ return {
     {
         "sainnhe/gruvbox-material",
         priority = 1000,
-        -- config = function()
-        --     vim.cmd.colorscheme "gruvbox-material"
-        -- end,
+        config = function()
+            vim.cmd.colorscheme "gruvbox-material"
+        end,
     },
     {
         "tiagovla/tokyodark.nvim",
-        config = function()
-            vim.cmd.colorscheme "tokyodark"
-        end,
+        -- config = function()
+        --     vim.cmd.colorscheme "tokyodark"
+        -- end,
     },
     {
         "ray-x/lsp_signature.nvim",
@@ -140,5 +127,49 @@ return {
     },
     {
         "simrat39/rust-tools.nvim",
-    }
+    },
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        ---@type Flash.Config
+        opts = {},
+        keys = {
+            {
+                "s",
+                mode = { "n", "x", "o" },
+                function()
+                    -- default options: exact mode, multi window, all directions, with a backdrop
+                    require("flash").jump()
+                end,
+                desc = "Flash",
+            },
+            {
+                "S",
+                mode = { "n", "o", "x" },
+                function()
+                    -- show labeled treesitter nodes around the cursor
+                    require("flash").treesitter()
+                end,
+                desc = "Flash Treesitter",
+            },
+            {
+                "r",
+                mode = "o",
+                function()
+                    -- jump to a remote location to execute the operator
+                    require("flash").remote()
+                end,
+                desc = "Remote Flash",
+            },
+            {
+                "R",
+                mode = { "n", "o", "x" },
+                function()
+                    -- show labeled treesitter nodes around the search matches
+                    require("flash").treesitter_search()
+                end,
+                desc = "Treesitter Search",
+            }
+        },
+    },
 }
