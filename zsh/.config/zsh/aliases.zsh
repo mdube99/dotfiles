@@ -102,4 +102,5 @@ fi
     # super useful for grabbing IP address per pane active
     # Finds active pane by the '*', then filters out just to the IP address
     alias IP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
+    alias cpIP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | xsel --clipboard'
     # alias IP="tmux list-windows | grep '\*' | grep -o '^[^(]*' | awk -F ' ' '{print $2}'"
