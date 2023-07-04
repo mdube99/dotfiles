@@ -23,7 +23,7 @@ return {
 	harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' },
 	-- APPEARANCE
 	enable_tab_bar = false,
-	color_scheme = 'tokyodark',
+	color_scheme = 'Gruvbox Material (Gogh)',
 	bold_brightens_ansi_colors = true,
 	window_padding = {
 		-- left = 0,
