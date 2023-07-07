@@ -63,12 +63,12 @@ return {
             pcall(require('nvim-treesitter.install').update { with_sync = true })
         end,
     },
-    -- { "LunarVim/darkplus.nvim",
+    { "LunarVim/darkplus.nvim",
     --     priority = 1000,
     --     config = function()
     --         vim.cmd.colorscheme "darkplus"
     --     end,
-    -- },
+    },
     {
         "sainnhe/gruvbox-material",
         priority = 1000,
