@@ -71,3 +71,5 @@ end
 
 -- vim.api.nvim_set_keymap('n', '<leader>mm', ':lua FixLastSpellingError()<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>mm', ':lua FixLastSpellingError()<CR>', { silent = true })
+
+
