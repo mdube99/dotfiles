@@ -37,4 +37,5 @@ return {
 	},
 	-- Settings
 	window_close_confirmation = "NeverPrompt", -- by default, will ask if you're sure you wanna quit.
+	show_update_window = false,
 }
