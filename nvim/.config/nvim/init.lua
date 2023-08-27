@@ -94,6 +94,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  terraformls = {},
 }
 
 -- Setup neovim lua configuration
