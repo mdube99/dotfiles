@@ -2,7 +2,7 @@ return {
     -- Git related plugins
     'tpope/vim-fugitive',
     -- Detect tabstop and shiftwidth automatically
-    'tpope/vim-sleuth',
+    -- 'tpope/vim-sleuth',
     {
         'kylechui/nvim-surround',
         version = "*",
@@ -77,12 +77,6 @@ return {
         end,
     },
     {
-        "tiagovla/tokyodark.nvim",
-        -- config = function()
-        --     vim.cmd.colorscheme "tokyodark"
-        -- end,
-    },
-    {
         "ray-x/lsp_signature.nvim",
         config = function()
             require("lsp_signature").setup()
@@ -91,62 +85,5 @@ return {
     {
         "lambdalisue/suda.vim",
         cmd = "SudaWrite",
-    },
-    {
-        "utilyre/barbecue.nvim",
-        name = "barbecue",
-        version = "*",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons", -- optional dependency
-        },
-        opts = {
-            -- configurations go here
-            show_basename = true, -- won't show filename, since bufferline is doing this
-        },
-    },
-    {
-        "iamcco/markdown-preview.nvim",
-        ft = "markdown",
-        -- build = "cd app && yarn install",
-        build = ":call mkdp#util#install()",
-    },
-    {
-        "simrat39/rust-tools.nvim",
-    },
-    {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        ---@type Flash.Config
-        opts = {},
-        keys = {
-            {
-                "S",
-                mode = { "n", "x", "o" },
-                function()
-                    -- default options: exact mode, multi window, all directions, with a backdrop
-                    require("flash").jump()
-                end,
-                desc = "Flash",
-            },
-            {
-                "r",
-                mode = "o",
-                function()
-                    -- jump to a remote location to execute the operator
-                    require("flash").remote()
-                end,
-                desc = "Remote Flash",
-            },
-            {
-                "R",
-                mode = { "n", "o", "x" },
-                function()
-                    -- show labeled treesitter nodes around the search matches
-                    require("flash").treesitter_search()
-                end,
-                desc = "Treesitter Search",
-            }
-        },
     },
 }
