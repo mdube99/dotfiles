@@ -78,6 +78,7 @@ zelli() {
     alias g="git"
     alias updog="up"
     alias ls="ls -l"
+    alias ll="ls -l"
     alias vim="nvim"
     alias thunar="thunar . &"
     alias td="tmux detach"
