@@ -64,18 +64,18 @@ return {
         end,
     },
     { "LunarVim/darkplus.nvim",
-    --     priority = 1000,
-    --     config = function()
-    --         vim.cmd.colorscheme "darkplus"
-    --     end,
-    },
-    {
-        "sainnhe/gruvbox-material",
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme "gruvbox-material"
+            vim.cmd.colorscheme "darkplus"
         end,
     },
+    -- {
+    --     "sainnhe/gruvbox-material",
+    --     priority = 1000,
+    --     config = function()
+    --         vim.cmd.colorscheme "gruvbox-material"
+    --     end,
+    -- },
     {
         "ray-x/lsp_signature.nvim",
         config = function()
