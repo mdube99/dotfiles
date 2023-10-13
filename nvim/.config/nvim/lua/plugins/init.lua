@@ -46,11 +46,7 @@ return {
     { 'folke/which-key.nvim', opts = {} },
     {
         'lukas-reineke/indent-blankline.nvim',
-        opts = {
-            -- char = '┊',
-            char = "▏",
-            show_trailing_blankline_indent = false,
-        },
+				main = 'ibl',
     },
     -- "gc" to comment visual regions/lines
     { 'numToStr/Comment.nvim', opts = {} },
@@ -76,12 +72,12 @@ return {
     --         vim.cmd.colorscheme "gruvbox-material"
     --     end,
     -- },
-    {
-        "ray-x/lsp_signature.nvim",
-        config = function()
-            require("lsp_signature").setup()
-        end,
-    },
+    -- {
+    --     "ray-x/lsp_signature.nvim",
+    --     config = function()
+    --         require("lsp_signature").setup()
+    --     end,
+    -- },
     {
         "lambdalisue/suda.vim",
         cmd = "SudaWrite",
