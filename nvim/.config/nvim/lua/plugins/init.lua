@@ -2,7 +2,7 @@ return {
     -- Git related plugins
     'tpope/vim-fugitive',
     -- Detect tabstop and shiftwidth automatically
-    -- 'tpope/vim-sleuth',
+    'tpope/vim-sleuth',
     {
         'kylechui/nvim-surround',
         version = "*",
@@ -47,6 +47,12 @@ return {
     {
         'lukas-reineke/indent-blankline.nvim',
 				main = 'ibl',
+        opts = {
+          indent = {
+            char = "│",
+            tab_char = "│",
+      },
+    }
     },
     -- "gc" to comment visual regions/lines
     { 'numToStr/Comment.nvim', opts = {} },
