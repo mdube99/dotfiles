@@ -28,14 +28,12 @@ vim.api.nvim_create_autocmd('Filetype', {
 vim.api.nvim_create_augroup('setcolorcolumn', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'setcolorcolumn',
-  pattern = { 'md', 'markdown', 'wiki'
-  },
+  pattern = { 'md', 'markdown', 'wiki' },
   command = 'set colorcolumn=""'
 })
 vim.api.nvim_create_augroup('webdev', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'webdev',
-  pattern = { 'html', 'php', 'htm'
-  },
+  pattern = { 'html', 'php', 'terraform', 'yaml' },
   command = 'set ts=2 sw=2'
 })
