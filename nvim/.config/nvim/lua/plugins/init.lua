@@ -45,14 +45,29 @@ return {
     -- Useful plugin to show you pending keybinds.
     { 'folke/which-key.nvim', opts = {} },
     {
-        'lukas-reineke/indent-blankline.nvim',
-				main = 'ibl',
-        opts = {
-          indent = {
-            char = "│",
-            tab_char = "│",
+      "lukas-reineke/indent-blankline.nvim",
+      opts = {
+        indent = {
+          char = "│",
+          tab_char = "│",
+        },
+        scope = { enabled = false },
+        exclude = {
+          filetypes = {
+            "help",
+            "alpha",
+            "dashboard",
+            "neo-tree",
+            "Trouble",
+            "lazy",
+            "mason",
+            "notify",
+            "toggleterm",
+            "lazyterm",
+          },
+        },
       },
-    }
+      main = "ibl",
     },
     -- "gc" to comment visual regions/lines
     { 'numToStr/Comment.nvim', opts = {} },
