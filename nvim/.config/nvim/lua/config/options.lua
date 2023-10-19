@@ -44,3 +44,4 @@ vim.o.colorcolumn = '80'
 
 -- similar to 'scrolloff', but horizontal. allows for character padding around cursor.
 vim.o.sidescrolloff = '40'
+vim.o.cursorline = true
