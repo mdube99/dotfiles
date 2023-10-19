@@ -93,12 +93,6 @@ return {
     --         vim.cmd.colorscheme "gruvbox-material"
     --     end,
     -- },
-    -- {
-    --     "ray-x/lsp_signature.nvim",
-    --     config = function()
-    --         require("lsp_signature").setup()
-    --     end,
-    -- },
     {
         "lambdalisue/suda.vim",
         cmd = "SudaWrite",
