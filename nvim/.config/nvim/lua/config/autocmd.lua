@@ -34,6 +34,6 @@ vim.api.nvim_create_autocmd('Filetype', {
 vim.api.nvim_create_augroup('webdev', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'webdev',
-  pattern = { 'html', 'php', 'terraform', 'yaml' },
+  pattern = { 'html', 'php', 'terraform', 'yaml', 'lua' },
   command = 'set ts=2 sw=2'
 })
