@@ -66,36 +66,29 @@ DL() {
     echo $variable1;
 }
 
-# I do not like the random naming scheme zellij uses by default, so I use this
-zelli() {
-    zelCount=$(zellij list-sessions | wc -l)
-    ((zelCount++)) # increment zelCount
-    zellij attach --create $zelCount
-}
-
 #Aliases
-    alias cd="c"
-    alias g="git"
-    alias updog="up"
-    #alias ls="ls -l"
-    alias ll="ls -l"
-    alias vim="nvim"
-    alias thunar="thunar . &"
-    alias td="tmux detach"
-    alias tk="tmux kill-session"
-    alias tl="tmux ls"
-    alias zr="zellij run -- "
-    alias zrf="zellij run -f -- "
-    alias cat="batcat"
-    
-    # script to copy nmap scripts
-    alias nmapScripts="ls /usr/share/nmap/scripts | fzf --reverse | xsel --clipboard"
+alias cd="c"
+alias g="git"
+alias updog="up"
+#alias ls="ls -l"
+alias ll="ls -l"
+alias vim="nvim"
+alias thunar="thunar . &"
+alias td="tmux detach"
+alias tk="tmux kill-session"
+alias tl="tmux ls"
+alias zr="zellij run -- "
+alias zrf="zellij run -f -- "
+alias cat="batcat"
 
-    alias latexreload="latexmk -pdf -pvc $1"
-    alias notes='cd ~/notes && vim -c ":Telescope live_grep" && cd -'
+# script to copy nmap scripts
+alias nmapScripts="ls /usr/share/nmap/scripts | fzf --reverse | xsel --clipboard"
 
-    # super useful for grabbing IP address per pane active
-    # Finds active pane by the '*', then filters out just to the IP address
-    alias IP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
-    alias cpIP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | xsel --clipboard'
-    # alias IP="tmux list-windows | grep '\*' | grep -o '^[^(]*' | awk -F ' ' '{print $2}'"
+alias latexreload="latexmk -pdf -pvc $1"
+alias notes='cd ~/notes && vim -c ":Telescope live_grep" && cd -'
+
+# super useful for grabbing IP address per pane active
+# Finds active pane by the '*', then filters out just to the IP address
+alias IP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
+alias cpIP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | xsel --clipboard'
+# alias IP="tmux list-windows | grep '\*' | grep -o '^[^(]*' | awk -F ' ' '{print $2}'"
