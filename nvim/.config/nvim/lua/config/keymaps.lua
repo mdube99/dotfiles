@@ -14,3 +14,5 @@ function QuickFixToggle()
 end
 
 vim.keymap.set('n', '<C-q>', ':lua QuickFixToggle()<CR>')
+vim.keymap.set('n', '<Tab>', '<cmd>bn<CR>')
+vim.keymap.set('n', '<S-Tab>', '<cmd>bp<CR>')
