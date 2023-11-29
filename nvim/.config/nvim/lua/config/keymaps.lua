@@ -26,3 +26,14 @@ vim.keymap.set('n', '<C-k>', nvim_tmux_nav.NvimTmuxNavigateUp)
 vim.keymap.set('n', '<C-l>', nvim_tmux_nav.NvimTmuxNavigateRight)
 vim.keymap.set('n', '<C-\\>', nvim_tmux_nav.NvimTmuxNavigateLastActive)
 vim.keymap.set('n', '<C-Space>', nvim_tmux_nav.NvimTmuxNavigateNext)
+
+-- terminal
+vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<cr>', { desc = 'Float' })
+vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm size=15 direction=horizontal<cr>', { desc = 'Horizontal' })
+vim.keymap.set('n', '<leader>tv', '<cmd>ToggleTerm size=50 direction=vertical<cr>', { desc = 'Vertical' })
+vim.keymap.set({ 'n', 't' }, '<leader>tt', '<cmd>ToggleTerm<cr>', { desc = 'Toggle' })
+
+-- helix like g-prefixed maps
+vim.keymap.set('n', 'gh', '0', { desc = 'Goto line start' })
+vim.keymap.set('n', 'gl', '$', { desc = 'Goto line end' })
+vim.keymap.set('n', 'gs', '^', { desc = 'Goto first non-whitespace character' })
