@@ -37,3 +37,9 @@ vim.keymap.set({ 'n', 't' }, '<leader>tt', '<cmd>ToggleTerm<cr>', { desc = 'Togg
 vim.keymap.set('n', 'gh', '0', { desc = 'Goto line start' })
 vim.keymap.set('n', 'gl', '$', { desc = 'Goto line end' })
 vim.keymap.set('n', 'gs', '^', { desc = 'Goto first non-whitespace character' })
+
+vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
+
+-- better up/down
+vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
