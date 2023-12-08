@@ -5,6 +5,8 @@ return {
     event = 'VeryLazy',
     opts = function(_, opts)
       table.remove(opts.sections.lualine_b)
+      opts.options.component_separators = { left = '', right = '' }
+      opts.options.section_separators = { left = '', right = '' }
     end,
   },
 }
