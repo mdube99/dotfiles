@@ -12,28 +12,26 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_augroup('setSpell', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'setSpell',
-  pattern = { 'md', 'markdown', 'wiki', 'tex'
-  },
-  command = 'setlocal spell'
+  pattern = { 'md', 'markdown', 'wiki', 'tex' },
+  command = 'setlocal spell',
 })
 
 vim.api.nvim_create_augroup('wrap', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'setSpell',
-  pattern = { 'md', 'markdown', 'wiki'
-  },
-  command = 'set wrap'
+  pattern = { 'md', 'markdown', 'wiki' },
+  command = 'set wrap',
 })
 
 vim.api.nvim_create_augroup('setcolorcolumn', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'setcolorcolumn',
   pattern = { 'md', 'markdown', 'wiki' },
-  command = 'set colorcolumn=""'
+  command = 'set colorcolumn=""',
 })
 vim.api.nvim_create_augroup('webdev', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'webdev',
   pattern = { 'html', 'php', 'terraform', 'yaml', 'lua' },
-  command = 'set ts=2 sw=2'
+  command = 'set ts=2 sw=2',
 })
