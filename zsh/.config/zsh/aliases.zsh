@@ -73,7 +73,7 @@ alias updog="up"
 #alias ls="ls -l"
 alias ll="ls -l"
 # for simple edits, use small config
-alias vim="nvim -u \"$HOME/.config/nvim_noplug/init.lua\" \"$@\"" 
+alias vim="nvim -u \"$HOME/.config/nvim_noplug/init.lua\""
 alias thunar="thunar . &"
 alias td="tmux detach"
 alias tk="tmux kill-session"
