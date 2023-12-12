@@ -8,6 +8,9 @@ export GOPATH=$(go env GOPATH)
 export MANPAGER="/bin/zsh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export FZF_DEFAULT_COMMAND='rg --vimgrep --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+# for tmux session manager
+export PATH=$HOME/dotfiles/tmux/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+
 HISTFILE=~/.zsh_history
 SAVEHIST=10000
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
