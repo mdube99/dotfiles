@@ -35,4 +35,6 @@ if vim.fn.hostname() ~= 'kali' then
       'rcarriga/nvim-notify',
     },
   }
+else
+  return {}
 end
