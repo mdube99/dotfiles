@@ -1,0 +1,75 @@
+colors:
+  primary:
+    background: '#1E1E1E'
+    foreground: '#D4D4D4'
+
+  # Normal colors
+  normal:
+    black:   '#202123'
+    red:     '#D16969'
+    green:   '#14C50B'
+    yellow:  '#DCDCAA'
+    blue:    '#569CD6'
+    magenta: '#C586C0'
+    cyan:    '#4EC9B0'
+    white:   '#D4D4D4'
+
+  # Bright colors
+  bright:
+    black:   '#3E3E3E'
+    red:     '#F44747'
+    green:   '#73C991'
+    yellow:  '#FFCC66'
+    blue:    '#42A5F5'
+    magenta: '#B180D7'
+    cyan:    '#73C991'
+    white:   '#CCCCCC'
+
+window:
+  dimensions:
+    columns: 100
+    lines: 85
+  padding:
+    x: 10
+    y: 10
+decorations: full
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+window.opacity: 0.95
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+
+key_bindings:
+
+
+- { key: PageUp,   mods: Shift, action: ScrollPageUp,          }
+- { key: PageDown, mods: Shift, action: ScrollPageDown,       }
+- { key: Home,     mods: Shift, action: ScrollToTop,           }
+- { key: End,      mods: Shift, action: ScrollToBottom,        }
+
+font:
+  size: 14
+  normal:
+    family: JetBrainsMono Nerd Font
+    style: Regular
+  bold:
+    family: JetBrainsMono Nerd Font
+    style: Bold
+  italic:
+    family: JetBrainsMono Nerd Font
+    style: Italic
+
+
+mouse_binding:
+  - { mouse: Middle,            action: PasteSelection        }
+
+shell:
+  program: ubuntu
+
+live_config_reload: true
