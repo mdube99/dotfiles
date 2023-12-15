@@ -43,3 +43,19 @@ vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 -- better up/down
 vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
+-- mappings for compiler.nvim - specifically for C/asm compiling
+-- Open compiler
+vim.api.nvim_set_keymap('n', '<F5>', '<cmd>CompilerOpen<cr>', { noremap = true, silent = true })
+
+-- Redo last selected option
+vim.api.nvim_set_keymap(
+  'n',
+  '<S-F5>',
+  '<cmd>CompilerStop<cr>' -- (Optional, to dispose all tasks before redo)
+    .. '<cmd>CompilerRedo<cr>',
+  { noremap = true, silent = true }
+)
+
+-- Toggle compiler results
+vim.api.nvim_set_keymap('n', '<S-F6>', '<cmd>CompilerToggleResults<cr>', { noremap = true, silent = true })
