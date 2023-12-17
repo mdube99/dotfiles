@@ -81,6 +81,7 @@ alias tl="tmux ls"
 alias zr="zellij run -- "
 alias zrf="zellij run -f -- "
 alias cat="batcat"
+alias clip="xsel --clipboard"
 
 # script to copy nmap scripts
 alias nmapScripts="ls /usr/share/nmap/scripts | fzf --reverse | xsel --clipboard"
@@ -92,4 +93,3 @@ alias notes='cd ~/notes && vim -c ":Telescope live_grep" && cd -'
 # Finds active pane by the '*', then filters out just to the IP address
 alias IP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
 alias cpIP='tmux list-windows | grep "\*" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | xsel --clipboard'
-# alias IP="tmux list-windows | grep '\*' | grep -o '^[^(]*' | awk -F ' ' '{print $2}'"
