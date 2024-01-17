@@ -4,7 +4,6 @@ return {
     version = '*',
     dependencies = {
     'nvim-lua/plenary.nvim',
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
 
   config = function()
@@ -57,8 +56,6 @@ return {
           })
         },
       },
-
-      require('telescope').load_extension('fzf')
     }
   end,
   }
