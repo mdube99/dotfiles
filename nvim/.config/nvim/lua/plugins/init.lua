@@ -11,31 +11,6 @@ return {
     end,
   },
   {
-    'lukas-reineke/indent-blankline.nvim',
-    opts = {
-      indent = {
-        char = '│',
-        tab_char = '│',
-      },
-      scope = { enabled = false },
-      exclude = {
-        filetypes = {
-          'help',
-          'alpha',
-          'dashboard',
-          'neo-tree',
-          'Trouble',
-          'lazy',
-          'mason',
-          'notify',
-          'toggleterm',
-          'lazyterm',
-        },
-      },
-    },
-    main = 'ibl',
-  },
-  {
     'LunarVim/darkplus.nvim',
     priority = 1000,
     config = function()
@@ -87,25 +62,6 @@ return {
         end, { 'i', 's' }),
       })
     end,
-  },
-  {
-    'Zeioth/compiler.nvim',
-    cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
-    dependencies = { 'stevearc/overseer.nvim' },
-    opts = {},
-  },
-  { -- The task runner we use
-    'stevearc/overseer.nvim',
-    commit = '400e762648b70397d0d315e5acaf0ff3597f2d8b',
-    cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
-    opts = {
-      task_list = {
-        direction = 'bottom',
-        min_height = 25,
-        max_height = 25,
-        default_detail = 1,
-      },
-    },
   },
   { 'folke/flash.nvim', enabled = false },
   { 'nvimdev/dashboard-nvim', enabled = false },
