@@ -19,6 +19,19 @@ vim.keymap.set('n', '<S-Tab>', '<cmd>bp<CR>')
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 vim.keymap.set('n', '<leader>fw', '<cmd>Telescope live_grep<CR>')
 
+local builtin = require 'telescope.builtin'
+vim.keymap.set('n', '<leader>pws', function()
+  local word = vim.fn.expand '<cword>'
+  builtin.grep_string { search = word }
+end)
+vim.keymap.set('n', '<leader>pWs', function()
+  local word = vim.fn.expand '<cWORD>'
+  builtin.grep_string { search = word }
+end)
+vim.keymap.set('n', '<leader>ps', function()
+  builtin.grep_string { search = vim.fn.input 'Grep > ' }
+end)
+
 local nvim_tmux_nav = require 'nvim-tmux-navigation'
 vim.keymap.set('n', '<C-h>', nvim_tmux_nav.NvimTmuxNavigateLeft)
 vim.keymap.set('n', '<C-j>', nvim_tmux_nav.NvimTmuxNavigateDown)

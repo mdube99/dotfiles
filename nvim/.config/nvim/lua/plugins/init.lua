@@ -63,6 +63,34 @@ return {
       })
     end,
   },
+  {
+    'Zeioth/compiler.nvim',
+    cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
+    dependencies = { 'stevearc/overseer.nvim' },
+    opts = {},
+  },
+  { -- The task runner we use
+    'stevearc/overseer.nvim',
+    commit = '400e762648b70397d0d315e5acaf0ff3597f2d8b',
+    cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
+    opts = {
+      task_list = {
+        direction = 'bottom',
+        min_height = 25,
+        max_height = 25,
+        default_detail = 1,
+      },
+    },
+  },
+  {
+    'stefandtw/quickfix-reflector.vim',
+    config = function()
+      vim.cmd 'let g:qf_modifiable = 1'
+    end,
+  },
+
   { 'folke/flash.nvim', enabled = false },
   { 'nvimdev/dashboard-nvim', enabled = false },
+  { 'folke/noice.nvim', enabled = false },
+  { 'rcarriga/nvim-notify', enabled = false },
 }
